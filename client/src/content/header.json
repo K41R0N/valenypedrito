@@ -1,11 +1,10 @@
 {
   "navItems": [
-    { "label": "Inicio", "href": "/" },
-    { "label": "El Día", "href": "/#detalles" },
-    { "label": "FAQ", "href": "/#faq" },
-    { "label": "Invitados", "href": "/invitados" },
-    { "label": "Regalos", "href": "/#regalos" }
+    { "label": "El Día", "href": "/#cronograma" },
+    { "label": "El Lugar", "href": "/#lugar" },
+    { "label": "Info Viaje", "href": "/invitados" },
+    { "label": "FAQ", "href": "/#faq" }
   ],
-  "ctaButtonText": "RSVP",
+  "ctaButtonText": "Confirmar",
   "ctaButtonHref": "/#rsvp"
 }
