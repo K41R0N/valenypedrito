@@ -52,129 +52,103 @@ collections:
         widget: "list"
         hint: "Añade y organiza secciones. Arrastra para reordenar."
         types:
+          # ==================================================================
+          # LUXURY SECTIONS (V2 - Recommended)
+          # ==================================================================
+
           # ------------------------------------------------------------------
-          # Wedding Hero - Couple Names
+          # Luxury Hero - Main Wedding Hero
           # ------------------------------------------------------------------
-          - name: "wedding-hero"
-            label: "Hero - Nombres de la Pareja"
+          - name: "luxury-hero"
+            label: "Hero Principal"
             widget: "object"
             summary: "Hero: {{fields.brideName}} & {{fields.groomName}}"
             fields:
-              - { name: "sectionId", label: "ID de Sección (para navegación)", widget: "string", required: false, hint: "ej: home, hero. Se usará para enlaces ancla (#home)" }
+              - { name: "sectionId", label: "ID de Sección", widget: "string", required: false, default: "hero" }
+              - { name: "announcement", label: "Anuncio", widget: "string", default: "¡NOS CASAMOS!" }
               - { name: "brideName", label: "Nombre de la Novia", widget: "string", default: "Valentina" }
               - { name: "groomName", label: "Nombre del Novio", widget: "string", default: "Pedro Juan" }
-              - { name: "announcement", label: "Anuncio", widget: "string", default: "¡NOS VAMOS A CASAR!", hint: "Texto en serif uppercase" }
-              - { name: "date", label: "Fecha de la Boda", widget: "datetime", format: "YYYY-MM-DD", hint: "Miércoles, 23 de Septiembre de 2026" }
+              - { name: "subtitle", label: "Subtítulo", widget: "text", required: false, hint: "Deja vacío para usar texto automático con fecha y lugar" }
+              - { name: "weddingDate", label: "Fecha de la Boda", widget: "datetime", format: "YYYY-MM-DD" }
               - { name: "venue", label: "Lugar", widget: "string", default: "Hacienda la Soledad" }
               - { name: "location", label: "Ciudad/País", widget: "string", default: "Sevilla, España" }
-              - { name: "backgroundImage", label: "Imagen de Fondo", widget: "image", required: false, media_library: { config: { max_file_size: 1024000 } } }
-              - { name: "skylinePosition", label: "Posición del Skyline", widget: "select", options: ["bottom", "footer"], default: "bottom", hint: "Dónde mostrar la ilustración del skyline de Sevilla" }
-              - { name: "showCountdown", label: "Mostrar Contador Regresivo", widget: "boolean", default: true }
+              - { name: "backgroundImage", label: "Imagen de Fondo", widget: "image", required: false }
+              - { name: "showScrollIndicator", label: "Mostrar Indicador de Scroll", widget: "boolean", default: true }
 
           # ------------------------------------------------------------------
-          # Countdown Timer
+          # Our Story - Couple Introduction
           # ------------------------------------------------------------------
-          - name: "countdown"
-            label: "Contador Regresivo"
+          - name: "our-story"
+            label: "Nuestra Historia"
             widget: "object"
-            summary: "Contador: {{fields.title}}"
+            summary: "Historia: {{fields.title}}"
             fields:
-              - { name: "title", label: "Título", widget: "string", default: "Cuenta Regresiva" }
-              - { name: "weddingDate", label: "Fecha de la Boda", widget: "datetime", format: "YYYY-MM-DD HH:mm" }
-              - { name: "backgroundColor", label: "Color de Fondo", widget: "select", options: [{label: "Crema Antiguo", value: "cream"}, {label: "Beige Cálido", value: "beige"}, {label: "Blanco", value: "white"}], default: "cream" }
-              - { name: "decorativeElement", label: "Elemento Decorativo", widget: "select", options: [{label: "Ninguno", value: "none"}, {label: "Rama de Naranjo", value: "orange-branch"}, {label: "Rama de Olivo", value: "olive-branch"}, {label: "Azulejo", value: "azulejo"}], default: "orange-branch" }
+              - { name: "sectionId", label: "ID de Sección", widget: "string", required: false, default: "historia" }
+              - { name: "title", label: "Título", widget: "string", default: "Nuestra Historia" }
+              - { name: "subtitle", label: "Subtítulo", widget: "string", default: "Dos corazones, un camino, amor infinito" }
+              - { name: "story", label: "Texto de Historia", widget: "text", hint: "Usa doble salto de línea para separar párrafos" }
+              - { name: "image", label: "Foto de Pareja", widget: "image", required: false }
+              - { name: "imageAlt", label: "Descripción de Imagen", widget: "string", default: "Foto de pareja" }
+              - { name: "imagePosition", label: "Posición de Imagen", widget: "select", options: [{label: "Izquierda", value: "left"}, {label: "Derecha", value: "right"}], default: "left" }
+              - { name: "backgroundColor", label: "Color de Fondo", widget: "select", options: [{label: "Blanco", value: "white"}, {label: "Cálido", value: "warm"}, {label: "Sutil", value: "subtle"}], default: "warm" }
 
           # ------------------------------------------------------------------
-          # Event Details
+          # Wedding Timeline - Day Schedule
           # ------------------------------------------------------------------
-          - name: "event-details"
-            label: "Detalles del Evento"
+          - name: "wedding-timeline"
+            label: "Cronograma del Día"
             widget: "object"
-            summary: "Evento: {{fields.title}}"
+            summary: "Cronograma: {{fields.title}}"
             fields:
-              - { name: "sectionId", label: "ID de Sección", widget: "string", required: false, hint: "ej: detalles, eventos" }
-              - { name: "title", label: "Título", widget: "string", default: "Detalles del Día" }
+              - { name: "sectionId", label: "ID de Sección", widget: "string", required: false, default: "cronograma" }
+              - { name: "title", label: "Título", widget: "string", default: "El Gran Día" }
               - { name: "subtitle", label: "Subtítulo", widget: "text", required: false }
-              - name: "timeline"
-                label: "Cronograma"
+              - { name: "date", label: "Fecha de la Boda", widget: "datetime", format: "YYYY-MM-DD" }
+              - name: "events"
+                label: "Eventos"
                 widget: "list"
                 fields:
-                  - { name: "time", label: "Hora", widget: "string", hint: "ej: 16:30" }
-                  - { name: "event", label: "Evento", widget: "string", hint: "ej: Ceremonia" }
+                  - { name: "time", label: "Hora", widget: "string", hint: "ej: 17:30" }
+                  - { name: "title", label: "Título", widget: "string", hint: "ej: Ceremonia" }
                   - { name: "description", label: "Descripción", widget: "text", required: false }
-                  - { name: "icon", label: "Ícono", widget: "select", options: ["church", "champagne", "dinner", "music", "custom"], default: "church" }
-              - { name: "venueAddress", label: "Dirección Completa", widget: "text" }
-              - { name: "showMap", label: "Mostrar Mapa", widget: "boolean", default: true }
-              - { name: "mapLatitude", label: "Latitud", widget: "string", required: false, hint: "Para Google Maps" }
-              - { name: "mapLongitude", label: "Longitud", widget: "string", required: false }
-              - { name: "parkingInfo", label: "Información de Estacionamiento", widget: "text", required: false }
-              - { name: "transportInfo", label: "Información de Transporte", widget: "text", required: false }
-              - { name: "backgroundColor", label: "Color de Fondo", widget: "select", options: ["cream", "beige", "white"], default: "white" }
+                  - { name: "icon", label: "Ícono", widget: "select", options: [{label: "Llegada", value: "arrival"}, {label: "Ceremonia", value: "ceremony"}, {label: "Cóctel", value: "cocktail"}, {label: "Cena", value: "dinner"}, {label: "Fiesta", value: "party"}], default: "ceremony" }
+              - { name: "backgroundColor", label: "Color de Fondo", widget: "select", options: [{label: "Blanco", value: "white"}, {label: "Cálido", value: "warm"}, {label: "Sutil", value: "subtle"}], default: "white" }
 
           # ------------------------------------------------------------------
-          # RSVP Form
+          # Venue Section - Location Info
           # ------------------------------------------------------------------
-          - name: "rsvp-form"
-            label: "Formulario de Confirmación (RSVP)"
+          - name: "venue-section"
+            label: "El Lugar"
             widget: "object"
-            summary: "RSVP: {{fields.title}}"
+            summary: "Lugar: {{fields.venueName}}"
             fields:
-              - { name: "sectionId", label: "ID de Sección", widget: "string", required: false, hint: "ej: rsvp, confirmacion" }
-              - { name: "title", label: "Título", widget: "string", default: "Confirma Tu Asistencia" }
-              - { name: "subtitle", label: "Subtítulo", widget: "text", required: false }
-              - { name: "formIntro", label: "Introducción del Formulario", widget: "text", default: "Por favor confirma tu asistencia antes del..." }
-              - { name: "rsvpDeadline", label: "Fecha Límite RSVP", widget: "datetime", format: "YYYY-MM-DD" }
-              - name: "mealOptions"
-                label: "Opciones de Comida"
+              - { name: "sectionId", label: "ID de Sección", widget: "string", required: false, default: "lugar" }
+              - { name: "title", label: "Título", widget: "string", default: "El Lugar" }
+              - { name: "venueName", label: "Nombre del Lugar", widget: "string", default: "Hacienda la Soledad" }
+              - { name: "venueImage", label: "Foto del Lugar", widget: "image", required: false }
+              - { name: "venueImageAlt", label: "Descripción de Imagen", widget: "string", default: "Hacienda la Soledad" }
+              - { name: "address", label: "Dirección", widget: "string" }
+              - { name: "mapUrl", label: "URL de Google Maps", widget: "string", required: false }
+              - name: "infoCards"
+                label: "Tarjetas de Información"
                 widget: "list"
                 fields:
-                  - { name: "value", label: "Valor (interno)", widget: "string" }
-                  - { name: "label", label: "Etiqueta", widget: "string" }
-                  - { name: "description", label: "Descripción", widget: "text", required: false }
-              - { name: "askDietaryRestrictions", label: "Preguntar sobre Alergias/Restricciones", widget: "boolean", default: true }
-              - { name: "askPlusOne", label: "Permitir Acompañante", widget: "boolean", default: true }
-              - { name: "decorativeIcon", label: "Ícono Decorativo", widget: "select", options: ["champagne", "none"], default: "champagne" }
-              - { name: "backgroundColor", label: "Color de Fondo", widget: "select", options: ["cream", "beige", "white"], default: "beige" }
+                  - { name: "icon", label: "Ícono", widget: "select", options: [{label: "Ubicación", value: "location"}, {label: "Transporte", value: "transport"}, {label: "Estacionamiento", value: "parking"}], default: "location" }
+                  - { name: "title", label: "Título", widget: "string" }
+                  - { name: "content", label: "Contenido", widget: "text" }
+                  - { name: "link", label: "Enlace", widget: "string", required: false }
+              - { name: "backgroundColor", label: "Color de Fondo", widget: "select", options: [{label: "Blanco", value: "white"}, {label: "Cálido", value: "warm"}, {label: "Sutil", value: "subtle"}], default: "warm" }
 
           # ------------------------------------------------------------------
-          # Guest Resources (Travel Info)
+          # Luxury FAQ - Accordion Style
           # ------------------------------------------------------------------
-          - name: "guest-resources"
-            label: "Recursos para Invitados"
-            widget: "object"
-            summary: "Recursos: {{fields.title}}"
-            fields:
-              - { name: "sectionId", label: "ID de Sección", widget: "string", required: false, hint: "ej: invitados, recursos" }
-              - { name: "title", label: "Título", widget: "string", default: "Información para Invitados" }
-              - { name: "subtitle", label: "Subtítulo", widget: "text", required: false }
-              - name: "sections"
-                label: "Secciones de Recursos"
-                widget: "list"
-                fields:
-                  - { name: "sectionTitle", label: "Título de Sección", widget: "string", hint: "ej: Alojamiento, Transporte, Estilistas" }
-                  - { name: "icon", label: "Ícono", widget: "select", options: ["hotel", "airplane", "car", "info"], default: "hotel" }
-                  - { name: "content", label: "Contenido", widget: "markdown", hint: "Puedes incluir links y listas" }
-                  - name: "recommendations"
-                    label: "Recomendaciones"
-                    widget: "list"
-                    required: false
-                    fields:
-                      - { name: "name", label: "Nombre", widget: "string" }
-                      - { name: "description", label: "Descripción", widget: "text" }
-                      - { name: "link", label: "Link", widget: "string", required: false }
-                      - { name: "phone", label: "Teléfono", widget: "string", required: false }
-              - { name: "backgroundColor", label: "Color de Fondo", widget: "select", options: ["cream", "beige", "white"], default: "cream" }
-
-          # ------------------------------------------------------------------
-          # FAQ Section
-          # ------------------------------------------------------------------
-          - name: "faq"
-            label: "Preguntas Frecuentes (FAQ)"
+          - name: "luxury-faq"
+            label: "Preguntas Frecuentes"
             widget: "object"
             summary: "FAQ: {{fields.title}}"
             fields:
-              - { name: "sectionId", label: "ID de Sección", widget: "string", required: false, hint: "ej: faq, preguntas" }
-              - { name: "title", label: "Título", widget: "string", default: "Preguntas Frecuentes" }
+              - { name: "sectionId", label: "ID de Sección", widget: "string", required: false, default: "faq" }
+              - { name: "title", label: "Título", widget: "string", default: "Todo Lo Que Necesitas Saber" }
               - { name: "subtitle", label: "Subtítulo", widget: "text", required: false }
               - name: "questions"
                 label: "Preguntas"
@@ -182,82 +156,127 @@ collections:
                 fields:
                   - { name: "question", label: "Pregunta", widget: "string" }
                   - { name: "answer", label: "Respuesta", widget: "text" }
-              - { name: "backgroundColor", label: "Color de Fondo", widget: "select", options: ["cream", "beige", "white"], default: "white" }
+              - { name: "backgroundColor", label: "Color de Fondo", widget: "select", options: [{label: "Blanco", value: "white"}, {label: "Cálido", value: "warm"}, {label: "Sutil", value: "subtle"}], default: "white" }
 
           # ------------------------------------------------------------------
-          # Events Calendar
+          # Details Cards - Dress Code, Children Info
           # ------------------------------------------------------------------
-          - name: "events-calendar"
-            label: "Calendario de Eventos"
+          - name: "details-cards"
+            label: "Detalles Importantes"
             widget: "object"
-            summary: "Calendario: {{fields.title}}"
+            summary: "Detalles: {{fields.title}}"
             fields:
-              - { name: "title", label: "Título", widget: "string", default: "Eventos" }
+              - { name: "sectionId", label: "ID de Sección", widget: "string", required: false, default: "detalles" }
+              - { name: "title", label: "Título", widget: "string", default: "Detalles Importantes" }
               - { name: "subtitle", label: "Subtítulo", widget: "text", required: false }
-              - name: "events"
-                label: "Eventos"
+              - name: "cards"
+                label: "Tarjetas"
                 widget: "list"
                 fields:
-                  - { name: "eventName", label: "Nombre del Evento", widget: "string" }
-                  - { name: "date", label: "Fecha", widget: "datetime", format: "YYYY-MM-DD HH:mm" }
-                  - { name: "location", label: "Ubicación", widget: "string" }
-                  - { name: "description", label: "Descripción", widget: "text" }
-                  - { name: "addToCalendar", label: "Permitir Agregar a Calendario", widget: "boolean", default: true }
-                  - { name: "requiresRSVP", label: "Requiere Confirmación Separada", widget: "boolean", default: false }
-              - { name: "backgroundColor", label: "Color de Fondo", widget: "select", options: ["cream", "beige", "white"], default: "beige" }
+                  - { name: "icon", label: "Ícono", widget: "select", options: [{label: "Vestimenta", value: "dresscode"}, {label: "Niños", value: "children"}, {label: "Otro", value: "custom"}], default: "dresscode" }
+                  - { name: "title", label: "Título", widget: "string" }
+                  - { name: "content", label: "Contenido", widget: "text" }
+                  - { name: "restrictions", label: "Restricciones (separadas por coma)", widget: "list", required: false }
+              - { name: "backgroundColor", label: "Color de Fondo", widget: "select", options: [{label: "Blanco", value: "white"}, {label: "Cálido", value: "warm"}, {label: "Sutil", value: "subtle"}], default: "warm" }
 
           # ------------------------------------------------------------------
-          # Info Box (For child-friendly, dress code, etc.)
+          # Luxury Countdown
           # ------------------------------------------------------------------
-          - name: "info-box"
-            label: "Caja de Información"
+          - name: "luxury-countdown"
+            label: "Cuenta Regresiva"
             widget: "object"
-            summary: "Info: {{fields.title}}"
+            summary: "Contador: {{fields.title}}"
             fields:
-              - { name: "sectionId", label: "ID de Sección", widget: "string", required: false, hint: "ej: info, codigo-vestimenta" }
-              - { name: "title", label: "Título", widget: "string" }
-              - { name: "content", label: "Contenido", widget: "markdown" }
-              - { name: "icon", label: "Ícono", widget: "select", options: ["info", "heart", "star", "custom"], default: "info" }
-              - { name: "style", label: "Estilo", widget: "select", options: [{label: "Destacado", value: "highlight"}, {label: "Normal", value: "normal"}], default: "normal" }
-              - { name: "backgroundColor", label: "Color de Fondo", widget: "select", options: ["cream", "beige", "white"], default: "cream" }
+              - { name: "title", label: "Título", widget: "string", default: "Cuenta Regresiva", required: false }
+              - { name: "weddingDate", label: "Fecha de la Boda", widget: "datetime", format: "YYYY-MM-DDTHH:mm" }
+              - { name: "subtitle", label: "Subtítulo", widget: "string", required: false }
+              - { name: "backgroundColor", label: "Color de Fondo", widget: "select", options: [{label: "Blanco", value: "white"}, {label: "Cálido", value: "warm"}, {label: "Sutil", value: "subtle"}, {label: "Acento", value: "accent"}], default: "accent" }
 
           # ------------------------------------------------------------------
-          # Registry/Gift List
+          # Gift Section - Registry
           # ------------------------------------------------------------------
-          - name: "registry"
+          - name: "gift-section"
             label: "Lista de Regalos"
             widget: "object"
             summary: "Regalos: {{fields.title}}"
             fields:
-              - { name: "sectionId", label: "ID de Sección", widget: "string", required: false, hint: "ej: regalos, registry" }
-              - { name: "title", label: "Título", widget: "string", default: "Lista de Regalos" }
-              - { name: "message", label: "Mensaje Personal", widget: "text", hint: "Mensaje opcional sobre regalos" }
+              - { name: "sectionId", label: "ID de Sección", widget: "string", required: false, default: "regalos" }
+              - { name: "title", label: "Título", widget: "string", default: "Regalo Especial" }
+              - { name: "message", label: "Mensaje", widget: "text", hint: "Usa doble salto de línea para separar párrafos" }
               - name: "registryLinks"
                 label: "Enlaces a Registros"
                 widget: "list"
+                required: false
                 fields:
-                  - { name: "storeName", label: "Nombre de la Tienda", widget: "string" }
-                  - { name: "storeUrl", label: "URL", widget: "string" }
-                  - { name: "storeImage", label: "Logo de la Tienda", widget: "image", required: false }
-              - { name: "showCashOption", label: "Mostrar Opción de Efectivo", widget: "boolean", default: false }
-              - { name: "cashMessage", label: "Mensaje para Efectivo", widget: "text", required: false }
-              - { name: "backgroundColor", label: "Color de Fondo", widget: "select", options: ["cream", "beige", "white"], default: "white" }
+                  - { name: "name", label: "Nombre", widget: "string" }
+                  - { name: "url", label: "URL", widget: "string" }
+                  - { name: "logo", label: "Logo", widget: "image", required: false }
+              - { name: "showHoneymoonFund", label: "Mostrar Opción Luna de Miel", widget: "boolean", default: true }
+              - { name: "honeymoonMessage", label: "Mensaje Luna de Miel", widget: "text", required: false }
+              - { name: "backgroundColor", label: "Color de Fondo", widget: "select", options: [{label: "Blanco", value: "white"}, {label: "Cálido", value: "warm"}, {label: "Sutil", value: "subtle"}], default: "white" }
 
           # ------------------------------------------------------------------
-          # Text Block with Image
+          # Photo Sharing
           # ------------------------------------------------------------------
-          - name: "content-image"
-            label: "Texto con Imagen"
+          - name: "photo-sharing"
+            label: "Comparte Tus Fotos"
             widget: "object"
-            summary: "Contenido: {{fields.title}}"
+            summary: "Fotos: {{fields.hashtag}}"
             fields:
-              - { name: "title", label: "Título", widget: "string" }
-              - { name: "content", label: "Contenido", widget: "markdown" }
-              - { name: "image", label: "Imagen", widget: "image" }
-              - { name: "imageAlt", label: "Texto Alternativo de Imagen", widget: "string" }
-              - { name: "imagePosition", label: "Posición de Imagen", widget: "select", options: [{label: "Izquierda", value: "left"}, {label: "Derecha", value: "right"}], default: "right" }
-              - { name: "decorativeElement", label: "Elemento Decorativo", widget: "select", options: ["none", "orange-branch", "olive-branch", "azulejo"], default: "none" }
-              - { name: "backgroundColor", label: "Color de Fondo", widget: "select", options: ["cream", "beige", "white"], default: "cream" }
+              - { name: "sectionId", label: "ID de Sección", widget: "string", required: false, default: "fotos" }
+              - { name: "title", label: "Título", widget: "string", default: "Comparte Tus Momentos" }
+              - { name: "subtitle", label: "Subtítulo", widget: "string", default: "Queremos ver la boda a través de tus ojos" }
+              - { name: "hashtag", label: "Hashtag", widget: "string", default: "#ValenYPedrito2026" }
+              - { name: "description", label: "Descripción", widget: "text", required: false }
+              - { name: "instagramUrl", label: "URL de Instagram", widget: "string", required: false }
+              - { name: "backgroundColor", label: "Color de Fondo", widget: "select", options: [{label: "Blanco", value: "white"}, {label: "Cálido", value: "warm"}, {label: "Sutil", value: "subtle"}], default: "subtle" }
+
+          # ------------------------------------------------------------------
+          # Luxury RSVP Form
+          # ------------------------------------------------------------------
+          - name: "luxury-rsvp"
+            label: "Confirma Tu Asistencia"
+            widget: "object"
+            summary: "RSVP: {{fields.title}}"
+            fields:
+              - { name: "sectionId", label: "ID de Sección", widget: "string", required: false, default: "rsvp" }
+              - { name: "title", label: "Título", widget: "string", default: "Confirma Tu Asistencia" }
+              - { name: "subtitle", label: "Subtítulo", widget: "text", default: "Por favor ayúdanos a planear este día especial confirmando tu asistencia" }
+              - { name: "deadline", label: "Fecha Límite", widget: "datetime", format: "YYYY-MM-DD" }
+              - { name: "formIntro", label: "Introducción del Formulario", widget: "text", default: "¡Hola! Cuéntanos si podrás acompañarnos en nuestra boda." }
+              - { name: "askDietaryRestrictions", label: "Preguntar Restricciones Dietéticas", widget: "boolean", default: true }
+              - { name: "askPlusOne", label: "Permitir Acompañantes", widget: "boolean", default: true }
+              - { name: "backgroundColor", label: "Color de Fondo", widget: "select", options: [{label: "Blanco", value: "white"}, {label: "Cálido", value: "warm"}, {label: "Sutil", value: "subtle"}, {label: "Gradiente", value: "gradient"}], default: "gradient" }
+
+          # ------------------------------------------------------------------
+          # Luxury Footer
+          # ------------------------------------------------------------------
+          - name: "luxury-footer"
+            label: "Pie de Página"
+            widget: "object"
+            summary: "Footer"
+            fields:
+              - { name: "brideName", label: "Nombre de la Novia", widget: "string", default: "Valentina" }
+              - { name: "groomName", label: "Nombre del Novio", widget: "string", default: "Pedro Juan" }
+              - { name: "location", label: "Ubicación", widget: "string", default: "Sevilla, España" }
+              - { name: "email", label: "Email", widget: "string", required: false }
+              - { name: "phone", label: "Teléfono", widget: "string", required: false }
+              - { name: "instagramUrl", label: "URL de Instagram", widget: "string", required: false }
+              - { name: "facebookUrl", label: "URL de Facebook", widget: "string", required: false }
+              - { name: "hashtag", label: "Hashtag", widget: "string", default: "#ValenYPedrito2026" }
+              - name: "quickLinks"
+                label: "Enlaces Rápidos"
+                widget: "list"
+                required: false
+                fields:
+                  - { name: "label", label: "Etiqueta", widget: "string" }
+                  - { name: "href", label: "Enlace", widget: "string" }
+              - { name: "copyright", label: "Copyright", widget: "string", default: "© 2026 Valentina & Pedro Juan" }
+              - { name: "showSocialMedia", label: "Mostrar Redes Sociales", widget: "boolean", default: true }
+
+          # ==================================================================
+          # LEGACY SECTIONS (For backwards compatibility)
+          # ==================================================================
 
           # ------------------------------------------------------------------
           # Rich Text (Markdown)
@@ -271,6 +290,21 @@ collections:
               - { name: "content", label: "Contenido", widget: "markdown" }
               - { name: "textAlign", label: "Alineación", widget: "select", options: ["left", "center", "right"], default: "left" }
               - { name: "backgroundColor", label: "Color de Fondo", widget: "select", options: ["cream", "beige", "white"], default: "white" }
+
+          # ------------------------------------------------------------------
+          # Info Box (Generic)
+          # ------------------------------------------------------------------
+          - name: "info-box"
+            label: "Caja de Información"
+            widget: "object"
+            summary: "Info: {{fields.title}}"
+            fields:
+              - { name: "sectionId", label: "ID de Sección", widget: "string", required: false }
+              - { name: "title", label: "Título", widget: "string" }
+              - { name: "content", label: "Contenido", widget: "markdown" }
+              - { name: "icon", label: "Ícono", widget: "select", options: ["info", "heart", "star", "custom"], default: "info" }
+              - { name: "style", label: "Estilo", widget: "select", options: [{label: "Destacado", value: "highlight"}, {label: "Normal", value: "normal"}], default: "normal" }
+              - { name: "backgroundColor", label: "Color de Fondo", widget: "select", options: ["cream", "beige", "white"], default: "cream" }
 
   # ==========================================================================
   # SITE SETTINGS (Global)
@@ -300,35 +334,6 @@ collections:
           - { name: "whatsappNumber", label: "Número de WhatsApp", widget: "string", hint: "Incluir código de país, ej: +34612345678" }
           - { name: "phoneNumber", label: "Número de Teléfono", widget: "string", required: false }
           - { name: "email", label: "Email de Contacto", widget: "string", required: false }
-
-      - name: "header"
-        label: "Encabezado / Navegación"
-        file: "client/src/content/header.json"
-        fields:
-          - name: "navItems"
-            label: "Enlaces de Navegación"
-            widget: "list"
-            fields:
-              - { name: "label", label: "Etiqueta", widget: "string" }
-              - { name: "href", label: "Enlace", widget: "string", hint: "Usa #section-id para secciones de la página" }
-
-      - name: "footer"
-        label: "Pie de Página"
-        file: "client/src/content/footer.json"
-        fields:
-          - { name: "message", label: "Mensaje", widget: "text", default: "Nos vemos en Sevilla" }
-          - { name: "showSocialMedia", label: "Mostrar Redes Sociales", widget: "boolean", default: true }
-          - { name: "instagramUrl", label: "Instagram URL", widget: "string", required: false }
-          - { name: "facebookUrl", label: "Facebook URL", widget: "string", required: false }
-          - { name: "showHashtag", label: "Mostrar Hashtag", widget: "boolean", default: true }
-          - { name: "copyright", label: "Copyright", widget: "string", default: "© 2026 Valentina & Pedro Juan" }
-          - name: "quickLinks"
-            label: "Enlaces Rápidos"
-            widget: "list"
-            required: false
-            fields:
-              - { name: "label", label: "Etiqueta", widget: "string" }
-              - { name: "href", label: "Enlace", widget: "string" }
 
       - name: "seo"
         label: "SEO Predeterminado"
