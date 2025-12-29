@@ -1,14 +1,14 @@
 {
-  "headline": "GREENLAND",
-  "headlineSecondary": "VILLAGE",
-  "subheadline": "A New Family Experience Is Coming to Parkland, Florida!",
-  "description": "An interactive park where children and families will play, create, learn, and connect through meaningful experiences",
-  "ctaTitle": "Be the First to Know!",
-  "ctaDescription": "Join our mailing list for exclusive updates and early access.",
-  "ctaButtonText": "Join the Mailing List",
-  "badgeText": "Opening 2025 in Parkland, FL",
-  "backgroundDesktop": "/images/hero-desktop-v2.png",
-  "backgroundMobile": "/images/hero-mobile-v2.png",
-  "successTitle": "Welcome to the family!",
-  "successMessage": "We'll keep you updated on our progress."
+  "headline": "Valentina",
+  "headlineSecondary": "& Pedro Juan",
+  "subheadline": "¡Nos casamos!",
+  "description": "Te invitamos a celebrar nuestra boda en Sevilla, España",
+  "ctaTitle": "Confirma tu asistencia",
+  "ctaDescription": "Por favor confirma antes del 1 de agosto de 2026",
+  "ctaButtonText": "RSVP",
+  "badgeText": "23 de Septiembre de 2026",
+  "backgroundDesktop": "/images/watercolor/seville-skyline.png",
+  "backgroundMobile": "/images/watercolor/seville-skyline.png",
+  "successTitle": "¡Gracias por confirmar!",
+  "successMessage": "Hemos recibido tu confirmación."
 }

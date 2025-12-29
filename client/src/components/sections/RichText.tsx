@@ -8,9 +8,9 @@ interface RichTextProps {
 }
 
 const bgColors = {
-  cream: "bg-[#FFFEF5]",
+  cream: "bg-[#F9F7F2]",
   white: "bg-white",
-  green: "bg-[#E8F5E9]",
+  beige: "bg-[#F0EBE0]",
 };
 
 // Configure DOMPurify to only allow safe tags and attributes
@@ -30,7 +30,7 @@ const ALLOWED_ATTR = [
 ];
 
 export function RichText({ content, id }: RichTextProps) {
-  const bgColor = bgColors[content.backgroundColor || "white"];
+  const bgColor = bgColors[content.backgroundColor as keyof typeof bgColors] || bgColors.white;
 
   // Sanitize HTML content to prevent XSS
   const sanitizedHtml = useMemo(() => {
@@ -49,17 +49,15 @@ export function RichText({ content, id }: RichTextProps) {
         {/* Title */}
         {content.title && (
           <div className="text-center mb-10">
-            <div className="inline-block bg-[#1B5E20] rounded-2xl px-8 py-3 mb-4">
-              <h2 className="text-2xl md:text-4xl text-[#FFC107] font-heading">
-                {content.titleEmoji && `${content.titleEmoji} `}{content.title}
-              </h2>
-            </div>
+            <h2 className="text-2xl md:text-4xl text-[#2C2C2C] font-serif uppercase tracking-wider">
+              {content.title}
+            </h2>
           </div>
         )}
 
         {/* Rich Text Content - sanitized */}
         <div
-          className="prose prose-lg max-w-none prose-headings:text-[#1B5E20] prose-headings:font-heading prose-p:text-[#2E7D32] prose-p:font-body prose-a:text-[#4CAF50] prose-a:hover:text-[#1B5E20] prose-strong:text-[#1B5E20] prose-ul:text-[#2E7D32] prose-ol:text-[#2E7D32]"
+          className="prose prose-lg max-w-none prose-headings:text-[#2C2C2C] prose-headings:font-serif prose-headings:uppercase prose-headings:tracking-wide prose-p:text-[#595959] prose-p:font-body prose-a:text-[#9C7C58] prose-a:hover:text-[#7A8B6E] prose-strong:text-[#2C2C2C] prose-ul:text-[#595959] prose-ol:text-[#595959]"
           dangerouslySetInnerHTML={{ __html: sanitizedHtml }}
         />
       </div>

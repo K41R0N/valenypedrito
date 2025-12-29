@@ -1,26 +1,25 @@
 {
-  "title": "Why GreenLand Village?",
-  "titleEmoji": "💚",
+  "title": "Detalles del Evento",
   "cards": [
     {
-      "title": "More Than Entertainment",
-      "description": "Every experience is designed to inspire learning, creativity, and meaningful family connections",
-      "emoji": "🌟"
+      "title": "Ceremonia",
+      "description": "La ceremonia comenzará a las 18:00 en los jardines de la hacienda",
+      "emoji": "💒"
     },
     {
-      "title": "Designed for Families",
-      "description": "Safe, welcoming spaces where parents and children can explore and play together",
-      "emoji": "👨‍👩‍👧"
+      "title": "Cóctel",
+      "description": "Disfruten de un cóctel de bienvenida con vistas al atardecer",
+      "emoji": "🥂"
     },
     {
-      "title": "Community Focused",
-      "description": "A gathering place that brings neighbors together and strengthens community bonds",
-      "emoji": "🤝"
+      "title": "Cena",
+      "description": "Cena sentada con gastronomía andaluza de primer nivel",
+      "emoji": "🍽️"
     },
     {
-      "title": "A Unique Destination",
-      "description": "Parkland's first interactive family park offering experiences you won't find anywhere else",
-      "emoji": "🏆"
+      "title": "Fiesta",
+      "description": "Celebración y baile hasta altas horas de la noche",
+      "emoji": "💃"
     }
   ]
 }

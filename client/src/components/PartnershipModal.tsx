@@ -25,19 +25,17 @@ interface PartnershipModalProps {
   onOpenChange: (open: boolean) => void;
 }
 
-type PartnershipType =
-  | "field-trip"
-  | "birthday"
-  | "corporate"
-  | "community"
-  | "sponsorship"
+type InquiryType =
+  | "accommodation"
+  | "transport"
+  | "dietary"
+  | "children"
   | "other";
 
 interface FormData {
   name: string;
   email: string;
-  organization: string;
-  partnershipType: PartnershipType | "";
+  inquiryType: InquiryType | "";
   message: string;
 }
 
@@ -45,8 +43,7 @@ export function PartnershipModal({ open, onOpenChange }: PartnershipModalProps) 
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
-    organization: "",
-    partnershipType: "",
+    inquiryType: "",
     message: "",
   });
   const [submitSuccess, setSubmitSuccess] = useState(false);
@@ -59,15 +56,15 @@ export function PartnershipModal({ open, onOpenChange }: PartnershipModalProps) 
     setSubmitError("");
 
     // Validate required fields
-    if (!formData.name || !formData.email || !formData.partnershipType) {
-      setSubmitError("Please fill in all required fields");
+    if (!formData.name || !formData.email || !formData.inquiryType) {
+      setSubmitError("Por favor completa todos los campos requeridos");
       return;
     }
 
     // Validate email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
-      setSubmitError("Please enter a valid email address");
+      setSubmitError("Por favor ingresa un correo electrónico válido");
       return;
     }
 
@@ -75,8 +72,8 @@ export function PartnershipModal({ open, onOpenChange }: PartnershipModalProps) 
       await partnershipMutation.mutateAsync({
         name: formData.name,
         email: formData.email,
-        organization: formData.organization || undefined,
-        partnershipType: formData.partnershipType as PartnershipType,
+        organization: undefined,
+        partnershipType: formData.inquiryType as any,
         message: formData.message || undefined,
       });
       setSubmitSuccess(true);
@@ -87,15 +84,14 @@ export function PartnershipModal({ open, onOpenChange }: PartnershipModalProps) 
         setFormData({
           name: "",
           email: "",
-          organization: "",
-          partnershipType: "",
+          inquiryType: "",
           message: "",
         });
         onOpenChange(false);
       }, 3000);
     } catch (error) {
       setSubmitError(
-        error instanceof Error ? error.message : "Something went wrong. Please try again."
+        error instanceof Error ? error.message : "Algo salió mal. Por favor intenta de nuevo."
       );
     }
   };
@@ -113,27 +109,26 @@ export function PartnershipModal({ open, onOpenChange }: PartnershipModalProps) 
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-lg bg-white border-4 border-[#1B5E20] rounded-3xl">
+      <DialogContent className="sm:max-w-lg bg-white border border-[#F0EBE0]">
         <DialogHeader>
-          <DialogTitle className="text-2xl md:text-3xl text-[#1B5E20] font-heading">
-            🤝 Partnership Inquiry
+          <DialogTitle className="text-2xl md:text-3xl text-[#2C2C2C] font-serif uppercase tracking-wide">
+            Consultas
           </DialogTitle>
-          <DialogDescription className="text-[#2E7D32] font-body">
-            Interested in hosting an event or partnering with GreenLand Village?
-            Fill out the form below and we'll get back to you soon!
+          <DialogDescription className="text-[#595959] font-body">
+            ¿Tienes alguna pregunta sobre la boda? Completa el formulario y te responderemos pronto.
           </DialogDescription>
         </DialogHeader>
 
         {submitSuccess ? (
-          <div className="py-8 text-center animate-[scaleIn_0.5s_ease-out_forwards]">
-            <div className="w-16 h-16 bg-[#4CAF50] rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="py-8 text-center">
+            <div className="w-16 h-16 bg-[#7A8B6E] flex items-center justify-center mx-auto mb-4">
               <Check className="w-8 h-8 text-white" />
             </div>
-            <h3 className="text-xl font-bold text-[#1B5E20] mb-2 font-heading">
-              Message Sent! 🎉
+            <h3 className="text-xl font-semibold text-[#2C2C2C] mb-2 font-serif">
+              Mensaje enviado
             </h3>
-            <p className="text-[#2E7D32] font-body">
-              We'll review your inquiry and get back to you within 2-3 business days.
+            <p className="text-[#595959] font-body">
+              Te responderemos en los próximos días.
             </p>
           </div>
         ) : (
@@ -142,38 +137,38 @@ export function PartnershipModal({ open, onOpenChange }: PartnershipModalProps) 
               <div className="space-y-2">
                 <Label
                   htmlFor="partner-name"
-                  className="text-[#1B5E20] font-semibold font-body"
+                  className="text-[#2C2C2C] font-medium font-body"
                 >
-                  Your Name *
+                  Tu nombre *
                 </Label>
                 <Input
                   id="partner-name"
                   type="text"
-                  placeholder="John Smith"
+                  placeholder="Tu nombre"
                   value={formData.name}
                   onChange={(e) =>
                     setFormData({ ...formData, name: e.target.value })
                   }
-                  className="border-2 border-[#4CAF50] rounded-xl focus:border-[#1B5E20] focus:ring-[#4CAF50]"
+                  className="border border-[#F0EBE0] focus:border-[#9C7C58] focus:ring-[#9C7C58]"
                   required
                 />
               </div>
               <div className="space-y-2">
                 <Label
                   htmlFor="partner-email"
-                  className="text-[#1B5E20] font-semibold font-body"
+                  className="text-[#2C2C2C] font-medium font-body"
                 >
-                  Email Address *
+                  Correo electrónico *
                 </Label>
                 <Input
                   id="partner-email"
                   type="email"
-                  placeholder="you@organization.com"
+                  placeholder="tu@email.com"
                   value={formData.email}
                   onChange={(e) =>
                     setFormData({ ...formData, email: e.target.value })
                   }
-                  className="border-2 border-[#4CAF50] rounded-xl focus:border-[#1B5E20] focus:ring-[#4CAF50]"
+                  className="border border-[#F0EBE0] focus:border-[#9C7C58] focus:ring-[#9C7C58]"
                   required
                 />
               </div>
@@ -181,46 +176,26 @@ export function PartnershipModal({ open, onOpenChange }: PartnershipModalProps) 
 
             <div className="space-y-2">
               <Label
-                htmlFor="partner-org"
-                className="text-[#1B5E20] font-semibold font-body"
-              >
-                Organization Name
-              </Label>
-              <Input
-                id="partner-org"
-                type="text"
-                placeholder="Your school, business, or organization"
-                value={formData.organization}
-                onChange={(e) =>
-                  setFormData({ ...formData, organization: e.target.value })
-                }
-                className="border-2 border-[#4CAF50] rounded-xl focus:border-[#1B5E20] focus:ring-[#4CAF50]"
-              />
-            </div>
-
-            <div className="space-y-2">
-              <Label
                 htmlFor="partner-type"
-                className="text-[#1B5E20] font-semibold font-body"
+                className="text-[#2C2C2C] font-medium font-body"
               >
-                What are you interested in? *
+                Tipo de consulta *
               </Label>
               <Select
-                value={formData.partnershipType}
+                value={formData.inquiryType}
                 onValueChange={(value) =>
-                  setFormData({ ...formData, partnershipType: value as PartnershipType })
+                  setFormData({ ...formData, inquiryType: value as InquiryType })
                 }
               >
-                <SelectTrigger className="border-2 border-[#4CAF50] rounded-xl focus:border-[#1B5E20] focus:ring-[#4CAF50]">
-                  <SelectValue placeholder="Select an option" />
+                <SelectTrigger className="border border-[#F0EBE0] focus:border-[#9C7C58] focus:ring-[#9C7C58]">
+                  <SelectValue placeholder="Selecciona una opción" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="field-trip">🎓 School Field Trip</SelectItem>
-                  <SelectItem value="birthday">🎂 Birthday Party</SelectItem>
-                  <SelectItem value="corporate">🏢 Corporate Event</SelectItem>
-                  <SelectItem value="community">🎪 Community Gathering</SelectItem>
-                  <SelectItem value="sponsorship">💼 Sponsorship Opportunity</SelectItem>
-                  <SelectItem value="other">✨ Other</SelectItem>
+                  <SelectItem value="accommodation">Alojamiento</SelectItem>
+                  <SelectItem value="transport">Transporte</SelectItem>
+                  <SelectItem value="dietary">Restricciones alimentarias</SelectItem>
+                  <SelectItem value="children">Consulta sobre niños</SelectItem>
+                  <SelectItem value="other">Otra consulta</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -228,23 +203,23 @@ export function PartnershipModal({ open, onOpenChange }: PartnershipModalProps) 
             <div className="space-y-2">
               <Label
                 htmlFor="partner-message"
-                className="text-[#1B5E20] font-semibold font-body"
+                className="text-[#2C2C2C] font-medium font-body"
               >
-                Tell us more (optional)
+                Tu mensaje (opcional)
               </Label>
               <Textarea
                 id="partner-message"
-                placeholder="Estimated group size, preferred dates, special requirements..."
+                placeholder="Escribe tu mensaje aquí..."
                 value={formData.message}
                 onChange={(e) =>
                   setFormData({ ...formData, message: e.target.value })
                 }
-                className="border-2 border-[#4CAF50] rounded-xl focus:border-[#1B5E20] focus:ring-[#4CAF50] min-h-[100px]"
+                className="border border-[#F0EBE0] focus:border-[#9C7C58] focus:ring-[#9C7C58] min-h-[100px]"
               />
             </div>
 
             {submitError && (
-              <div className="bg-red-50 border-2 border-red-300 text-red-700 px-4 py-3 rounded-xl font-body">
+              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 font-body">
                 {submitError}
               </div>
             )}
@@ -252,17 +227,17 @@ export function PartnershipModal({ open, onOpenChange }: PartnershipModalProps) 
             <Button
               type="submit"
               disabled={partnershipMutation.isPending}
-              className="w-full bg-[#FFC107] hover:bg-[#FFD54F] text-[#1B5E20] font-bold py-6 text-lg rounded-full transition-all duration-300 hover:shadow-lg hover:scale-[1.02] disabled:opacity-50 border-2 border-[#1B5E20] font-heading"
+              className="w-full bg-[#9C7C58] hover:bg-[#7A8B6E] text-white font-body py-6 text-lg transition-all duration-300 hover:shadow-lg disabled:opacity-50"
             >
               {partnershipMutation.isPending ? (
                 <>
                   <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                  Sending...
+                  Enviando...
                 </>
               ) : (
                 <>
                   <Send className="mr-2 h-5 w-5" />
-                  Send Inquiry
+                  Enviar consulta
                 </>
               )}
             </Button>

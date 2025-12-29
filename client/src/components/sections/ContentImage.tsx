@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { SunIcon, LeafDecoration, VineDecoration } from "@/components/illustrations";
+import { OliveBranchDecoration } from "@/components/illustrations";
 import type { ContentImageContent } from "./types";
 
 interface ContentImageProps {
@@ -8,9 +8,8 @@ interface ContentImageProps {
 }
 
 const bgColors = {
-  cream: "bg-[#FFFEF5]",
-  green: "bg-[#4CAF50]",
-  yellow: "bg-[#FFC107]",
+  cream: "bg-[#F9F7F2]",
+  beige: "bg-[#F0EBE0]",
   white: "bg-white",
 };
 
@@ -37,20 +36,18 @@ export function ContentImage({ content, id }: ContentImageProps) {
     return () => observer.disconnect();
   }, []);
 
-  const bgColor = bgColors[content.backgroundColor || "cream"];
+  const bgColor = bgColors[content.backgroundColor as keyof typeof bgColors] || bgColors.cream;
   const isImageLeft = content.imagePosition === "left";
 
   const textContent = (
     <div
       className={`${isVisible ? (isImageLeft ? "animate-[slideInRight_0.8s_ease-out_forwards]" : "animate-[slideInLeft_0.8s_ease-out_forwards]") : "opacity-0"}`}
     >
-      <div className="inline-block bg-[#1B5E20] rounded-2xl px-6 py-2 mb-6">
-        <h2 className="text-2xl md:text-3xl text-[#FFC107] font-heading">
-          {content.titleEmoji && `${content.titleEmoji} `}{content.title}
-        </h2>
-      </div>
+      <h2 className="text-2xl md:text-3xl text-[#2C2C2C] font-serif uppercase tracking-wider mb-6">
+        {content.title}
+      </h2>
       {(content.description || content.content) && (
-        <div className="text-lg text-[var(--stone-grey)] mb-6 leading-relaxed font-body prose prose-sm max-w-none">
+        <div className="text-lg text-[#595959] mb-6 leading-relaxed font-body">
           {content.description || content.content}
         </div>
       )}
@@ -59,13 +56,13 @@ export function ContentImage({ content, id }: ContentImageProps) {
           {content.features.map((item, index) => (
             <div
               key={index}
-              className={`flex items-center gap-3 bg-[#E8F5E9] rounded-xl p-3 hover:bg-[#C8E6C9] transition-all duration-300 hover:translate-x-2 ${
+              className={`flex items-center gap-3 bg-[#F0EBE0] p-3 hover:bg-[#F9F7F2] transition-all duration-300 hover:translate-x-2 ${
                 isVisible ? "animate-[fadeInUp_0.5s_ease-out_forwards]" : "opacity-0"
               }`}
               style={{ animationDelay: `${(index + 1) * 150}ms` }}
             >
               <span className="text-2xl">{item.emoji}</span>
-              <p className="text-[#1B5E20] font-semibold font-body">{item.text}</p>
+              <p className="text-[#2C2C2C] font-medium font-body">{item.text}</p>
             </div>
           ))}
         </div>
@@ -81,18 +78,18 @@ export function ContentImage({ content, id }: ContentImageProps) {
         <img
           src={content.image}
           alt={content.imageAlt}
-          className="w-full h-auto"
+          className="w-full h-auto filter drop-shadow-lg"
           loading="lazy"
         />
       </div>
-      {/* Decorative elements */}
+      {/* Decorative olive branch elements */}
       {isImageLeft ? (
-        <div className="absolute -bottom-4 -left-4 text-[#4CAF50]">
-          <LeafDecoration className="w-12 h-12" />
+        <div className="absolute -bottom-4 -left-4 text-[#7A8B6E] opacity-50">
+          <OliveBranchDecoration className="w-24 h-12" />
         </div>
       ) : (
-        <div className="absolute -top-6 -right-6 w-16 h-16 text-[#FFC107]">
-          <SunIcon className="w-full h-full" />
+        <div className="absolute -top-4 -right-4 text-[#7A8B6E] opacity-50 rotate-180">
+          <OliveBranchDecoration className="w-24 h-12" />
         </div>
       )}
     </div>
@@ -104,9 +101,9 @@ export function ContentImage({ content, id }: ContentImageProps) {
       ref={sectionRef}
       className={`py-20 ${bgColor} relative`}
     >
-      {/* Decorative vine at top */}
-      <div className="absolute top-8 left-1/2 -translate-x-1/2 text-[#4CAF50] opacity-30 w-64">
-        <VineDecoration className="w-full" />
+      {/* Decorative element at top */}
+      <div className="absolute top-8 left-1/2 -translate-x-1/2 text-[#9C7C58] opacity-20 w-64">
+        <OliveBranchDecoration className="w-full" />
       </div>
 
       <div className="container relative">

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { SunIcon, GoatMascot } from "@/components/illustrations";
+import { OliveBranchDecoration } from "@/components/illustrations";
 import type { CTASectionContent } from "./types";
 
 interface CTASectionProps {
@@ -10,27 +10,10 @@ interface CTASectionProps {
 }
 
 const bgColors = {
-  "dark-green": "bg-[#1B5E20]",
-  green: "bg-[#4CAF50]",
-  yellow: "bg-[#FFC107]",
-};
-
-const titleBgColors = {
-  "dark-green": "bg-[#FFC107]",
-  green: "bg-[#1B5E20]",
-  yellow: "bg-[#1B5E20]",
-};
-
-const titleTextColors = {
-  "dark-green": "text-[#1B5E20]",
-  green: "text-[#FFC107]",
-  yellow: "text-[#FFC107]",
-};
-
-const descriptionColors = {
-  "dark-green": "text-white",
-  green: "text-white",
-  yellow: "text-[#1B5E20]",
+  bronze: "bg-[#9C7C58]",
+  sage: "bg-[#7A8B6E]",
+  cream: "bg-[#F9F7F2]",
+  beige: "bg-[#F0EBE0]",
 };
 
 export function CTASection({ content, id, onCtaClick }: CTASectionProps) {
@@ -56,10 +39,8 @@ export function CTASection({ content, id, onCtaClick }: CTASectionProps) {
     return () => observer.disconnect();
   }, []);
 
-  const bgColor = bgColors[content.backgroundColor || "dark-green"];
-  const titleBgColor = titleBgColors[content.backgroundColor || "dark-green"];
-  const titleTextColor = titleTextColors[content.backgroundColor || "dark-green"];
-  const descriptionColor = descriptionColors[content.backgroundColor || "dark-green"];
+  const bgColor = bgColors[content.backgroundColor as keyof typeof bgColors] || bgColors.bronze;
+  const isLightBg = content.backgroundColor === "cream" || content.backgroundColor === "beige";
 
   const handleCtaClick = () => {
     const action = content.ctaButtonAction;
@@ -103,24 +84,20 @@ export function CTASection({ content, id, onCtaClick }: CTASectionProps) {
       ref={sectionRef}
       className={`py-20 ${bgColor} relative overflow-hidden`}
     >
-      {/* Decorative sun */}
-      <div className="absolute top-10 right-10 w-32 h-32 text-[#FFC107] opacity-30">
-        <SunIcon className="w-full h-full" />
+      {/* Decorative elements */}
+      <div className={`absolute top-10 right-10 ${isLightBg ? 'text-[#9C7C58]' : 'text-white'} opacity-20`}>
+        <OliveBranchDecoration className="w-32 h-16" />
       </div>
-
-      {/* Goat mascot */}
-      <div className="absolute bottom-10 left-10 w-24 h-20 opacity-50">
-        <GoatMascot className="w-full h-full" />
+      <div className={`absolute bottom-10 left-10 ${isLightBg ? 'text-[#9C7C58]' : 'text-white'} opacity-20 rotate-180`}>
+        <OliveBranchDecoration className="w-32 h-16" />
       </div>
 
       <div className="container relative text-center">
-        <div className={`inline-block ${titleBgColor} rounded-2xl px-8 py-3 mb-6`}>
-          <h2 className={`text-2xl md:text-4xl ${titleTextColor} font-heading`}>
-            {content.titleEmoji && `${content.titleEmoji} `}{content.title}
-          </h2>
-        </div>
+        <h2 className={`text-2xl md:text-4xl ${isLightBg ? 'text-[#2C2C2C]' : 'text-white'} font-serif uppercase tracking-wider mb-6`}>
+          {content.title}
+        </h2>
         <p
-          className={`text-lg md:text-xl ${descriptionColor} mb-8 max-w-2xl mx-auto font-body ${
+          className={`text-lg md:text-xl ${isLightBg ? 'text-[#595959]' : 'text-white/90'} mb-8 max-w-2xl mx-auto font-body ${
             isVisible ? "animate-[fadeInUp_0.6s_ease-out_forwards]" : "opacity-0"
           }`}
         >
@@ -137,10 +114,10 @@ export function CTASection({ content, id, onCtaClick }: CTASectionProps) {
           >
             {content.useCases.map((item, index) => (
               <div key={index} className="flex flex-col items-center gap-2 group">
-                <div className="w-16 h-16 md:w-20 md:h-20 bg-[#4CAF50] rounded-full flex items-center justify-center text-3xl md:text-4xl group-hover:bg-[#FFC107] group-hover:scale-110 transition-all duration-300 shadow-lg">
+                <div className={`w-16 h-16 md:w-20 md:h-20 ${isLightBg ? 'bg-[#9C7C58]' : 'bg-white/20'} flex items-center justify-center text-3xl md:text-4xl group-hover:scale-110 transition-all duration-300 shadow-lg`}>
                   {item.emoji}
                 </div>
-                <span className="text-white/90 text-sm md:text-base font-semibold font-body">
+                <span className={`${isLightBg ? 'text-[#595959]' : 'text-white/90'} text-sm md:text-base font-medium font-body`}>
                   {item.label}
                 </span>
               </div>
@@ -151,12 +128,12 @@ export function CTASection({ content, id, onCtaClick }: CTASectionProps) {
         <Button
           size="lg"
           onClick={handleCtaClick}
-          className={`bg-[#FFC107] hover:bg-[#FFD54F] text-[#1B5E20] font-bold px-8 py-6 text-lg rounded-full shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl border-4 border-white font-heading ${
+          className={`${isLightBg ? 'bg-[#9C7C58] hover:bg-[#7A8B6E] text-white' : 'bg-white hover:bg-[#F9F7F2] text-[#2C2C2C]'} font-medium px-8 py-6 text-lg shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl font-body ${
             isVisible ? "animate-[fadeInUp_0.6s_ease-out_forwards]" : "opacity-0"
           }`}
           style={{ animationDelay: "0.3s" }}
         >
-          📧 {content.ctaButtonText}
+          {content.ctaButtonText}
         </Button>
       </div>
     </section>

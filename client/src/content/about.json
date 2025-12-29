@@ -1,24 +1,24 @@
 {
-  "title": "What is GreenLand Village?",
-  "description": "GreenLand Village is more than just a park—it's a destination where families come together to explore, learn, and create lasting memories. Our interactive experiences are designed to spark curiosity, encourage creativity, and foster meaningful connections between children, parents, and nature.",
-  "image": "/about-image.png",
-  "imageAlt": "Families enjoying outdoor activities",
+  "title": "Nuestra Historia",
+  "description": "Nos conocimos hace años y desde entonces hemos construido una vida juntos llena de amor, risas y aventuras. Ahora queremos compartir con ustedes el día más especial de nuestras vidas.",
+  "image": "/images/watercolor/seville-skyline.png",
+  "imageAlt": "Paisaje de Sevilla en acuarela",
   "features": [
     {
-      "emoji": "✨",
-      "text": "Interactive play experiences for all ages"
+      "emoji": "💕",
+      "text": "Un amor que ha crecido con el tiempo"
     },
     {
-      "emoji": "🌳",
-      "text": "Nature-inspired learning opportunities"
+      "emoji": "🌍",
+      "text": "Aventuras juntos por el mundo"
     },
     {
       "emoji": "👨‍👩‍👧‍👦",
-      "text": "Community-focused family activities"
+      "text": "Familia y amigos que nos apoyan"
     },
     {
-      "emoji": "💚",
-      "text": "Meaningful connections and memories"
+      "emoji": "💒",
+      "text": "Listos para comenzar este nuevo capítulo"
     }
   ]
 }

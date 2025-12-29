@@ -10,7 +10,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Loader2, Check, Mail } from "lucide-react";
-import { LeafDecoration, SunIcon } from "@/components/illustrations";
+import { OliveBranchDecoration } from "@/components/illustrations";
 import { trpc } from "@/lib/trpc";
 import type { EmailSignupContent } from "./types";
 
@@ -24,8 +24,9 @@ interface EmailSignupProps {
 }
 
 const bgClasses = {
-  "green-gradient": "bg-gradient-to-b from-[#81C784] to-[#4CAF50]",
-  cream: "bg-[#FFFEF5]",
+  bronze: "bg-[#9C7C58]",
+  cream: "bg-[#F9F7F2]",
+  beige: "bg-[#F0EBE0]",
   white: "bg-white",
 };
 
@@ -50,8 +51,7 @@ export function EmailSignup({ content, id }: EmailSignupProps) {
     };
   }, []);
 
-  const socialProofText = `Join ${settingsContent.socialProofCount} families already signed up!`;
-  const bgClass = bgClasses[content.backgroundColor || "green-gradient"];
+  const bgClass = bgClasses[content.backgroundColor as keyof typeof bgClasses] || bgClasses.beige;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -97,69 +97,54 @@ export function EmailSignup({ content, id }: EmailSignupProps) {
       className={`py-20 ${bgClass} relative`}
     >
       {/* Decorative elements */}
-      <div className="absolute top-10 left-10 text-[#2E7D32] opacity-30">
-        <LeafDecoration className="w-16 h-16" />
+      <div className="absolute top-10 left-10 text-[#7A8B6E] opacity-30">
+        <OliveBranchDecoration className="w-24 h-12" />
       </div>
-      <div className="absolute bottom-10 right-10 w-20 h-20 text-[#FFC107] opacity-40">
-        <SunIcon className="w-full h-full" />
+      <div className="absolute bottom-10 right-10 text-[#7A8B6E] opacity-30 rotate-180">
+        <OliveBranchDecoration className="w-24 h-12" />
       </div>
 
       <div className="container max-w-2xl relative">
         <div className="text-center mb-10">
-          <div className="inline-block bg-[#1B5E20] rounded-2xl px-8 py-3 mb-4">
-            <h2 className="text-2xl md:text-4xl text-[#FFC107] font-heading">
-              {content.titleEmoji && `${content.titleEmoji} `}{content.title}
-            </h2>
-          </div>
-          <p className="text-lg text-white mb-4 font-body">
+          <h2 className="text-2xl md:text-4xl text-[#2C2C2C] font-serif uppercase tracking-wider mb-4">
+            {content.title}
+          </h2>
+          <p className="text-lg text-[#595959] mb-4 font-body">
             {content.description}
           </p>
-          {/* Social Proof */}
-          {content.showSocialProof !== false && (
-            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
-              <div className="flex -space-x-2">
-                <div className="w-8 h-8 rounded-full bg-[#FFC107] border-2 border-white flex items-center justify-center text-sm">👨</div>
-                <div className="w-8 h-8 rounded-full bg-[#4CAF50] border-2 border-white flex items-center justify-center text-sm">👩</div>
-                <div className="w-8 h-8 rounded-full bg-[#1B5E20] border-2 border-white flex items-center justify-center text-sm">👦</div>
-              </div>
-              <span className="text-white font-semibold text-sm font-body">
-                {socialProofText}
-              </span>
-            </div>
-          )}
         </div>
 
         {success ? (
-          <div className="bg-white rounded-3xl p-8 shadow-xl text-center border-4 border-[#1B5E20] animate-[scaleIn_0.5s_ease-out_forwards]">
-            <div className="w-20 h-20 bg-[#4CAF50] rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="bg-white p-8 shadow-lg text-center border border-[#F0EBE0]">
+            <div className="w-20 h-20 bg-[#7A8B6E] flex items-center justify-center mx-auto mb-4">
               <Check className="w-10 h-10 text-white" />
             </div>
-            <h3 className="text-2xl font-bold text-[#1B5E20] mb-2 font-heading">
-              🎉 {content.successTitle}
+            <h3 className="text-2xl font-semibold text-[#2C2C2C] mb-2 font-serif uppercase tracking-wide">
+              {content.successTitle}
             </h3>
-            <p className="text-[#2E7D32] font-body">
-              {content.successMessage} We can't wait to welcome you in {settingsContent.openingYear}!
+            <p className="text-[#595959] font-body">
+              {content.successMessage}
             </p>
           </div>
         ) : (
           <form
             onSubmit={handleSubmit}
-            className="bg-white rounded-3xl p-8 shadow-xl space-y-6 border-4 border-[#1B5E20]"
+            className="bg-white p-8 shadow-lg space-y-6 border border-[#F0EBE0]"
           >
             <div className="space-y-2">
               <Label
                 htmlFor="firstName"
-                className="text-[#1B5E20] font-bold text-lg font-heading"
+                className="text-[#2C2C2C] font-medium text-base font-body"
               >
-                First Name *
+                Nombre *
               </Label>
               <Input
                 id="firstName"
                 type="text"
-                placeholder="Your first name"
+                placeholder="Tu nombre"
                 value={formData.firstName}
                 onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                className="border-2 border-[#4CAF50] rounded-xl focus:border-[#1B5E20] focus:ring-[#4CAF50] text-lg py-3"
+                className="border border-[#F0EBE0] focus:border-[#9C7C58] focus:ring-[#9C7C58] text-lg py-3"
                 required
               />
             </div>
@@ -167,17 +152,17 @@ export function EmailSignup({ content, id }: EmailSignupProps) {
             <div className="space-y-2">
               <Label
                 htmlFor="email"
-                className="text-[#1B5E20] font-bold text-lg font-heading"
+                className="text-[#2C2C2C] font-medium text-base font-body"
               >
-                Email Address *
+                Correo electrónico *
               </Label>
               <Input
                 id="email"
                 type="email"
-                placeholder="you@example.com"
+                placeholder="tu@email.com"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="border-2 border-[#4CAF50] rounded-xl focus:border-[#1B5E20] focus:ring-[#4CAF50] text-lg py-3"
+                className="border border-[#F0EBE0] focus:border-[#9C7C58] focus:ring-[#9C7C58] text-lg py-3"
                 required
               />
             </div>
@@ -186,16 +171,16 @@ export function EmailSignup({ content, id }: EmailSignupProps) {
               <div className="space-y-2">
                 <Label
                   htmlFor="category"
-                  className="text-[#1B5E20] font-bold text-lg font-heading"
+                  className="text-[#2C2C2C] font-medium text-base font-body"
                 >
-                  I am a: (optional)
+                  Categoría (opcional)
                 </Label>
                 <Select
                   value={formData.category}
                   onValueChange={(value) => setFormData({ ...formData, category: value })}
                 >
-                  <SelectTrigger className="border-2 border-[#4CAF50] rounded-xl focus:border-[#1B5E20] focus:ring-[#4CAF50] text-lg py-3">
-                    <SelectValue placeholder="Select an option" />
+                  <SelectTrigger className="border border-[#F0EBE0] focus:border-[#9C7C58] focus:ring-[#9C7C58] text-lg py-3">
+                    <SelectValue placeholder="Seleccionar opción" />
                   </SelectTrigger>
                   <SelectContent>
                     {audienceSegments.segments.map((segment) => (
@@ -209,7 +194,7 @@ export function EmailSignup({ content, id }: EmailSignupProps) {
             )}
 
             {error && (
-              <div className="bg-red-50 border-2 border-red-300 text-red-700 px-4 py-3 rounded-xl font-body">
+              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 font-body">
                 {error}
               </div>
             )}
@@ -218,17 +203,17 @@ export function EmailSignup({ content, id }: EmailSignupProps) {
               type="submit"
               size="lg"
               disabled={fullSubscribe.isPending}
-              className="w-full bg-[#FFC107] hover:bg-[#FFD54F] text-[#1B5E20] font-bold py-6 text-xl rounded-full transition-all duration-300 hover:shadow-xl hover:scale-105 disabled:opacity-50 border-4 border-[#1B5E20] font-heading"
+              className="w-full bg-[#9C7C58] hover:bg-[#7A8B6E] text-white font-medium py-6 text-lg transition-all duration-300 hover:shadow-lg disabled:opacity-50 font-body"
             >
               {fullSubscribe.isPending ? (
                 <>
                   <Loader2 className="mr-2 h-6 w-6 animate-spin" />
-                  Joining...
+                  Enviando...
                 </>
               ) : (
                 <>
                   <Mail className="mr-2 h-6 w-6" />
-                  {content.buttonText} 🌿
+                  {content.buttonText}
                 </>
               )}
             </Button>
