@@ -9,144 +9,138 @@
   },
   "sections": [
     {
-      "type": "wedding-hero",
-      "sectionId": "home",
-      "brideName": "Valentina Osorio",
-      "groomName": "Pedro Juan Zuleta",
+      "type": "luxury-hero",
+      "sectionId": "hero",
       "announcement": "¡NOS CASAMOS!",
-      "date": "2026-09-23",
+      "brideName": "Valentina",
+      "groomName": "Pedro Juan",
+      "weddingDate": "2026-09-23",
       "venue": "Hacienda la Soledad",
       "location": "Sevilla, España",
-      "skylinePosition": "bottom",
-      "showCountdown": true
+      "showScrollIndicator": true
     },
     {
-      "type": "countdown",
-      "title": "Faltan",
+      "type": "our-story",
+      "sectionId": "historia",
+      "title": "Nuestra Historia",
+      "subtitle": "Dos corazones, un camino, amor infinito",
+      "story": "Nuestra historia de amor comenzó con un momento que lo cambió todo. Desde aquel primer encuentro hasta esta hermosa celebración, cada momento ha sido un testimonio de nuestro compromiso de construir una vida juntos.\n\nEste septiembre, los invitamos a ser parte de nuestra mayor aventura.",
+      "imagePosition": "left",
+      "backgroundColor": "warm"
+    },
+    {
+      "type": "luxury-countdown",
       "weddingDate": "2026-09-23T18:00:00",
-      "backgroundColor": "cream",
-      "decorativeElement": "orange-branch"
+      "backgroundColor": "accent"
     },
     {
-      "type": "info-box",
-      "title": "Información sobre Niños",
-      "content": "Entendemos que organizar el cuidado de los pequeños puede ser un desafío. Por favor, háznoslo saber si planeas traer a tus hijos para que podamos hacer los arreglos necesarios.\n\nSi necesitas recomendaciones de niñeras o servicios de cuidado infantil en Sevilla, estaremos encantados de ayudarte.",
-      "icon": "heart",
-      "style": "normal",
-      "backgroundColor": "beige"
-    },
-    {
-      "type": "event-details-wedding",
-      "sectionId": "detalles",
+      "type": "wedding-timeline",
+      "sectionId": "cronograma",
       "title": "El Gran Día",
-      "subtitle": "Miércoles, 23 de Septiembre de 2026",
-      "timeline": [
+      "date": "2026-09-23",
+      "events": [
         {
           "time": "17:30",
-          "event": "Llegada de Invitados",
+          "title": "Llegada de Invitados",
           "description": "Recepción con cóctel de bienvenida en los jardines",
           "icon": "arrival"
         },
         {
           "time": "18:00",
-          "event": "Ceremonia",
+          "title": "Ceremonia",
           "description": "Ceremonia civil en el patio principal de la hacienda",
-          "icon": "church"
+          "icon": "ceremony"
         },
         {
           "time": "19:00",
-          "event": "Cóctel",
-          "description": "Tapas andaluzas y vinos de la región en la terraza con vistas al atardecer sevillano",
-          "icon": "champagne"
+          "title": "Cóctel",
+          "description": "Tapas andaluzas y vinos de la región en la terraza",
+          "icon": "cocktail"
         },
         {
           "time": "21:00",
-          "event": "Cena",
-          "description": "Cena de gala en el salón principal de la hacienda",
+          "title": "Cena",
+          "description": "Cena de gala en el salón principal",
           "icon": "dinner"
         },
         {
           "time": "23:30",
-          "event": "¡Fiesta!",
+          "title": "¡Fiesta!",
           "description": "Música, baile y celebración hasta el amanecer",
-          "icon": "music"
+          "icon": "party"
         }
       ],
-      "venueAddress": "Hacienda la Soledad\nCarretera Sevilla-Carmona, km 12\n41410 Carmona, Sevilla\nEspaña",
-      "showMap": true,
-      "mapLatitude": "37.4712",
-      "mapLongitude": "-5.6405",
-      "parkingInfo": "La hacienda cuenta con amplio estacionamiento gratuito para todos los invitados.\n\nSigue las señales \"Boda Valentina & Pedro Juan\" al llegar.",
-      "transportInfo": "Organizaremos autobuses desde el centro de Sevilla (Plaza Nueva) a las 17:00.\n\nRegreso disponible a las 02:00 y 05:00.\n\nSi prefieres ir por tu cuenta, el trayecto desde Sevilla centro es de aproximadamente 25 minutos.",
       "backgroundColor": "white"
     },
     {
-      "type": "rsvp-form",
-      "sectionId": "rsvp",
-      "title": "Confirma tu Asistencia",
-      "subtitle": "Por favor ayúdanos a planear este día especial confirmando tu asistencia",
-      "formIntro": "Agradecemos tu confirmación antes del",
-      "rsvpDeadline": "2026-08-01",
-      "mealOptions": [
+      "type": "venue-section",
+      "sectionId": "lugar",
+      "title": "El Lugar",
+      "venueName": "Hacienda la Soledad",
+      "address": "Carretera Sevilla-Carmona, km 12, Sevilla",
+      "mapUrl": "https://maps.google.com/?q=37.4712,-5.6405",
+      "infoCards": [
         {
-          "value": "carne",
-          "label": "Opción de Carne",
-          "description": "Solomillo de ternera con reducción de vino tinto"
+          "icon": "location",
+          "title": "Dirección",
+          "content": "Hacienda la Soledad\nCarretera Sevilla-Carmona, km 12"
         },
         {
-          "value": "pescado",
-          "label": "Opción de Pescado",
-          "description": "Lubina a la sal con verduras de temporada"
+          "icon": "transport",
+          "title": "Transporte",
+          "content": "Autobuses desde Plaza Nueva a las 17:00\nRegreso: 02:00 y 05:00"
         },
         {
-          "value": "vegetariano",
-          "label": "Opción Vegetariana",
-          "description": "Risotto de hongos con trufa"
-        },
-        {
-          "value": "vegano",
-          "label": "Opción Vegana",
-          "description": "Verduras asadas con quinoa y tahini"
+          "icon": "parking",
+          "title": "Estacionamiento",
+          "content": "Amplio estacionamiento gratuito disponible"
         }
       ],
-      "askDietaryRestrictions": true,
-      "askPlusOne": true,
-      "decorativeIcon": "champagne",
-      "backgroundColor": "beige"
+      "backgroundColor": "warm"
     },
     {
-      "type": "info-box",
-      "title": "Código de Vestimenta",
-      "content": "**Formal / Cocktail**\n\nLa celebración será en los jardines de la hacienda. Recomendamos ropa formal cómoda para disfrutar de la velada.\n\n*Por favor evita usar blanco, marfil o beige claro.*",
-      "icon": "info",
-      "style": "highlight",
-      "backgroundColor": "cream"
+      "type": "details-cards",
+      "sectionId": "detalles",
+      "title": "Detalles Importantes",
+      "cards": [
+        {
+          "icon": "dresscode",
+          "title": "Código de Vestimenta",
+          "content": "Formal / Cocktail\n\nRopa formal pero cómoda para disfrutar de toda la celebración.",
+          "restrictions": ["Blanco", "Marfil", "Beige claro"]
+        },
+        {
+          "icon": "children",
+          "title": "Información Sobre Niños",
+          "content": "Queremos que todos disfruten de la celebración.\n\nSi necesitas ayuda organizando el cuidado de los pequeños, contáctanos y te daremos opciones de niñeras de confianza."
+        }
+      ],
+      "backgroundColor": "warm"
     },
     {
-      "type": "faq",
+      "type": "luxury-faq",
       "sectionId": "faq",
-      "title": "Preguntas Frecuentes",
-      "subtitle": "Todo lo que necesitas saber",
+      "title": "Todo Lo Que Necesitas Saber",
       "questions": [
         {
           "question": "¿Dónde puedo alojarme?",
-          "answer": "Recomendamos hoteles en el centro de Sevilla para disfrutar de la ciudad. Hemos negociado tarifas especiales en Hotel Alfonso XIII y Hotel Colón Gran Meliá. Menciona \"Boda Valentina y Pedro Juan\" al reservar. También hay opciones más económicas como Hotel Amadeus o Hotel Casa 1800."
+          "answer": "Recomendamos hoteles en el centro de Sevilla para disfrutar de la ciudad. Hemos negociado tarifas especiales en Hotel Alfonso XIII y Hotel Colón Gran Meliá. Menciona \"Boda Valentina y Pedro Juan\" al reservar."
         },
         {
           "question": "¿Cómo llego desde el aeropuerto?",
-          "answer": "El Aeropuerto de Sevilla (SVQ) está a 25 minutos del centro. Puedes tomar un taxi (tarifa fija de ~25€ al centro) o el autobús EA que sale cada 30 minutos. Si vienes desde Colombia, los vuelos suelen conectar en Madrid o Barcelona."
+          "answer": "El Aeropuerto de Sevilla (SVQ) está a 25 minutos del centro. Puedes tomar un taxi (tarifa fija de ~25€ al centro) o el autobús EA que sale cada 30 minutos."
         },
         {
           "question": "¿Habrá transporte a la hacienda?",
-          "answer": "¡Sí! Organizaremos autobuses desde Plaza Nueva (centro de Sevilla) a las 17:00. El regreso estará disponible a las 02:00 y 05:00. Si prefieres ir en coche, hay amplio estacionamiento gratuito en la hacienda."
+          "answer": "¡Sí! Organizaremos autobuses desde Plaza Nueva (centro de Sevilla) a las 17:00. El regreso estará disponible a las 02:00 y 05:00."
         },
         {
           "question": "¿Puedo tomar fotos durante la ceremonia?",
-          "answer": "Pedimos una ceremonia \"unplugged\" - sin teléfonos ni cámaras durante este momento íntimo. Nuestro fotógrafo profesional capturará cada detalle. Después de la ceremonia, ¡comparte todas las fotos que quieras usando nuestro hashtag!"
+          "answer": "Pedimos una ceremonia \"unplugged\" - sin teléfonos ni cámaras durante este momento íntimo. Nuestro fotógrafo profesional capturará cada detalle."
         },
         {
           "question": "¿Cuál es el hashtag de la boda?",
-          "answer": "#ValenYPedrito2026 - ¡Úsalo para compartir tus fotos y momentos especiales en Instagram, Facebook y otras redes!"
+          "answer": "#ValenYPedrito2026 - ¡Úsalo para compartir tus fotos y momentos especiales en redes sociales!"
         },
         {
           "question": "¿Hasta qué hora es la celebración?",
@@ -154,34 +148,56 @@
         },
         {
           "question": "¿Qué tiempo hace en Sevilla en septiembre?",
-          "answer": "Septiembre es uno de los mejores meses en Sevilla. Espera temperaturas agradables de 22-30°C, perfectas para una celebración al aire libre. Las noches son frescas pero cómodas."
-        },
-        {
-          "question": "¿Hay opciones de alojamiento cerca de la hacienda?",
-          "answer": "La hacienda no ofrece alojamiento, pero Carmona (a 10 min) tiene encantadores hoteles boutique como el Parador de Carmona y Casa de Carmona. Ideal si prefieres quedarte cerca del evento."
+          "answer": "Septiembre es uno de los mejores meses en Sevilla. Espera temperaturas agradables de 22-30°C, perfectas para una celebración al aire libre."
         }
       ],
       "backgroundColor": "white"
     },
     {
-      "type": "registry",
+      "type": "gift-section",
       "sectionId": "regalos",
-      "title": "Lista de Regalos",
-      "message": "Vuestra presencia es el mejor regalo que podríamos recibir. Si deseáis hacernos un obsequio, hemos preparado algunas sugerencias:",
+      "title": "Regalo Especial",
+      "message": "Vuestra presencia es el mejor regalo que podríamos recibir.\n\nSi deseáis hacernos un obsequio, hemos preparado algunas sugerencias:",
       "registryLinks": [],
-      "showCashOption": true,
-      "cashMessage": "También aceptamos contribuciones para nuestra luna de miel. Si prefieres esta opción, por favor contáctanos directamente.",
-      "backgroundColor": "beige"
+      "showHoneymoonFund": true,
+      "honeymoonMessage": "O contribuir a nuestra luna de miel. Contáctanos directamente para esta opción.",
+      "backgroundColor": "white"
     },
     {
-      "type": "content-image",
-      "title": "Comparte tus Fotos",
-      "content": "Queremos ver la boda a través de tus ojos. Comparte tus fotos y videos usando nuestro hashtag **#ValenYPedrito2026**\n\nTus fotos aparecerán en nuestra galería digital y podremos revivir juntos todos los momentos especiales de este día.",
-      "image": "/images/watercolor/azulejo-tile.png",
-      "imageAlt": "Comparte tus fotos",
-      "imagePosition": "right",
-      "decorativeElement": "orange-branch",
-      "backgroundColor": "cream"
+      "type": "photo-sharing",
+      "sectionId": "fotos",
+      "title": "Comparte Tus Momentos",
+      "subtitle": "Queremos ver la boda a través de tus ojos",
+      "hashtag": "#ValenYPedrito2026",
+      "description": "Tus fotos aparecerán en nuestra galería digital y podremos revivir juntos todos los momentos especiales de este día.",
+      "backgroundColor": "subtle"
+    },
+    {
+      "type": "luxury-rsvp",
+      "sectionId": "rsvp",
+      "title": "Confirma Tu Asistencia",
+      "subtitle": "Por favor ayúdanos a planear este día especial confirmando tu asistencia",
+      "deadline": "2026-08-01",
+      "formIntro": "¡Hola! Cuéntanos si podrás acompañarnos en nuestra boda.",
+      "askDietaryRestrictions": true,
+      "askPlusOne": true,
+      "backgroundColor": "gradient"
+    },
+    {
+      "type": "luxury-footer",
+      "brideName": "Valentina",
+      "groomName": "Pedro Juan",
+      "location": "Sevilla, España",
+      "hashtag": "#ValenYPedrito2026",
+      "quickLinks": [
+        { "label": "Inicio", "href": "#hero" },
+        { "label": "Cronograma", "href": "#cronograma" },
+        { "label": "El Lugar", "href": "#lugar" },
+        { "label": "RSVP", "href": "#rsvp" },
+        { "label": "FAQ", "href": "#faq" }
+      ],
+      "copyright": "© 2026 Valentina & Pedro Juan",
+      "showSocialMedia": true
     }
   ]
 }

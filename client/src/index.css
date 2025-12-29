@@ -43,88 +43,115 @@
 }
 
 :root {
-  /* Wedding Brand Colors - Andalusian Romance Theme */
-  /* Backgrounds */
-  --antique-cream: #F9F7F2; /* Main website background */
-  --warm-beige: #F0EBE0; /* Sub-sections, card backgrounds */
+  /* ===========================================
+     LUXURY WEDDING DESIGN SYSTEM
+     Inspired by Boutique Weddings & Chapter Millanova
+     =========================================== */
 
-  /* Typography */
-  --soft-charcoal: #2C2C2C; /* Main headings and body text */
-  --stone-grey: #595959; /* Meta information, footer text */
+  /* Primary Accent Colors */
+  --dusty-rose: #C9A9A0;        /* Primary - Warmth & Romance */
+  --sage-green: #A8C5A3;        /* Secondary - Balance & Nature */
+  --warm-gold: #D4A574;         /* Tertiary - Luxury & Celebration */
 
-  /* Accents */
-  --sevilla-bronze: #9C7C58; /* Borders, dividers, location text */
-  --watercolor-sage: #7A8B6E; /* Primary buttons, derived from painted trees */
-  --rooftop-clay: #D6966C; /* Hover states, links, derived from painted rooftops */
+  /* Text Colors */
+  --text-primary: #2C2C2C;      /* Dark Charcoal - Main text */
+  --text-secondary: #666666;    /* Medium Gray - Secondary text */
+  --text-light: #999999;        /* Light Gray - Subtle text */
 
-  --primary: var(--watercolor-sage);
-  --primary-foreground: oklch(1 0 0);
-  --sidebar-primary: var(--sevilla-bronze);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --chart-1: var(--rooftop-clay);
-  --chart-2: var(--watercolor-sage);
-  --chart-3: var(--sevilla-bronze);
-  --chart-4: var(--soft-charcoal);
-  --chart-5: var(--stone-grey);
-  --radius: 0rem; /* Sharp corners for classic wedding aesthetic */
-  --background: var(--antique-cream);
-  --foreground: var(--soft-charcoal);
-  --card: var(--warm-beige);
-  --card-foreground: var(--soft-charcoal);
-  --popover: oklch(1 0 0);
-  --popover-foreground: var(--soft-charcoal);
-  --secondary: var(--sevilla-bronze);
-  --secondary-foreground: oklch(1 0 0);
-  --muted: var(--warm-beige);
-  --muted-foreground: var(--stone-grey);
-  --accent: var(--rooftop-clay);
-  --accent-foreground: oklch(1 0 0);
-  --destructive: oklch(0.55 0.22 25);
-  --destructive-foreground: oklch(1 0 0);
-  --border: var(--sevilla-bronze);
-  --input: var(--warm-beige);
-  --ring: var(--watercolor-sage);
-  --sidebar: oklch(1 0 0);
-  --sidebar-foreground: var(--soft-charcoal);
-  --sidebar-accent: var(--warm-beige);
-  --sidebar-accent-foreground: var(--soft-charcoal);
-  --sidebar-border: var(--sevilla-bronze);
-  --sidebar-ring: var(--watercolor-sage);
+  /* Background Colors */
+  --bg-white: #FFFFFF;          /* Pure White - Clean sections */
+  --bg-warm: #F9F7F4;           /* Off-White - Warmth */
+  --bg-subtle: #F5F1E8;         /* Cream - Elegance */
+
+  /* UI Colors */
+  --border-light: #E0E0E0;      /* Light borders */
+  --border-accent: #C9A9A0;     /* Accent borders */
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 20px 48px rgba(0, 0, 0, 0.15);
+  --shadow-accent: 0 8px 24px rgba(201, 169, 160, 0.25);
+
+  /* Spacing Scale (8px base) */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 80px;
+  --space-5xl: 96px;
+
+  /* Border Radius */
+  --radius: 8px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 250ms ease-in-out;
+  --transition-slow: 400ms ease-in-out;
+
+  /* Tailwind/Shadcn Theme Mappings */
+  --primary: var(--dusty-rose);
+  --primary-foreground: #FFFFFF;
+  --secondary: var(--sage-green);
+  --secondary-foreground: #FFFFFF;
+  --accent: var(--warm-gold);
+  --accent-foreground: #FFFFFF;
+  --background: var(--bg-warm);
+  --foreground: var(--text-primary);
+  --card: var(--bg-white);
+  --card-foreground: var(--text-primary);
+  --popover: var(--bg-white);
+  --popover-foreground: var(--text-primary);
+  --muted: var(--bg-subtle);
+  --muted-foreground: var(--text-secondary);
+  --border: var(--border-light);
+  --input: var(--bg-white);
+  --ring: var(--dusty-rose);
+  --destructive: #E84C3D;
+  --destructive-foreground: #FFFFFF;
+  --chart-1: var(--dusty-rose);
+  --chart-2: var(--sage-green);
+  --chart-3: var(--warm-gold);
+  --chart-4: var(--text-primary);
+  --chart-5: var(--text-secondary);
+  --sidebar: var(--bg-white);
+  --sidebar-foreground: var(--text-primary);
+  --sidebar-primary: var(--dusty-rose);
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: var(--bg-subtle);
+  --sidebar-accent-foreground: var(--text-primary);
+  --sidebar-border: var(--border-light);
+  --sidebar-ring: var(--dusty-rose);
 }
 
 .dark {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-500);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --background: oklch(0.141 0.005 285.823);
-  --foreground: oklch(0.85 0.005 65);
-  --card: oklch(0.21 0.006 285.885);
-  --card-foreground: oklch(0.85 0.005 65);
-  --popover: oklch(0.21 0.006 285.885);
-  --popover-foreground: oklch(0.85 0.005 65);
-  --secondary: oklch(0.24 0.006 286.033);
-  --secondary-foreground: oklch(0.7 0.005 65);
-  --muted: oklch(0.274 0.006 286.033);
-  --muted-foreground: oklch(0.705 0.015 286.067);
-  --accent: oklch(0.274 0.006 286.033);
-  --accent-foreground: oklch(0.92 0.005 65);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.488 0.243 264.376);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-  --sidebar: oklch(0.21 0.006 285.885);
-  --sidebar-foreground: oklch(0.85 0.005 65);
-  --sidebar-accent: oklch(0.274 0.006 286.033);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.488 0.243 264.376);
+  --primary: var(--dusty-rose);
+  --primary-foreground: #FFFFFF;
+  --background: #1a1a1a;
+  --foreground: #f5f5f5;
+  --card: #2a2a2a;
+  --card-foreground: #f5f5f5;
+  --popover: #2a2a2a;
+  --popover-foreground: #f5f5f5;
+  --secondary: var(--sage-green);
+  --secondary-foreground: #FFFFFF;
+  --muted: #3a3a3a;
+  --muted-foreground: #a0a0a0;
+  --accent: var(--warm-gold);
+  --accent-foreground: #FFFFFF;
+  --border: #404040;
+  --input: #2a2a2a;
+  --ring: var(--dusty-rose);
+  --sidebar: #2a2a2a;
+  --sidebar-foreground: #f5f5f5;
+  --sidebar-accent: #3a3a3a;
+  --sidebar-accent-foreground: #f5f5f5;
+  --sidebar-border: #404040;
+  --sidebar-ring: var(--dusty-rose);
 }
 
 @layer base {
@@ -132,162 +159,164 @@
     @apply border-border outline-ring/50;
   }
 
-  body {
-    @apply bg-background text-foreground;
-    font-family: 'Lato', sans-serif;
-    font-weight: 300;
-    /* Subtle paper texture overlay for elegant stationery feel */
-    background-image: url('/images/watercolor/paper-texture.png');
-    background-size: 400px;
-    background-blend-mode: soft-light;
-    background-attachment: fixed;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 400;
-    letter-spacing: 0.1em;
-  }
-
   html {
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Font utility classes for Wedding Theme */
-  .font-script {
-    font-family: 'Pinyon Script', cursive;
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
     font-weight: 400;
-    letter-spacing: normal;
+    font-size: 16px;
+    line-height: 1.6;
   }
 
+  /* ===========================================
+     TYPOGRAPHY SYSTEM
+     =========================================== */
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--text-primary);
+  }
+
+  h1 { font-size: clamp(2.5rem, 6vw, 4rem); }
+  h2 { font-size: clamp(2rem, 5vw, 3rem); }
+  h3 { font-size: clamp(1.5rem, 4vw, 2.25rem); }
+  h4 { font-size: clamp(1.25rem, 3vw, 1.75rem); }
+
+  p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+
+  /* Font Utility Classes */
   .font-serif {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-weight: 400;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+  }
+
+  .font-serif-medium {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
   }
 
   .font-serif-semibold {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-weight: 600;
-    letter-spacing: 0.1em;
   }
 
-  .font-body {
-    font-family: 'Lato', sans-serif;
-    font-weight: 300;
-  }
-
-  .font-body-regular {
-    font-family: 'Lato', sans-serif;
+  .font-script {
+    font-family: 'Great Vibes', cursive;
     font-weight: 400;
   }
 
-  /* Watercolor asset drop shadow effect */
-  .watercolor-asset {
-    filter: drop-shadow(0px 4px 6px rgba(156, 124, 88, 0.15));
+  .font-sans {
+    font-family: 'Inter', sans-serif;
   }
 
-  /* Classic line dividers */
-  .divider-bronze {
+  .font-sans-light {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+  }
+
+  .font-sans-medium {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+  }
+
+  .font-sans-semibold {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+  }
+
+  /* Section Title Styling */
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-primary);
+    text-align: center;
+  }
+
+  .section-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  .section-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--dusty-rose);
+  }
+
+  /* Decorative Line */
+  .decorative-line {
+    width: 80px;
     height: 1px;
-    background-color: var(--sevilla-bronze);
-    opacity: 0.3;
+    background: var(--dusty-rose);
+    margin: 1rem auto;
   }
 
-  /* Decorative corner azulejo tiles */
-  .azulejo-corners {
-    position: relative;
-    overflow: hidden;
+  /* Couple Names Styling */
+  .couple-names {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(3rem, 10vw, 5rem);
+    color: var(--text-primary);
+    line-height: 1.2;
   }
 
-  .azulejo-corners::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    width: 100px;
-    height: 100px;
-    background-image: url('/images/watercolor/azulejo-tile.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    opacity: 0.12;
-    pointer-events: none;
-    z-index: 0;
+  /* ===========================================
+     ANIMATION SYSTEM
+     =========================================== */
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 
-  .azulejo-corners::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    right: -10px;
-    width: 100px;
-    height: 100px;
-    background-image: url('/images/watercolor/azulejo-tile.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    opacity: 0.12;
-    transform: rotate(180deg);
-    pointer-events: none;
-    z-index: 0;
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
-  /* Orange branch top decoration */
-  .branch-top-decoration {
-    position: relative;
-  }
-
-  .branch-top-decoration::before {
-    content: '';
-    position: absolute;
-    top: -60px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 150px;
-    height: 150px;
-    background-image: url('/images/watercolor/orange-branch.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.25;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* Olive branch separator */
-  .olive-separator {
-    position: relative;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-  }
-
-  .olive-separator::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 200px;
-    height: 80px;
-    background-image: url('/images/watercolor/olive-branch.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.2;
-    pointer-events: none;
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   @keyframes slideInLeft {
     from {
       opacity: 0;
-      transform: translateX(-50px);
+      transform: translateX(-30px);
     }
-
     to {
       opacity: 1;
       transform: translateX(0);
@@ -297,171 +326,312 @@
   @keyframes slideInRight {
     from {
       opacity: 0;
-      transform: translateX(50px);
+      transform: translateX(30px);
     }
-
     to {
       opacity: 1;
       transform: translateX(0);
     }
   }
 
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
   @keyframes scaleIn {
     from {
       opacity: 0;
-      transform: scale(0.9);
+      transform: scale(0.95);
     }
-
     to {
       opacity: 1;
       transform: scale(1);
     }
   }
 
-  @keyframes float {
-
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-
-    50% {
-      transform: translateY(-10px);
-    }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
   }
 
-  @keyframes shimmer {
-    0% {
-      background-position: -200% 0;
-    }
-    100% {
-      background-position: 200% 0;
-    }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
   }
 
-  @keyframes pulse-glow {
-    0%, 100% {
-      box-shadow: 0 0 5px rgba(156, 124, 88, 0.2);
-    }
-    50% {
-      box-shadow: 0 0 20px rgba(156, 124, 88, 0.4);
-    }
+  /* Animation Classes */
+  .animate-fade-in {
+    animation: fadeIn 600ms ease-out forwards;
   }
 
-  /* 3D Transform utilities */
-  .perspective-1000 {
-    perspective: 1000px;
+  .animate-fade-in-up {
+    animation: fadeInUp 600ms ease-out forwards;
   }
 
-  .preserve-3d {
-    transform-style: preserve-3d;
+  .animate-fade-in-down {
+    animation: fadeInDown 600ms ease-out forwards;
   }
 
-  .backface-hidden {
-    backface-visibility: hidden;
+  .animate-slide-in-left {
+    animation: slideInLeft 600ms ease-out forwards;
   }
 
-  /* Smooth scroll behavior with easing */
-  html {
-    scroll-behavior: smooth;
+  .animate-slide-in-right {
+    animation: slideInRight 600ms ease-out forwards;
   }
 
-  @media (prefers-reduced-motion: no-preference) {
-    html {
-      scroll-behavior: smooth;
-    }
+  .animate-scale-in {
+    animation: scaleIn 500ms ease-out forwards;
   }
 
-  /* Enhanced focus styles for accessibility */
+  .animate-bounce {
+    animation: bounce 2s ease-in-out infinite;
+  }
+
+  .animate-pulse {
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  /* Staggered Animation Delays */
+  .stagger-1 { animation-delay: 0ms; }
+  .stagger-2 { animation-delay: 100ms; }
+  .stagger-3 { animation-delay: 200ms; }
+  .stagger-4 { animation-delay: 300ms; }
+  .stagger-5 { animation-delay: 400ms; }
+  .stagger-6 { animation-delay: 500ms; }
+
+  /* ===========================================
+     INTERACTIVE ELEMENTS
+     =========================================== */
+
+  /* Base Transition */
+  button, a, .interactive {
+    transition: all var(--transition-base);
+  }
+
+  /* Focus States */
   *:focus-visible {
-    outline: 2px solid var(--sevilla-bronze);
+    outline: 2px solid var(--dusty-rose);
     outline-offset: 2px;
   }
 
-  /* Shimmer effect for loading states */
-  .shimmer {
-    background: linear-gradient(
-      90deg,
-      var(--antique-cream) 0%,
-      var(--warm-beige) 50%,
-      var(--antique-cream) 100%
-    );
-    background-size: 200% 100%;
-    animation: shimmer 2s infinite linear;
+  button:focus:not(:focus-visible),
+  a:focus:not(:focus-visible) {
+    outline: none;
   }
 
-  /* Pulse glow for interactive elements */
-  .pulse-glow {
-    animation: pulse-glow 2s infinite ease-in-out;
-  }
-
-  /* Glass morphism effect */
-  .glass {
-    background: rgba(249, 247, 242, 0.8);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-  }
-
-  /* Line drawing animation for decorative elements */
-  .stroke-draw {
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
-    animation: draw 2s ease-out forwards;
-  }
-
-  @keyframes draw {
-    to {
-      stroke-dashoffset: 0;
-    }
-  }
-
+  /* Cursor for interactive elements */
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
-  [type="button"]:not(:disabled),
-  [type="submit"]:not(:disabled),
-  [type="reset"]:not(:disabled),
   a[href],
   select:not(:disabled),
   input[type="checkbox"]:not(:disabled),
   input[type="radio"]:not(:disabled) {
     @apply cursor-pointer;
   }
+
+  /* ===========================================
+     SECTION BACKGROUNDS
+     =========================================== */
+
+  .bg-section-white {
+    background-color: var(--bg-white);
+  }
+
+  .bg-section-warm {
+    background-color: var(--bg-warm);
+  }
+
+  .bg-section-subtle {
+    background-color: var(--bg-subtle);
+  }
+
+  .bg-section-gradient {
+    background: linear-gradient(135deg, var(--bg-warm) 0%, var(--bg-white) 100%);
+  }
+
+  .bg-section-accent-light {
+    background: rgba(201, 169, 160, 0.05);
+  }
+
+  /* ===========================================
+     CARD STYLES
+     =========================================== */
+
+  .card-luxury {
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    padding: var(--space-xl);
+    transition: all var(--transition-base);
+  }
+
+  .card-luxury:hover {
+    box-shadow: var(--shadow-lg);
+    border-color: var(--dusty-rose);
+    transform: translateY(-4px);
+  }
+
+  /* ===========================================
+     BUTTON STYLES
+     =========================================== */
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.875rem 2rem;
+    background: var(--dusty-rose);
+    color: white;
+    border: none;
+    border-radius: 9999px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all var(--transition-base);
+  }
+
+  .btn-primary:hover {
+    background: #B89890;
+    transform: scale(1.02);
+    box-shadow: var(--shadow-accent);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.875rem 2rem;
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-light);
+    border-radius: 9999px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all var(--transition-base);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--dusty-rose);
+    color: var(--dusty-rose);
+    background: rgba(201, 169, 160, 0.05);
+  }
+
+  /* ===========================================
+     FORM STYLES
+     =========================================== */
+
+  .form-label {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: var(--text-primary);
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    transition: all var(--transition-base);
+  }
+
+  .form-input:focus {
+    outline: none;
+    border-color: var(--dusty-rose);
+    box-shadow: 0 0 0 3px rgba(201, 169, 160, 0.1);
+  }
+
+  .form-input::placeholder {
+    color: var(--text-light);
+  }
+
+  /* ===========================================
+     UTILITY CLASSES
+     =========================================== */
+
+  .text-accent {
+    color: var(--dusty-rose);
+  }
+
+  .text-secondary-accent {
+    color: var(--sage-green);
+  }
+
+  .text-tertiary-accent {
+    color: var(--warm-gold);
+  }
+
+  .border-accent {
+    border-color: var(--dusty-rose);
+  }
+
+  .bg-accent-light {
+    background: rgba(201, 169, 160, 0.1);
+  }
+
+  .shadow-luxury {
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* Watercolor asset styling */
+  .watercolor-asset {
+    filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1));
+  }
+
+  /* Glass morphism effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  /* Reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }
 
 @layer components {
-
   /**
-   * Custom container utility that centers content and adds responsive padding.
-   *
-   * This overrides Tailwind's default container behavior to:
-   * - Auto-center content (mx-auto)
-   * - Add responsive horizontal padding
-   * - Set max-width for large screens
-   *
-   * Usage: <div className="container">...</div>
-   *
-   * For custom widths, use max-w-* utilities directly:
-   * <div className="max-w-6xl mx-auto px-4">...</div>
+   * Container utility
    */
   .container {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1rem;
-    /* 16px - mobile padding */
-    padding-right: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 3rem;
+      padding-right: 3rem;
+      max-width: 1200px;
+    }
   }
 
   .flex {
@@ -469,21 +639,166 @@
     min-width: 0;
   }
 
-  @media (min-width: 640px) {
-    .container {
-      padding-left: 1.5rem;
-      /* 24px - tablet padding */
-      padding-right: 1.5rem;
+  /* Section Wrapper */
+  .section-wrapper {
+    padding: var(--space-4xl) var(--space-lg);
+  }
+
+  @media (min-width: 768px) {
+    .section-wrapper {
+      padding: var(--space-5xl) var(--space-2xl);
     }
   }
 
-  @media (min-width: 1024px) {
-    .container {
-      padding-left: 2rem;
-      /* 32px - desktop padding */
-      padding-right: 2rem;
-      max-width: 1280px;
-      /* Standard content width */
+  /* Section Header */
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
+  }
+
+  .section-header h2 {
+    margin-bottom: var(--space-md);
+  }
+
+  /* Timeline Styles */
+  .timeline-line {
+    position: absolute;
+    left: 30px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--dusty-rose), var(--sage-green));
+  }
+
+  .timeline-dot {
+    width: 60px;
+    height: 60px;
+    background: var(--dusty-rose);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  /* Accordion Styles */
+  .accordion-trigger {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1.5rem 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    background: transparent;
+    border: none;
+    text-align: left;
+    transition: color var(--transition-base);
+  }
+
+  .accordion-trigger:hover {
+    color: var(--dusty-rose);
+  }
+
+  .accordion-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--dusty-rose);
+    transition: transform 300ms ease-in-out;
+  }
+
+  .accordion-content {
+    overflow: hidden;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-size: 0.9375rem;
+  }
+
+  /* Countdown Styles */
+  .countdown-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  @media (max-width: 640px) {
+    .countdown-grid {
+      grid-template-columns: repeat(2, 1fr);
     }
+  }
+
+  .countdown-item {
+    padding: 1.5rem 1rem;
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    text-align: center;
+  }
+
+  .countdown-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 600;
+    color: var(--dusty-rose);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .countdown-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-primary);
+  }
+
+  /* Info Card Grid */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .info-card {
+    background: var(--bg-white);
+    padding: 2rem;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    text-align: center;
+    transition: all var(--transition-base);
+  }
+
+  .info-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--dusty-rose);
+  }
+
+  .info-card-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .info-card h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+  }
+
+  .info-card p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
   }
 }
