@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { VineDecoration } from "@/components/illustrations";
+import { OliveBranchDecoration } from "@/components/illustrations";
 
 // Global content imports
 import footerContent from "@/content/footer.json";
@@ -20,21 +20,20 @@ export function Footer({ onNewsletterClick, onPartnershipClick }: FooterProps) {
   };
 
   return (
-    <footer className="bg-[#1B5E20] text-white py-12 relative overflow-hidden">
-      {/* Decorative vine */}
-      <div className="absolute top-0 left-0 right-0 text-[#4CAF50] opacity-20">
-        <VineDecoration className="w-full" />
+    <footer className="bg-[#2C2C2C] text-white py-12 relative overflow-hidden">
+      {/* Decorative element */}
+      <div className="absolute top-0 left-0 right-0 text-[#9C7C58] opacity-10">
+        <OliveBranchDecoration className="w-full" />
       </div>
 
       <div className="container relative">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           {/* Logo & Contact */}
           <div>
-            <div className="bg-[#2E7D32] rounded-xl px-4 py-2 inline-block mb-4">
-              <span className="text-[#FFC107] text-xl font-bold font-heading">
-                GREENLAND
+            <div className="mb-4">
+              <span className="font-script text-3xl text-[#D6966C]">
+                Valentina & Pedro Juan
               </span>
-              <span className="text-white text-lg ml-1 font-heading">VILLAGE</span>
             </div>
             <p className="text-white/80 mb-2 font-body">📍 {settingsContent.location}</p>
             <p className="text-white/80 font-body">
@@ -44,8 +43,8 @@ export function Footer({ onNewsletterClick, onPartnershipClick }: FooterProps) {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-bold text-lg mb-4 text-[#FFC107] font-heading">
-              Quick Links
+            <h3 className="font-serif uppercase tracking-wide text-lg mb-4 text-[#D6966C]">
+              Enlaces
             </h3>
             <ul className="space-y-2 font-body">
               {footerContent.quickLinks.map((link, index) => (
@@ -53,14 +52,14 @@ export function Footer({ onNewsletterClick, onPartnershipClick }: FooterProps) {
                   {link.href === "#partnerships" && onPartnershipClick ? (
                     <button
                       onClick={onPartnershipClick}
-                      className="text-white/80 hover:text-[#FFC107] transition-colors"
+                      className="text-white/80 hover:text-[#D6966C] transition-colors"
                     >
                       {link.label}
                     </button>
                   ) : (
                     <a
                       href={link.href}
-                      className="text-white/80 hover:text-[#FFC107] transition-colors"
+                      className="text-white/80 hover:text-[#D6966C] transition-colors"
                     >
                       {link.label}
                     </a>
@@ -70,27 +69,27 @@ export function Footer({ onNewsletterClick, onPartnershipClick }: FooterProps) {
             </ul>
           </div>
 
-          {/* Social Media - Placeholder */}
+          {/* Hashtag */}
           <div>
-            <h3 className="font-bold text-lg mb-4 text-[#FFC107] font-heading">
-              Follow Us
+            <h3 className="font-serif uppercase tracking-wide text-lg mb-4 text-[#D6966C]">
+              Síguenos
             </h3>
             <p className="text-white/60 text-sm mb-4 font-body">
-              Social media coming soon! 🌿
+              #ValenYPedrito2026
             </p>
           </div>
 
-          {/* Newsletter */}
+          {/* RSVP */}
           <div>
-            <h3 className="font-bold text-lg mb-4 text-[#FFC107] font-heading">
+            <h3 className="font-serif uppercase tracking-wide text-lg mb-4 text-[#D6966C]">
               {footerContent.newsletterTitle}
             </h3>
             <p className="text-white/80 text-sm mb-4 font-body">
-              {footerContent.newsletterDescription} 🌿
+              {footerContent.newsletterDescription}
             </p>
             <Button
               onClick={scrollToEmailForm}
-              className="bg-[#FFC107] hover:bg-[#FFD54F] text-[#1B5E20] font-bold rounded-full border-2 border-white font-heading"
+              className="bg-[#9C7C58] hover:bg-[#7A8B6E] text-white font-body"
             >
               {footerContent.newsletterButtonText}
             </Button>
@@ -99,7 +98,7 @@ export function Footer({ onNewsletterClick, onPartnershipClick }: FooterProps) {
 
         {/* Bottom Bar */}
         <div className="border-t border-white/20 pt-8 text-center text-white/60 text-sm font-body">
-          <p>{footerContent.copyright} 🐐💚</p>
+          <p>{footerContent.copyright}</p>
         </div>
       </div>
     </footer>

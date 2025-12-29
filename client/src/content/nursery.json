@@ -1,25 +1,24 @@
 {
-  "title": "Greenland Nursery",
-  "titleEmoji": "🌱",
-  "description": "Take a piece of GreenLand Village home with you! Our on-site nursery offers a curated selection of plants, nature-inspired souvenirs, and seasonal items that extend your park experience beyond your visit.",
-  "image": "/nursery-image.png",
-  "imageAlt": "Plant nursery with families",
+  "title": "Información del Lugar",
+  "description": "Hacienda la Soledad es un hermoso lugar en las afueras de Sevilla, rodeado de olivos y naranjos. El lugar perfecto para celebrar nuestra unión con la calidez y elegancia andaluza.",
+  "image": "/images/watercolor/seville-skyline.png",
+  "imageAlt": "Hacienda la Soledad",
   "features": [
     {
-      "emoji": "🌿",
-      "text": "Plants for all ages and skill levels"
+      "emoji": "🌳",
+      "text": "Jardines mediterráneos con olivos centenarios"
     },
     {
-      "emoji": "🌻",
-      "text": "Kid-friendly plants perfect for young gardeners"
+      "emoji": "🏛️",
+      "text": "Arquitectura tradicional andaluza"
     },
     {
-      "emoji": "🎁",
-      "text": "Nature-inspired souvenirs and gifts"
+      "emoji": "🌅",
+      "text": "Vistas espectaculares al atardecer"
     },
     {
-      "emoji": "🍂",
-      "text": "Seasonal selections and special collections"
+      "emoji": "🎶",
+      "text": "Espacios amplios para la celebración"
     }
   ]
 }

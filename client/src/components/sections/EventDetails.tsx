@@ -7,69 +7,67 @@ interface EventDetailsProps {
 }
 
 const bgColors = {
-  cream: "bg-[#FFFEF5]",
+  cream: "bg-[#F9F7F2]",
   white: "bg-white",
-  green: "bg-[#E8F5E9]",
+  beige: "bg-[#F0EBE0]",
 };
 
 export function EventDetails({ content, id }: EventDetailsProps) {
-  const bgColor = bgColors[content.backgroundColor || "cream"];
+  const bgColor = bgColors[content.backgroundColor as keyof typeof bgColors] || bgColors.cream;
 
   return (
     <section id={id} className={`py-16 ${bgColor}`}>
       <div className="container max-w-4xl">
         {/* Title */}
         <div className="text-center mb-10">
-          <div className="inline-block bg-[#1B5E20] rounded-2xl px-8 py-3 mb-4">
-            <h2 className="text-2xl md:text-4xl text-[#FFC107] font-heading">
-              {content.titleEmoji && `${content.titleEmoji} `}{content.title}
-            </h2>
-          </div>
+          <h2 className="text-2xl md:text-4xl text-[#2C2C2C] font-serif uppercase tracking-wider">
+            {content.title}
+          </h2>
         </div>
 
         {/* Event Info Card */}
-        <div className="bg-white rounded-3xl shadow-xl border-4 border-[#1B5E20] p-8 md:p-10">
+        <div className="bg-white shadow-lg border border-[#F0EBE0] p-8 md:p-10">
           <div className="grid md:grid-cols-2 gap-6">
             {/* Date */}
             <div className="flex items-start gap-4">
-              <div className="w-14 h-14 bg-[#FFC107] rounded-2xl flex items-center justify-center flex-shrink-0">
-                <Calendar className="w-7 h-7 text-[#1B5E20]" />
+              <div className="w-14 h-14 bg-[#9C7C58] flex items-center justify-center flex-shrink-0">
+                <Calendar className="w-7 h-7 text-white" />
               </div>
               <div>
-                <p className="text-sm text-[#2E7D32] font-semibold uppercase tracking-wide font-body">Date</p>
-                <p className="text-xl text-[#1B5E20] font-bold font-heading">{content.eventDate}</p>
+                <p className="text-sm text-[#595959] font-medium uppercase tracking-wide font-body">Fecha</p>
+                <p className="text-xl text-[#2C2C2C] font-semibold font-serif">{content.eventDate}</p>
               </div>
             </div>
 
             {/* Time */}
             {content.eventTime && (
               <div className="flex items-start gap-4">
-                <div className="w-14 h-14 bg-[#4CAF50] rounded-2xl flex items-center justify-center flex-shrink-0">
+                <div className="w-14 h-14 bg-[#7A8B6E] flex items-center justify-center flex-shrink-0">
                   <Clock className="w-7 h-7 text-white" />
                 </div>
                 <div>
-                  <p className="text-sm text-[#2E7D32] font-semibold uppercase tracking-wide font-body">Time</p>
-                  <p className="text-xl text-[#1B5E20] font-bold font-heading">{content.eventTime}</p>
+                  <p className="text-sm text-[#595959] font-medium uppercase tracking-wide font-body">Hora</p>
+                  <p className="text-xl text-[#2C2C2C] font-semibold font-serif">{content.eventTime}</p>
                 </div>
               </div>
             )}
 
             {/* Location */}
             <div className="flex items-start gap-4">
-              <div className="w-14 h-14 bg-[#1B5E20] rounded-2xl flex items-center justify-center flex-shrink-0">
-                <MapPin className="w-7 h-7 text-[#FFC107]" />
+              <div className="w-14 h-14 bg-[#D6966C] flex items-center justify-center flex-shrink-0">
+                <MapPin className="w-7 h-7 text-white" />
               </div>
               <div>
-                <p className="text-sm text-[#2E7D32] font-semibold uppercase tracking-wide font-body">Location</p>
-                <p className="text-xl text-[#1B5E20] font-bold font-heading">{content.location}</p>
+                <p className="text-sm text-[#595959] font-medium uppercase tracking-wide font-body">Lugar</p>
+                <p className="text-xl text-[#2C2C2C] font-semibold font-serif">{content.location}</p>
                 {content.mapLink && (
                   <a
                     href={content.mapLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-[#4CAF50] hover:text-[#1B5E20] underline font-body"
+                    className="text-sm text-[#9C7C58] hover:text-[#7A8B6E] underline font-body"
                   >
-                    View on Map →
+                    Ver en mapa →
                   </a>
                 )}
               </div>
@@ -78,12 +76,12 @@ export function EventDetails({ content, id }: EventDetailsProps) {
             {/* Price */}
             {content.price && (
               <div className="flex items-start gap-4">
-                <div className="w-14 h-14 bg-[#FFC107] rounded-2xl flex items-center justify-center flex-shrink-0">
-                  <DollarSign className="w-7 h-7 text-[#1B5E20]" />
+                <div className="w-14 h-14 bg-[#9C7C58] flex items-center justify-center flex-shrink-0">
+                  <DollarSign className="w-7 h-7 text-white" />
                 </div>
                 <div>
-                  <p className="text-sm text-[#2E7D32] font-semibold uppercase tracking-wide font-body">Price</p>
-                  <p className="text-xl text-[#1B5E20] font-bold font-heading">{content.price}</p>
+                  <p className="text-sm text-[#595959] font-medium uppercase tracking-wide font-body">Precio</p>
+                  <p className="text-xl text-[#2C2C2C] font-semibold font-serif">{content.price}</p>
                 </div>
               </div>
             )}
@@ -91,18 +89,18 @@ export function EventDetails({ content, id }: EventDetailsProps) {
 
           {/* Registration Deadline */}
           {content.registrationDeadline && (
-            <div className="mt-8 p-4 bg-[#FFF3E0] border-2 border-[#FFC107] rounded-xl flex items-center gap-3">
-              <AlertCircle className="w-6 h-6 text-[#F57C00] flex-shrink-0" />
-              <p className="text-[#E65100] font-semibold font-body">
-                Registration deadline: {content.registrationDeadline}
+            <div className="mt-8 p-4 bg-[#F0EBE0] border border-[#D6966C] flex items-center gap-3">
+              <AlertCircle className="w-6 h-6 text-[#D6966C] flex-shrink-0" />
+              <p className="text-[#2C2C2C] font-medium font-body">
+                Fecha límite: {content.registrationDeadline}
               </p>
             </div>
           )}
 
           {/* Description */}
           {content.description && (
-            <div className="mt-8 pt-8 border-t-2 border-[#E8F5E9]">
-              <p className="text-lg text-[#2E7D32] leading-relaxed font-body">
+            <div className="mt-8 pt-8 border-t border-[#F0EBE0]">
+              <p className="text-lg text-[#595959] leading-relaxed font-body">
                 {content.description}
               </p>
             </div>

@@ -1,5 +1,5 @@
-// Brand illustrations extracted from the GreenLand Village logo style
-// These SVG components maintain the playful, organic, hand-drawn aesthetic
+// Wedding illustrations - elegant, romantic decorations
+// These SVG components maintain a classic, refined aesthetic matching the Andalusian Romance theme
 
 export const SunIcon = ({ className = "" }: { className?: string }) => (
   <svg viewBox="0 0 100 100" className={className} fill="currentColor">
@@ -9,7 +9,7 @@ export const SunIcon = ({ className = "" }: { className?: string }) => (
 
 export const WavyDivider = ({
   flip = false,
-  color = "#2E7D32",
+  color = "#F9F7F2",
 }: {
   flip?: boolean;
   color?: string;
@@ -24,67 +24,80 @@ export const WavyDivider = ({
   </svg>
 );
 
-export const LeafDecoration = ({ className = "" }: { className?: string }) => (
-  <svg viewBox="0 0 60 60" className={className} fill="currentColor">
+// Elegant olive branch decoration - wedding style
+export const OliveBranchDecoration = ({ className = "" }: { className?: string }) => (
+  <svg viewBox="0 0 100 40" className={className} fill="none">
+    {/* Main branch */}
     <path
-      d="M30 5c-8 0-15 7-15 15 0 12 15 35 15 35s15-23 15-35c0-8-7-15-15-15z"
-      opacity="0.6"
+      d="M10 20 Q30 18 50 20 Q70 22 90 20"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      fill="none"
     />
-    <path d="M30 10c-5 0-10 5-10 10 0 8 10 25 10 25s10-17 10-25c0-5-5-10-10-10z" />
+    {/* Leaves */}
+    <ellipse cx="25" cy="15" rx="8" ry="4" fill="currentColor" opacity="0.7" transform="rotate(-20 25 15)" />
+    <ellipse cx="40" cy="24" rx="8" ry="4" fill="currentColor" opacity="0.8" transform="rotate(15 40 24)" />
+    <ellipse cx="55" cy="16" rx="8" ry="4" fill="currentColor" opacity="0.7" transform="rotate(-15 55 16)" />
+    <ellipse cx="70" cy="23" rx="8" ry="4" fill="currentColor" opacity="0.8" transform="rotate(20 70 23)" />
+    <ellipse cx="85" cy="17" rx="6" ry="3" fill="currentColor" opacity="0.6" transform="rotate(-10 85 17)" />
   </svg>
 );
 
+// Elegant decorative line with dots - for section dividers
+export const ElegantDivider = ({ className = "" }: { className?: string }) => (
+  <svg
+    viewBox="0 0 200 20"
+    className={className}
+    fill="currentColor"
+  >
+    <circle cx="20" cy="10" r="2" opacity="0.5" />
+    <circle cx="40" cy="10" r="1.5" opacity="0.3" />
+    <line x1="50" y1="10" x2="150" y2="10" stroke="currentColor" strokeWidth="1" opacity="0.4" />
+    <circle cx="160" cy="10" r="1.5" opacity="0.3" />
+    <circle cx="180" cy="10" r="2" opacity="0.5" />
+  </svg>
+);
+
+// Heart decoration - for romantic touches
+export const HeartDecoration = ({ className = "" }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="currentColor">
+    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+  </svg>
+);
+
+// Decorative flourish - elegant swirl
+export const Flourish = ({ className = "" }: { className?: string }) => (
+  <svg viewBox="0 0 100 30" className={className} fill="none" stroke="currentColor" strokeWidth="1.5">
+    <path d="M5 15 Q25 5 50 15 Q75 25 95 15" strokeLinecap="round" />
+  </svg>
+);
+
+// Keep LeafDecoration but make it more elegant (olive-style)
+export const LeafDecoration = ({ className = "" }: { className?: string }) => (
+  <svg viewBox="0 0 60 60" className={className} fill="currentColor">
+    <ellipse cx="30" cy="30" rx="12" ry="20" opacity="0.6" />
+    <ellipse cx="30" cy="30" rx="8" ry="14" />
+  </svg>
+);
+
+// Keep VineDecoration but make it more elegant
 export const VineDecoration = ({ className = "" }: { className?: string }) => (
   <svg
     viewBox="0 0 200 50"
     className={className}
     fill="none"
     stroke="currentColor"
-    strokeWidth="3"
+    strokeWidth="1.5"
   >
-    <path d="M0,25 Q50,0 100,25 T200,25" strokeLinecap="round" />
-    <circle cx="30" cy="15" r="5" fill="currentColor" />
-    <circle cx="100" cy="25" r="5" fill="currentColor" />
-    <circle cx="170" cy="15" r="5" fill="currentColor" />
+    <path d="M0,25 Q50,10 100,25 T200,25" strokeLinecap="round" />
   </svg>
 );
 
+// Remove GoatMascot - not appropriate for wedding
+// Export empty component for backwards compatibility
 export const GoatMascot = ({ className = "" }: { className?: string }) => (
   <svg viewBox="0 0 100 80" className={className}>
-    {/* Body */}
-    <ellipse
-      cx="50"
-      cy="55"
-      rx="25"
-      ry="20"
-      fill="white"
-      stroke="#1B5E20"
-      strokeWidth="2"
-    />
-    {/* Head */}
-    <circle cx="50" cy="30" r="15" fill="white" stroke="#1B5E20" strokeWidth="2" />
-    {/* Left horn */}
-    <path d="M38 20 L35 8 L40 18" fill="white" stroke="#1B5E20" strokeWidth="2" />
-    {/* Right horn */}
-    <path d="M62 20 L65 8 L60 18" fill="white" stroke="#1B5E20" strokeWidth="2" />
-    {/* Eyes */}
-    <circle cx="44" cy="28" r="2" fill="#1B5E20" />
-    <circle cx="56" cy="28" r="2" fill="#1B5E20" />
-    {/* Nose */}
-    <ellipse cx="50" cy="35" rx="4" ry="3" fill="#FFB6C1" />
-    {/* Smile */}
-    <path d="M46 38 Q50 42 54 38" fill="none" stroke="#1B5E20" strokeWidth="1.5" />
-    {/* Legs */}
-    <path d="M30 60 L25 75" stroke="#1B5E20" strokeWidth="3" strokeLinecap="round" />
-    <path d="M40 65 L38 75" stroke="#1B5E20" strokeWidth="3" strokeLinecap="round" />
-    <path d="M60 65 L62 75" stroke="#1B5E20" strokeWidth="3" strokeLinecap="round" />
-    <path d="M70 60 L75 75" stroke="#1B5E20" strokeWidth="3" strokeLinecap="round" />
-    {/* Tail */}
-    <path
-      d="M75 50 Q85 45 80 55 Q90 52 85 60"
-      fill="white"
-      stroke="#1B5E20"
-      strokeWidth="1.5"
-    />
+    {/* Empty - removed for wedding theme */}
   </svg>
 );

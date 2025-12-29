@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { LeafDecoration } from "@/components/illustrations";
+import { OliveBranchDecoration } from "@/components/illustrations";
 import type { ValueCardsContent } from "./types";
 
 interface ValueCardsProps {
@@ -8,21 +8,9 @@ interface ValueCardsProps {
 }
 
 const bgColors = {
-  yellow: "bg-[#FFC107]",
-  green: "bg-[#4CAF50]",
-  cream: "bg-[#FFFEF5]",
-};
-
-const titleBgColors = {
-  yellow: "bg-[#1B5E20]",
-  green: "bg-[#1B5E20]",
-  cream: "bg-[#1B5E20]",
-};
-
-const titleTextColors = {
-  yellow: "text-[#FFC107]",
-  green: "text-[#FFC107]",
-  cream: "text-[#FFC107]",
+  cream: "bg-[#F9F7F2]",
+  beige: "bg-[#F0EBE0]",
+  white: "bg-white",
 };
 
 const columnClasses = {
@@ -54,9 +42,7 @@ export function ValueCards({ content, id }: ValueCardsProps) {
     return () => observer.disconnect();
   }, []);
 
-  const bgColor = bgColors[content.backgroundColor || "yellow"];
-  const titleBgColor = titleBgColors[content.backgroundColor || "yellow"];
-  const titleTextColor = titleTextColors[content.backgroundColor || "yellow"];
+  const bgColor = bgColors[content.backgroundColor as keyof typeof bgColors] || bgColors.cream;
   const columns = columnClasses[content.columns || 4];
 
   return (
@@ -66,38 +52,36 @@ export function ValueCards({ content, id }: ValueCardsProps) {
       className={`py-20 ${bgColor} relative overflow-hidden`}
     >
       {/* Decorative elements */}
-      <div className="absolute top-10 left-10 text-[#1B5E20] opacity-20">
-        <LeafDecoration className="w-20 h-20" />
+      <div className="absolute top-10 left-10 text-[#7A8B6E] opacity-20">
+        <OliveBranchDecoration className="w-32 h-16" />
       </div>
-      <div className="absolute bottom-10 right-10 text-[#1B5E20] opacity-20">
-        <LeafDecoration className="w-16 h-16 rotate-180" />
+      <div className="absolute bottom-10 right-10 text-[#7A8B6E] opacity-20 rotate-180">
+        <OliveBranchDecoration className="w-32 h-16" />
       </div>
 
       <div className="container relative">
         <div className="text-center mb-12">
-          <div className={`inline-block ${titleBgColor} rounded-2xl px-8 py-3 mb-4`}>
-            <h2 className={`text-2xl md:text-4xl ${titleTextColor} font-heading`}>
-              {content.titleEmoji && `${content.titleEmoji} `}{content.title}
-            </h2>
-          </div>
+          <h2 className="text-2xl md:text-4xl text-[#2C2C2C] font-serif uppercase tracking-wider">
+            {content.title}
+          </h2>
         </div>
 
         <div className={`grid ${columns} gap-6`}>
           {content.cards.map((card, index) => (
             <div
               key={index}
-              className={`group bg-white rounded-2xl p-6 shadow-lg border-4 border-[#1B5E20] transition-all duration-300 hover:-translate-y-3 hover:shadow-2xl ${
+              className={`group bg-white p-6 shadow-sm border border-[#F0EBE0] transition-all duration-300 hover:-translate-y-3 hover:shadow-lg ${
                 isVisible ? "animate-[scaleIn_0.5s_ease-out_forwards]" : "opacity-0"
               }`}
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="text-5xl mb-4 group-hover:scale-125 transition-transform duration-300">
+              <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
                 {card.emoji}
               </div>
-              <h3 className="text-xl font-bold text-[#1B5E20] mb-3 font-heading">
+              <h3 className="text-xl font-semibold text-[#2C2C2C] mb-3 font-serif uppercase tracking-wide">
                 {card.title}
               </h3>
-              <p className="text-[#2E7D32] font-body">{card.description}</p>
+              <p className="text-[#595959] font-body">{card.description}</p>
             </div>
           ))}
         </div>

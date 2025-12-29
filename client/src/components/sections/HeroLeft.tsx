@@ -7,7 +7,7 @@ import { WavyDivider } from "@/components/illustrations";
 import { trpc } from "@/lib/trpc";
 import type { HeroLeftContent } from "./types";
 
-// Import settings for social proof
+// Import settings
 import settingsContent from "@/content/settings.json";
 
 interface HeroLeftProps {
@@ -22,8 +22,6 @@ export function HeroLeft({ content, id }: HeroLeftProps) {
   const timeoutRef = useRef<number | null>(null);
 
   const heroSubscribe = trpc.newsletter.subscribeHero.useMutation();
-
-  const socialProofText = `Join ${settingsContent.socialProofCount} families already signed up!`;
 
   // Cleanup timeout on unmount
   useEffect(() => {
@@ -40,7 +38,7 @@ export function HeroLeft({ content, id }: HeroLeftProps) {
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
-      setError("Please enter a valid email address");
+      setError("Por favor ingresa un correo electrónico válido");
       return;
     }
 
@@ -58,7 +56,7 @@ export function HeroLeft({ content, id }: HeroLeftProps) {
       }, 15000);
     } catch (err) {
       setError(
-        err instanceof Error ? err.message : "Something went wrong. Please try again."
+        err instanceof Error ? err.message : "Algo salió mal. Por favor intenta de nuevo."
       );
     }
   };
@@ -77,29 +75,17 @@ export function HeroLeft({ content, id }: HeroLeftProps) {
         style={{ backgroundImage: `url('${content.backgroundMobile || "/hero-illustration-mobile.png"}')` }}
       />
 
-      {/* Sticker Characters - Desktop Only */}
+      {/* Decorative Elements - Watercolor style */}
       <div className="absolute inset-0 hidden md:block pointer-events-none z-0 overflow-hidden">
         <img
-          src="/images/stickers/sticker-sun.png"
-          className="absolute top-10 right-10 w-64 h-64 animate-[spin_60s_linear_infinite]"
-          alt="Sun character"
+          src="/images/watercolor/orange-branch.png"
+          className="absolute top-10 right-10 w-64 h-64 opacity-60"
+          alt=""
         />
         <img
-          src="/images/stickers/sticker-goat.png"
-          className="absolute bottom-0 right-[15%] w-80 h-auto z-10 animate-[float_6s_ease-in-out_infinite]"
-          alt="Goat mascot"
-        />
-        <img
-          src="/images/stickers/sticker-flower-1.png"
-          className="absolute bottom-10 right-[2%] w-48 h-48 animate-[float_4s_ease-in-out_infinite]"
-          style={{ animationDelay: "1s" }}
-          alt="Flower character"
-        />
-        <img
-          src="/images/stickers/sticker-flower-2.png"
-          className="absolute bottom-12 right-[28%] w-36 h-36 animate-[float_5s_ease-in-out_infinite]"
-          style={{ animationDelay: "2s" }}
-          alt="Flower character"
+          src="/images/watercolor/olive-branch.png"
+          className="absolute bottom-10 right-[2%] w-48 h-48 opacity-60"
+          alt=""
         />
       </div>
 
@@ -107,59 +93,45 @@ export function HeroLeft({ content, id }: HeroLeftProps) {
       <div className="relative z-10 container px-4 pt-8 pb-4 md:py-20">
         <div className="max-w-2xl">
           {/* Headlines */}
-          <div className="mb-4 md:mb-6 transform hover:scale-105 transition-transform duration-300">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl tracking-wide font-heading text-sticker mb-2">
+          <div className="mb-4 md:mb-6">
+            <h1 className="font-script text-5xl md:text-7xl lg:text-8xl text-[#2C2C2C] mb-2 drop-shadow-sm">
               {content.headline}
             </h1>
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-heading text-sticker">
+            <h2 className="font-script text-4xl md:text-6xl lg:text-7xl text-[#2C2C2C] drop-shadow-sm">
               {content.headlineSecondary}
             </h2>
           </div>
 
-          <p className="text-lg md:text-2xl text-[#1B5E20] mb-2 md:mb-4 font-bold font-body text-sticker inline-block">
+          <p className="text-lg md:text-2xl text-[#595959] mb-2 md:mb-4 font-body">
             {content.subheadline}
           </p>
 
           <div className="mb-4 md:mb-8">
-            <p className="text-base md:text-xl text-[#1B5E20] leading-relaxed font-body font-bold text-sticker inline-block">
+            <p className="text-base md:text-xl text-[#595959] leading-relaxed font-body">
               {content.description}
             </p>
           </div>
 
           {/* Email Capture Form */}
           {content.showEmailForm !== false && (
-            <div className="bg-white/95 backdrop-blur-sm rounded-2xl md:rounded-3xl p-4 md:p-8 shadow-2xl border-3 md:border-4 border-[#FFC107] max-w-xl">
-              <h3 className="text-lg md:text-2xl text-[#1B5E20] mb-1 md:mb-2 font-bold font-heading">
-                🌿 {content.ctaTitle}
+            <div className="bg-white/95 backdrop-blur-sm p-4 md:p-8 shadow-lg border border-[#F0EBE0] max-w-xl">
+              <h3 className="text-lg md:text-2xl text-[#2C2C2C] mb-1 md:mb-2 font-serif uppercase tracking-wide">
+                {content.ctaTitle}
               </h3>
-              <p className="text-[#2E7D32] mb-3 md:mb-4 text-xs md:text-base font-body">
+              <p className="text-[#595959] mb-3 md:mb-4 text-xs md:text-base font-body">
                 {content.ctaDescription}
               </p>
 
-              {/* Social Proof */}
-              {content.showSocialProof !== false && (
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="flex -space-x-2">
-                    <div className="w-7 h-7 rounded-full bg-[#FFC107] border-2 border-white flex items-center justify-center text-xs">👨</div>
-                    <div className="w-7 h-7 rounded-full bg-[#4CAF50] border-2 border-white flex items-center justify-center text-xs">👩</div>
-                    <div className="w-7 h-7 rounded-full bg-[#1B5E20] border-2 border-white flex items-center justify-center text-xs">👦</div>
-                  </div>
-                  <span className="text-[#2E7D32] font-semibold text-xs md:text-sm font-body">
-                    {socialProofText}
-                  </span>
-                </div>
-              )}
-
               {success ? (
-                <div className="flex items-center gap-3 bg-[#E8F5E9] rounded-xl p-4 border-2 border-[#4CAF50]">
-                  <div className="w-10 h-10 bg-[#4CAF50] rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="flex items-center gap-3 bg-[#F0EBE0] p-4 border border-[#7A8B6E]">
+                  <div className="w-10 h-10 bg-[#7A8B6E] flex items-center justify-center flex-shrink-0">
                     <Check className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <p className="text-[#1B5E20] font-bold font-heading">
-                      {content.successTitle} 🎉
+                    <p className="text-[#2C2C2C] font-semibold font-serif">
+                      {content.successTitle}
                     </p>
-                    <p className="text-[#2E7D32] text-sm font-body">
+                    <p className="text-[#595959] text-sm font-body">
                       {content.successMessage}
                     </p>
                   </div>
@@ -169,23 +141,23 @@ export function HeroLeft({ content, id }: HeroLeftProps) {
                   <div>
                     <Label
                       htmlFor="hero-email"
-                      className="text-[#1B5E20] font-semibold text-xs md:text-sm mb-1 block font-body"
+                      className="text-[#2C2C2C] font-medium text-xs md:text-sm mb-1 block font-body"
                     >
-                      Email Address
+                      Correo electrónico
                     </Label>
                     <Input
                       id="hero-email"
                       type="email"
-                      placeholder="you@example.com"
+                      placeholder="tu@email.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ email: e.target.value })}
-                      className="border-2 border-[#4CAF50] rounded-xl focus:border-[#1B5E20] focus:ring-[#4CAF50] bg-white h-11 md:h-12 text-base"
+                      className="border border-[#F0EBE0] focus:border-[#9C7C58] focus:ring-[#9C7C58] bg-white h-11 md:h-12 text-base"
                       required
                     />
                   </div>
 
                   {error && (
-                    <div className="bg-red-50 border border-red-200 text-red-700 px-3 py-2 rounded-xl text-sm font-body">
+                    <div className="bg-red-50 border border-red-200 text-red-700 px-3 py-2 text-sm font-body">
                       {error}
                     </div>
                   )}
@@ -193,23 +165,23 @@ export function HeroLeft({ content, id }: HeroLeftProps) {
                   <Button
                     type="submit"
                     disabled={heroSubscribe.isPending}
-                    className="w-full bg-[#FFC107] hover:bg-[#FFD54F] text-[#1B5E20] font-bold py-4 md:py-5 text-base md:text-lg rounded-full transition-all duration-300 hover:shadow-lg hover:scale-[1.02] disabled:opacity-50 border-2 border-[#1B5E20] font-heading"
+                    className="w-full bg-[#9C7C58] hover:bg-[#7A8B6E] text-white font-body py-4 md:py-5 text-base md:text-lg transition-all duration-300 hover:shadow-lg disabled:opacity-50"
                   >
                     {heroSubscribe.isPending ? (
                       <>
                         <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                        Joining...
+                        Enviando...
                       </>
                     ) : (
                       <>
                         <Mail className="mr-2 h-5 w-5" />
-                        {content.ctaButtonText} 🌻
+                        {content.ctaButtonText}
                       </>
                     )}
                   </Button>
 
-                  <p className="text-xs text-[#2E7D32]/70 text-center font-body">
-                    No spam, ever. Unsubscribe anytime.
+                  <p className="text-xs text-[#595959]/70 text-center font-body">
+                    Sin spam. Puedes cancelar en cualquier momento.
                   </p>
                 </form>
               )}
@@ -218,9 +190,8 @@ export function HeroLeft({ content, id }: HeroLeftProps) {
 
           {/* Badge */}
           {content.badgeText && (
-            <div className="mt-4 md:mt-6 inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-3 md:px-4 py-1.5 md:py-2 border border-white/30">
-              <span className="text-[#FFC107] text-base md:text-lg">🌻</span>
-              <span className="text-white font-semibold text-sm md:text-base font-body">
+            <div className="mt-4 md:mt-6 inline-flex items-center gap-2 bg-[#9C7C58]/80 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2">
+              <span className="text-white font-body text-sm md:text-base">
                 {content.badgeText}
               </span>
             </div>
@@ -230,7 +201,7 @@ export function HeroLeft({ content, id }: HeroLeftProps) {
 
       {/* Bottom Wave */}
       <div className="absolute bottom-0 left-0 right-0">
-        <WavyDivider color="#FFFEF5" />
+        <WavyDivider color="#F9F7F2" />
       </div>
     </section>
   );

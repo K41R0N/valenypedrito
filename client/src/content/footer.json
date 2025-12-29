@@ -1,5 +1,5 @@
 {
-  "message": "Nos vemos en Sevilla 🌿",
+  "message": "Nos vemos en Sevilla",
   "showSocialMedia": true,
   "instagramUrl": "https://instagram.com/valenypedrito2026",
   "facebookUrl": "",
@@ -10,5 +10,8 @@
     { "label": "RSVP", "href": "#rsvp" },
     { "label": "Preguntas Frecuentes", "href": "#faq" },
     { "label": "Contacto", "href": "#contacto" }
-  ]
+  ],
+  "newsletterTitle": "RSVP",
+  "newsletterDescription": "Confirma tu asistencia a nuestra boda",
+  "newsletterButtonText": "Confirmar"
 }

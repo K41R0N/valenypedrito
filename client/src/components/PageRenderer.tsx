@@ -52,9 +52,9 @@ export function PageRenderer({ pageData }: PageRendererProps) {
       {/* Skip to main content link for accessibility */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-[#1B5E20] focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFC107]"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-[#9C7C58] focus:text-white focus:px-4 focus:py-2 focus:outline-none"
       >
-        Skip to main content
+        Ir al contenido principal
       </a>
 
       <SEO
@@ -62,7 +62,7 @@ export function PageRenderer({ pageData }: PageRendererProps) {
         description={pageData.seo.metaDescription}
         keywords={pageData.seo.keywords}
         image={pageData.seo.shareImage}
-        url={`https://greenlandvillage.netlify.app/${pageData.slug === "home" ? "" : pageData.slug}`}
+        url={`https://valenypedrito.com/${pageData.slug === "home" ? "" : pageData.slug}`}
       />
 
       <StructuredData

@@ -1,12 +1,11 @@
 {
-  "title": "Schools, Events & Community",
-  "titleEmoji": "🏫",
-  "description": "GreenLand Village offers flexible spaces perfect for school field trips, birthday parties, corporate events, and community gatherings. Let us help you create memorable experiences for your group!",
-  "ctaButtonText": "Contact Us for Partnerships",
+  "title": "Información para Invitados",
+  "description": "Queremos que tu experiencia en nuestra boda sea perfecta. Aquí encontrarás información útil sobre alojamiento, transporte y todo lo que necesitas saber.",
+  "ctaButtonText": "Contáctanos",
   "useCases": [
-    { "emoji": "🎓", "label": "Field Trips" },
-    { "emoji": "🎂", "label": "Birthday Parties" },
-    { "emoji": "🏢", "label": "Corporate Events" },
-    { "emoji": "🎪", "label": "Community Gatherings" }
+    { "emoji": "🏨", "label": "Alojamiento" },
+    { "emoji": "✈️", "label": "Transporte" },
+    { "emoji": "🍽️", "label": "Menú" },
+    { "emoji": "❓", "label": "Preguntas" }
   ]
 }
