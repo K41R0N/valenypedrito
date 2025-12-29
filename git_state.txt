@@ -1,0 +1,18 @@
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   git_status_debug.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	git_state.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+b7a3092 style: resize hero title to be 30% smaller
+7524145 refactor: security fixes and admin refactor
+490c072 refactor: AdminApp refactor, security fixes for auth/proxy, and CMS preview support
+818e467 Merge pull request #7 from K41R0N/claude/remove-greenland-branding-IKwMp
+b678d35 Update pnpm-lock.yaml for Netlify deployment

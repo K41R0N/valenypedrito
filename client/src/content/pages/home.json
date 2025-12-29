@@ -12,31 +12,38 @@
       "type": "luxury-hero",
       "sectionId": "hero",
       "announcement": "¡NOS CASAMOS!",
-      "brideName": "Valentina",
-      "groomName": "Pedro Juan",
+      "brideName": "Valentina Osorio",
+      "groomName": "Pedro Juan Zuleta",
+      "subtitle": "",
       "weddingDate": "2026-09-23",
       "venue": "Hacienda la Soledad",
       "location": "Sevilla, España",
+      "backgroundImage": "/uploads/Sevilla.png",
       "showScrollIndicator": true
     },
     {
       "type": "our-story",
       "sectionId": "historia",
-      "title": "Nuestra Historia",
       "subtitle": "Dos corazones, un camino, amor infinito",
+      "title": "Nuestra Historia",
       "story": "Nuestra historia de amor comenzó con un momento que lo cambió todo. Desde aquel primer encuentro hasta esta hermosa celebración, cada momento ha sido un testimonio de nuestro compromiso de construir una vida juntos.\n\nEste septiembre, los invitamos a ser parte de nuestra mayor aventura.",
+      "imageAlt": "Valen y Pedro",
       "imagePosition": "left",
       "backgroundColor": "warm"
     },
     {
       "type": "luxury-countdown",
+      "subtitle": "",
       "weddingDate": "2026-09-23T18:00:00",
+      "title": "",
       "backgroundColor": "accent"
     },
     {
       "type": "wedding-timeline",
       "sectionId": "cronograma",
+      "subtitle": "",
       "title": "El Gran Día",
+      "backgroundColor": "white",
       "date": "2026-09-23",
       "events": [
         {
@@ -69,13 +76,13 @@
           "description": "Música, baile y celebración hasta el amanecer",
           "icon": "party"
         }
-      ],
-      "backgroundColor": "white"
+      ]
     },
     {
       "type": "venue-section",
       "sectionId": "lugar",
       "title": "El Lugar",
+      "backgroundColor": "warm",
       "venueName": "Hacienda la Soledad",
       "address": "Carretera Sevilla-Carmona, km 12, Sevilla",
       "mapEmbedUrl": "https://www.google.com/maps?q=Hacienda+la+Soledad,+Carmona,+Sevilla&output=embed",
@@ -96,32 +103,36 @@
           "title": "Estacionamiento",
           "content": "Amplio estacionamiento gratuito disponible"
         }
-      ],
-      "backgroundColor": "warm"
+      ]
     },
     {
       "type": "details-cards",
       "sectionId": "detalles",
       "title": "Detalles Importantes",
+      "backgroundColor": "warm",
       "cards": [
         {
           "icon": "dresscode",
           "title": "Código de Vestimenta",
           "content": "Formal / Cocktail\n\nRopa formal pero cómoda para disfrutar de toda la celebración.",
-          "restrictions": ["Blanco", "Marfil", "Beige claro"]
+          "restrictions": [
+            "Blanco",
+            "Marfil",
+            "Beige claro"
+          ]
         },
         {
           "icon": "children",
           "title": "Información Sobre Niños",
           "content": "Queremos que todos disfruten de la celebración.\n\nSi necesitas ayuda organizando el cuidado de los pequeños, contáctanos y te daremos opciones de niñeras de confianza."
         }
-      ],
-      "backgroundColor": "warm"
+      ]
     },
     {
       "type": "luxury-faq",
       "sectionId": "faq",
       "title": "Todo Lo Que Necesitas Saber",
+      "backgroundColor": "white",
       "questions": [
         {
           "question": "¿Dónde puedo alojarme?",
@@ -151,38 +162,37 @@
           "question": "¿Qué tiempo hace en Sevilla en septiembre?",
           "answer": "Septiembre es uno de los mejores meses en Sevilla. Espera temperaturas agradables de 22-30°C, perfectas para una celebración al aire libre."
         }
-      ],
-      "backgroundColor": "white"
+      ]
     },
     {
       "type": "gift-section",
       "sectionId": "regalos",
       "title": "Regalo Especial",
+      "backgroundColor": "white",
       "message": "Vuestra presencia es el mejor regalo que podríamos recibir.\n\nSi deseáis hacernos un obsequio, hemos preparado algunas sugerencias:",
       "registryLinks": [],
       "showHoneymoonFund": true,
-      "honeymoonMessage": "O contribuir a nuestra luna de miel. Contáctanos directamente para esta opción.",
-      "backgroundColor": "white"
+      "honeymoonMessage": "O contribuir a nuestra luna de miel. Contáctanos directamente para esta opción."
     },
     {
       "type": "photo-sharing",
       "sectionId": "fotos",
-      "title": "Comparte Tus Momentos",
       "subtitle": "Queremos ver la boda a través de tus ojos",
+      "title": "Comparte Tus Momentos",
+      "backgroundColor": "subtle",
       "hashtag": "#ValenYPedrito2026",
-      "description": "Tus fotos aparecerán en nuestra galería digital y podremos revivir juntos todos los momentos especiales de este día.",
-      "backgroundColor": "subtle"
+      "description": "Tus fotos aparecerán en nuestra galería digital y podremos revivir juntos todos los momentos especiales de este día."
     },
     {
       "type": "luxury-rsvp",
       "sectionId": "rsvp",
-      "title": "Confirma Tu Asistencia",
       "subtitle": "Por favor ayúdanos a planear este día especial confirmando tu asistencia",
+      "title": "Confirma Tu Asistencia",
+      "backgroundColor": "gradient",
       "deadline": "2026-08-01",
       "formIntro": "¡Hola! Cuéntanos si podrás acompañarnos en nuestra boda.",
       "askDietaryRestrictions": true,
-      "askPlusOne": true,
-      "backgroundColor": "gradient"
+      "askPlusOne": true
     },
     {
       "type": "luxury-footer",
@@ -191,11 +201,26 @@
       "location": "Sevilla, España",
       "hashtag": "#ValenYPedrito2026",
       "quickLinks": [
-        { "label": "Inicio", "href": "#hero" },
-        { "label": "Cronograma", "href": "#cronograma" },
-        { "label": "El Lugar", "href": "#lugar" },
-        { "label": "RSVP", "href": "#rsvp" },
-        { "label": "FAQ", "href": "#faq" }
+        {
+          "label": "Inicio",
+          "href": "#hero"
+        },
+        {
+          "label": "Cronograma",
+          "href": "#cronograma"
+        },
+        {
+          "label": "El Lugar",
+          "href": "#lugar"
+        },
+        {
+          "label": "RSVP",
+          "href": "#rsvp"
+        },
+        {
+          "label": "FAQ",
+          "href": "#faq"
+        }
       ],
       "copyright": "© 2026 Valentina & Pedro Juan",
       "showSocialMedia": true

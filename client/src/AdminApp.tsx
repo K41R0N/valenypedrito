@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import {
   ClerkProvider,
   SignedIn,
@@ -14,25 +14,41 @@ if (!PUBLISHABLE_KEY) {
 }
 
 function CMSLoader() {
-  const loaded = useRef(false);
-
   useEffect(() => {
-    if (loaded.current) return;
-    loaded.current = true;
+    const scriptSrc =
+      "https://unpkg.com/@sveltia/cms@0.125.0/dist/sveltia-cms.js";
+    const configHref = "/admin/config.yml";
+
+    // Check if script already exists
+    if (document.querySelector(`script[src="${scriptSrc}"]`)) {
+      return;
+    }
 
     // Dynamically load Sveltia CMS after authentication
     const script = document.createElement("script");
-    script.src = "https://unpkg.com/@sveltia/cms@0.125.0/dist/sveltia-cms.js";
-    script.integrity = "sha384-hTeYkuMKP/HzXIz1LTS3uJxWMS5VVKqLmDqFQzY4i4ac5vcAFbJlCEppkDCpwrD9";
+    script.src = scriptSrc;
+    script.integrity =
+      "sha384-hTeYkuMKP/HzXIz1LTS3uJxWMS5VVKqLmDqFQzY4i4ac5vcAFbJlCEppkDCpwrD9";
     script.crossOrigin = "anonymous";
     document.body.appendChild(script);
 
-    // Add config link
-    const configLink = document.createElement("link");
-    configLink.href = "/admin/config.yml";
-    configLink.type = "application/yaml";
-    configLink.rel = "cms-config-url";
-    document.head.appendChild(configLink);
+    // Add config link if not present
+    let configLink = document.querySelector(
+      `link[href="${configHref}"]`
+    ) as HTMLLinkElement | null;
+    if (!configLink) {
+      configLink = document.createElement("link");
+      configLink.href = configHref;
+      configLink.type = "application/yaml";
+      configLink.rel = "cms-config-url";
+      document.head.appendChild(configLink);
+    }
+
+    // Cleanup on unmount
+    return () => {
+      script.remove();
+      configLink?.remove();
+    };
   }, []);
 
   return null;
@@ -42,72 +58,17 @@ function AdminGate() {
   return (
     <>
       <SignedOut>
-        <div
-          style={{
-            minHeight: "100vh",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            backgroundColor: "#F9F7F2",
-            fontFamily: "'Lato', sans-serif",
-          }}
-        >
-          <div
-            style={{
-              backgroundColor: "white",
-              padding: "3rem",
-              borderRadius: "0",
-              border: "1px solid rgba(156, 124, 88, 0.2)",
-              textAlign: "center",
-              maxWidth: "400px",
-              width: "90%",
-            }}
-          >
-            <h1
-              style={{
-                fontFamily: "'Playfair Display', serif",
-                fontSize: "1.5rem",
-                color: "#2C2C2C",
-                marginBottom: "0.5rem",
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-              }}
-            >
+        <div className="min-h-screen flex flex-col items-center justify-center bg-[#F9F7F2] font-body">
+          <div className="bg-white p-12 border border-[#9C7C58]/20 text-center max-w-[400px] w-[90%]">
+            <h1 className="font-serif text-2xl text-[#2C2C2C] mb-2 uppercase tracking-widest">
               Panel de Administración
             </h1>
-            <p
-              style={{
-                color: "#595959",
-                marginBottom: "2rem",
-                fontSize: "0.9rem",
-              }}
-            >
-              Boda Valentina & Pedro Juan
+            <p className="text-[#595959] mb-8 text-sm">
+              Boda Valentina &amp; Pedro Juan
             </p>
-            <div
-              style={{
-                width: "60px",
-                height: "1px",
-                backgroundColor: "rgba(156, 124, 88, 0.4)",
-                margin: "0 auto 2rem",
-              }}
-            />
+            <div className="w-[60px] h-px bg-[#9C7C58]/40 mx-auto mb-8" />
             <SignInButton mode="modal">
-              <button
-                style={{
-                  backgroundColor: "#9C7C58",
-                  color: "white",
-                  border: "none",
-                  padding: "0.875rem 2rem",
-                  fontSize: "0.875rem",
-                  fontFamily: "'Lato', sans-serif",
-                  cursor: "pointer",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.1em",
-                  width: "100%",
-                }}
-              >
+              <button className="bg-[#9C7C58] text-white border-none py-3.5 px-8 text-sm font-body cursor-pointer uppercase tracking-widest w-full hover:bg-[#7A8B6E] transition-colors">
                 Iniciar Sesión con Google
               </button>
             </SignInButton>
@@ -117,14 +78,7 @@ function AdminGate() {
 
       <SignedIn>
         {/* User button for sign out */}
-        <div
-          style={{
-            position: "fixed",
-            top: "10px",
-            right: "10px",
-            zIndex: 9999,
-          }}
-        >
+        <div className="fixed top-2.5 right-2.5 z-[9999]">
           <UserButton afterSignOutUrl="/admin" />
         </div>
         {/* Load Sveltia CMS */}
