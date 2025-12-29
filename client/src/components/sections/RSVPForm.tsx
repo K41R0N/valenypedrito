@@ -110,7 +110,40 @@ export function RSVPForm({ content, id }: RSVPFormProps) {
   }
 
   return (
-    <section id={id} className={`py-16 md:py-24 ${bgColor}`}>
+    <section id={id} className={`relative py-16 md:py-24 ${bgColor} overflow-hidden`}>
+      {/* Large decorative champagne flutes - Left side background */}
+      <div
+        className="absolute left-0 top-1/2 w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 pointer-events-none opacity-15"
+        style={{
+          backgroundImage: `url(${getAsset("iconChampagne")})`,
+          backgroundSize: "contain",
+          backgroundRepeat: "no-repeat",
+          transform: "translateX(-30%) translateY(-50%)"
+        }}
+      />
+
+      {/* Large decorative champagne flutes - Right side background */}
+      <div
+        className="absolute right-0 top-1/2 w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 pointer-events-none opacity-15"
+        style={{
+          backgroundImage: `url(${getAsset("iconChampagne")})`,
+          backgroundSize: "contain",
+          backgroundRepeat: "no-repeat",
+          transform: "translateX(30%) translateY(-50%) scaleX(-1)"
+        }}
+      />
+
+      {/* Decorative Azulejo - Bottom Right Corner (off-center on mobile) */}
+      <div
+        className="absolute bottom-0 right-0 w-32 h-32 md:w-40 md:h-40 pointer-events-none opacity-10"
+        style={{
+          backgroundImage: `url(${getAsset("azulejoTile")})`,
+          backgroundSize: "contain",
+          backgroundRepeat: "no-repeat",
+          transform: "translate(20%, 20%)"
+        }}
+      />
+
       {/* Hidden Netlify Form */}
       <form name="rsvp" data-netlify="true" netlify-honeypot="bot-field" hidden>
         <input type="text" name="name" />
@@ -125,7 +158,7 @@ export function RSVPForm({ content, id }: RSVPFormProps) {
         <textarea name="message" />
       </form>
 
-      <div className="container">
+      <div className="container relative z-10">
         <div className="max-w-2xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
