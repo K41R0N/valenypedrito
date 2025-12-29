@@ -136,6 +136,11 @@
     @apply bg-background text-foreground;
     font-family: 'Lato', sans-serif;
     font-weight: 300;
+    /* Subtle paper texture overlay for elegant stationery feel */
+    background-image: url('/images/watercolor/paper-texture.png');
+    background-size: 400px;
+    background-blend-mode: soft-light;
+    background-attachment: fixed;
   }
 
   h1,
@@ -193,6 +198,88 @@
     height: 1px;
     background-color: var(--sevilla-bronze);
     opacity: 0.3;
+  }
+
+  /* Decorative corner azulejo tiles */
+  .azulejo-corners {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .azulejo-corners::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 100px;
+    height: 100px;
+    background-image: url('/images/watercolor/azulejo-tile.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.12;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .azulejo-corners::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    width: 100px;
+    height: 100px;
+    background-image: url('/images/watercolor/azulejo-tile.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.12;
+    transform: rotate(180deg);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Orange branch top decoration */
+  .branch-top-decoration {
+    position: relative;
+  }
+
+  .branch-top-decoration::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 150px;
+    background-image: url('/images/watercolor/orange-branch.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.25;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Olive branch separator */
+  .olive-separator {
+    position: relative;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .olive-separator::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 80px;
+    background-image: url('/images/watercolor/olive-branch.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.2;
+    pointer-events: none;
   }
 
   @keyframes slideInLeft {

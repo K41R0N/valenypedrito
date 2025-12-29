@@ -68,14 +68,24 @@ export function WeddingHero({ content, id }: WeddingHeroProps) {
         </div>
       </div>
 
-      {/* Seville Skyline Illustration */}
+      {/* Seville Skyline Illustration - fades into cream background */}
       {content.skylinePosition === "bottom" && (
         <div className="absolute bottom-0 left-0 right-0 pointer-events-none z-0">
+          {/* Gradient fade from transparent to cream at the top of the skyline */}
+          <div
+            className="absolute top-0 left-0 right-0 h-24 z-10"
+            style={{
+              background: 'linear-gradient(to bottom, var(--antique-cream) 0%, transparent 100%)'
+            }}
+          />
           <img
             src={getAsset("skyline")}
-            alt="Seville Skyline"
-            className="w-full h-auto watercolor-asset"
-            style={{ opacity: 0.9 }}
+            alt="Horizonte de Sevilla"
+            className="w-full h-auto watercolor-asset relative"
+            style={{
+              maskImage: 'linear-gradient(to top, black 70%, transparent 100%)',
+              WebkitMaskImage: 'linear-gradient(to top, black 70%, transparent 100%)'
+            }}
           />
         </div>
       )}
