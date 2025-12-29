@@ -102,7 +102,7 @@ export interface CTASectionContent {
     emoji: string;
     label: string;
   }>;
-  backgroundColor?: "dark-green" | "green" | "yellow";
+  backgroundColor?: "dark-green" | "green" | "yellow" | "cream" | "beige" | "bronze" | "sage";
 }
 
 export interface EmailSignupContent {
@@ -264,28 +264,33 @@ export interface RegistryContent {
 // Section Wrapper Types
 // ============================================================================
 
+// Base section properties shared by all sections
+interface SectionBase {
+  sectionId?: string; // Optional custom anchor ID for the section
+}
+
 // Flat section types - fields are at the same level as `type`
 // This matches Decap CMS variable types output format
 export type SectionType =
-  | ({ type: "hero-left" } & HeroLeftContent)
-  | ({ type: "hero-centered" } & HeroCenteredContent)
-  | ({ type: "content-image" } & ContentImageContent)
-  | ({ type: "card-grid" } & CardGridContent)
-  | ({ type: "value-cards" } & ValueCardsContent)
-  | ({ type: "cta-section" } & CTASectionContent)
-  | ({ type: "email-signup" } & EmailSignupContent)
-  | ({ type: "event-details" } & EventDetailsContent)
-  | ({ type: "rich-text" } & RichTextContent)
+  | ({ type: "hero-left" } & HeroLeftContent & SectionBase)
+  | ({ type: "hero-centered" } & HeroCenteredContent & SectionBase)
+  | ({ type: "content-image" } & ContentImageContent & SectionBase)
+  | ({ type: "card-grid" } & CardGridContent & SectionBase)
+  | ({ type: "value-cards" } & ValueCardsContent & SectionBase)
+  | ({ type: "cta-section" } & CTASectionContent & SectionBase)
+  | ({ type: "email-signup" } & EmailSignupContent & SectionBase)
+  | ({ type: "event-details" } & EventDetailsContent & SectionBase)
+  | ({ type: "rich-text" } & RichTextContent & SectionBase)
   // Wedding sections
-  | ({ type: "wedding-hero" } & WeddingHeroContent)
-  | ({ type: "countdown" } & CountdownContent)
-  | ({ type: "event-details" } & EventDetailsWeddingContent)
-  | ({ type: "rsvp-form" } & RSVPFormContent)
-  | ({ type: "guest-resources" } & GuestResourcesContent)
-  | ({ type: "faq" } & FAQContent)
-  | ({ type: "events-calendar" } & EventsCalendarContent)
-  | ({ type: "info-box" } & InfoBoxContent)
-  | ({ type: "registry" } & RegistryContent);
+  | ({ type: "wedding-hero" } & WeddingHeroContent & SectionBase)
+  | ({ type: "countdown" } & CountdownContent & SectionBase)
+  | ({ type: "event-details-wedding" } & EventDetailsWeddingContent & SectionBase)
+  | ({ type: "rsvp-form" } & RSVPFormContent & SectionBase)
+  | ({ type: "guest-resources" } & GuestResourcesContent & SectionBase)
+  | ({ type: "faq" } & FAQContent & SectionBase)
+  | ({ type: "events-calendar" } & EventsCalendarContent & SectionBase)
+  | ({ type: "info-box" } & InfoBoxContent & SectionBase)
+  | ({ type: "registry" } & RegistryContent & SectionBase);
 
 // ============================================================================
 // Page Structure

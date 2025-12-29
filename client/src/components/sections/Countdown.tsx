@@ -1,13 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import { getAsset } from "@/lib/assets";
 import type { CountdownContent } from "./types";
-import { parseISO, differenceInDays, differenceInHours, differenceInMinutes, differenceInSeconds } from "date-fns";
+import { parseISO, differenceInDays, differenceInHours, differenceInMinutes, differenceInSeconds, format } from "date-fns";
+import { es } from "date-fns/locale";
 import {
   motion,
   useScroll,
   useTransform,
-  ScrollReveal,
-  Floating,
   useInView
 } from "@/lib/animations";
 
@@ -23,89 +22,65 @@ interface TimeLeft {
   seconds: number;
 }
 
-// Flip Card Component for animated numbers
-function FlipCard({ value, label, index }: { value: number; label: string; index: number }) {
-  const [displayValue, setDisplayValue] = useState(value);
-  const [isFlipping, setIsFlipping] = useState(false);
-  const prevValue = useRef(value);
-  const cardRef = useRef(null);
-  const isInView = useInView(cardRef, { once: true });
-
-  useEffect(() => {
-    if (prevValue.current !== value) {
-      setIsFlipping(true);
-      const timer = setTimeout(() => {
-        setDisplayValue(value);
-        setIsFlipping(false);
-      }, 300);
-      prevValue.current = value;
-      return () => clearTimeout(timer);
-    }
-  }, [value]);
+// Individual time unit with unique positioning
+function TimeUnit({
+  value,
+  label,
+  position,
+  delay
+}: {
+  value: number;
+  label: string;
+  position: { x: string; y: string; rotate: number };
+  delay: number;
+}) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.5 });
 
   return (
     <motion.div
-      ref={cardRef}
-      className="flex flex-col items-center"
-      initial={{ opacity: 0, y: 50, rotateX: -15 }}
-      animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
+      ref={ref}
+      className="absolute flex flex-col items-center"
+      style={{
+        left: position.x,
+        top: position.y,
+      }}
+      initial={{ opacity: 0, scale: 0, rotate: position.rotate - 20 }}
+      animate={isInView ? { opacity: 1, scale: 1, rotate: position.rotate } : {}}
       transition={{
-        duration: 0.8,
-        delay: index * 0.15,
+        duration: 1,
+        delay,
         ease: [0.22, 1, 0.36, 1]
       }}
     >
-      <div className="relative perspective-1000">
-        {/* Card Container */}
-        <motion.div
-          className="relative w-24 h-28 md:w-32 md:h-36 lg:w-40 lg:h-44"
-          animate={isFlipping ? { rotateX: [0, -90, 0] } : {}}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
-          style={{ transformStyle: "preserve-3d" }}
-        >
-          {/* Card Background */}
-          <div className="absolute inset-0 bg-white border border-[var(--sevilla-bronze)]/30 shadow-lg overflow-hidden">
-            {/* Top half */}
-            <div className="absolute inset-0 bg-gradient-to-b from-white to-[var(--warm-beige)]/50" />
-
-            {/* Center line */}
-            <div className="absolute left-0 right-0 top-1/2 h-px bg-[var(--sevilla-bronze)]/20 -translate-y-1/2 z-10" />
-
-            {/* Side notches */}
-            <div className="absolute left-0 top-1/2 w-2 h-4 bg-[var(--antique-cream)] -translate-y-1/2 rounded-r-full" />
-            <div className="absolute right-0 top-1/2 w-2 h-4 bg-[var(--antique-cream)] -translate-y-1/2 rounded-l-full" />
-
-            {/* Number */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <motion.span
-                className="font-serif text-5xl md:text-6xl lg:text-7xl text-[var(--soft-charcoal)]"
-                key={displayValue}
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.3 }}
-              >
-                {String(displayValue).padStart(2, "0")}
-              </motion.span>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Decorative corners */}
-        <div className="absolute -top-1 -left-1 w-3 h-3 border-t-2 border-l-2 border-[var(--sevilla-bronze)]/40" />
-        <div className="absolute -top-1 -right-1 w-3 h-3 border-t-2 border-r-2 border-[var(--sevilla-bronze)]/40" />
-        <div className="absolute -bottom-1 -left-1 w-3 h-3 border-b-2 border-l-2 border-[var(--sevilla-bronze)]/40" />
-        <div className="absolute -bottom-1 -right-1 w-3 h-3 border-b-2 border-r-2 border-[var(--sevilla-bronze)]/40" />
-      </div>
-
-      {/* Label */}
-      <motion.p
-        className="font-serif text-sm md:text-base text-[var(--stone-grey)] mt-4 tracking-[0.2em]"
-        initial={{ opacity: 0 }}
-        animate={isInView ? { opacity: 1 } : {}}
-        transition={{ duration: 0.6, delay: index * 0.15 + 0.3 }}
+      <motion.div
+        className="relative"
+        whileHover={{ scale: 1.1 }}
+        transition={{ type: "spring", stiffness: 300 }}
       >
-        {label}
-      </motion.p>
+        {/* Outer ring */}
+        <motion.div
+          className="absolute inset-0 border border-[var(--sevilla-bronze)]/20 rounded-full scale-125"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+        />
+
+        {/* Main number container */}
+        <div className="w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 bg-white/80 backdrop-blur-sm border border-[var(--sevilla-bronze)]/30 rounded-full flex flex-col items-center justify-center shadow-lg">
+          <motion.span
+            className="font-serif text-2xl md:text-4xl lg:text-5xl text-[var(--soft-charcoal)] leading-none"
+            key={value}
+            initial={{ y: 10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.3 }}
+          >
+            {String(value).padStart(2, "0")}
+          </motion.span>
+          <span className="font-serif text-[8px] md:text-[10px] tracking-[0.25em] text-[var(--stone-grey)] uppercase mt-1">
+            {label}
+          </span>
+        </div>
+      </motion.div>
     </motion.div>
   );
 }
@@ -113,15 +88,17 @@ function FlipCard({ value, label, index }: { value: number; label: string; index
 export function Countdown({ content, id }: CountdownProps) {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const sectionRef = useRef<HTMLElement>(null);
+  const centerRef = useRef(null);
+  const isInView = useInView(centerRef, { once: true, amount: 0.3 });
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]
   });
 
-  // Parallax effects
-  const leftBranchX = useTransform(scrollYProgress, [0, 1], [-50, 50]);
-  const rightBranchX = useTransform(scrollYProgress, [0, 1], [50, -50]);
-  const backgroundY = useTransform(scrollYProgress, [0, 1], [0, -50]);
+  // Parallax and rotation effects
+  const rotate = useTransform(scrollYProgress, [0, 1], [0, 30]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 1, 0.95]);
 
   useEffect(() => {
     const calculateTimeLeft = () => {
@@ -151,137 +128,184 @@ export function Countdown({ content, id }: CountdownProps) {
     white: "bg-white",
   };
 
-  const bgColor = bgColorMap[content.backgroundColor || "cream"];
+  const bgColor = bgColorMap[content.backgroundColor || "beige"];
 
-  const timeUnits = [
-    { value: timeLeft.days, label: "DÍAS" },
-    { value: timeLeft.hours, label: "HORAS" },
-    { value: timeLeft.minutes, label: "MINUTOS" },
-    { value: timeLeft.seconds, label: "SEGUNDOS" },
-  ];
+  // Positions for the orbital layout - responsive
+  const positions = {
+    days: { x: "10%", y: "20%", rotate: -5 },
+    hours: { x: "70%", y: "15%", rotate: 8 },
+    minutes: { x: "5%", y: "65%", rotate: 5 },
+    seconds: { x: "75%", y: "70%", rotate: -3 },
+  };
 
   return (
-    <section ref={sectionRef} id={id} className={`relative py-24 md:py-32 ${bgColor} overflow-hidden`}>
-      {/* Animated Background Pattern */}
-      <motion.div
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+    <section ref={sectionRef} id={id} className={`relative py-32 md:py-48 ${bgColor} overflow-hidden`}>
+      {/* Subtle background pattern */}
+      <div
+        className="absolute inset-0 opacity-[0.02]"
         style={{
           backgroundImage: `url(${getAsset("azulejoTile")})`,
-          backgroundSize: "200px",
-          y: backgroundY
+          backgroundSize: "300px"
         }}
       />
 
-      {/* Decorative Orange Branch - Left (Parallax) */}
-      <Floating duration={10} distance={15}>
-        <motion.div
-          className="absolute left-0 top-1/2 -translate-y-1/2 w-48 h-48 md:w-72 md:h-72 lg:w-96 lg:h-96 pointer-events-none opacity-20"
-          style={{
-            backgroundImage: `url(${getAsset("orangeBranch")})`,
-            backgroundSize: "contain",
-            backgroundRepeat: "no-repeat",
-            x: leftBranchX,
-            rotate: -15
-          }}
+      {/* Connecting lines between elements - decorative */}
+      <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-10 hidden lg:block">
+        <motion.path
+          d="M 200 200 Q 400 150, 600 250 T 1000 200"
+          stroke="var(--sevilla-bronze)"
+          strokeWidth="1"
+          fill="none"
+          strokeDasharray="5,5"
+          initial={{ pathLength: 0 }}
+          animate={isInView ? { pathLength: 1 } : {}}
+          transition={{ duration: 2, delay: 0.5 }}
         />
-      </Floating>
-
-      {/* Decorative Orange Branch - Right (Parallax) */}
-      <Floating duration={8} distance={20} delay={1}>
-        <motion.div
-          className="absolute right-0 top-1/2 -translate-y-1/2 w-48 h-48 md:w-72 md:h-72 lg:w-96 lg:h-96 pointer-events-none opacity-20"
-          style={{
-            backgroundImage: `url(${getAsset("orangeBranch")})`,
-            backgroundSize: "contain",
-            backgroundRepeat: "no-repeat",
-            x: rightBranchX,
-            scaleX: -1,
-            rotate: 15
-          }}
+        <motion.path
+          d="M 100 400 Q 300 500, 500 350 T 900 450"
+          stroke="var(--sevilla-bronze)"
+          strokeWidth="1"
+          fill="none"
+          strokeDasharray="5,5"
+          initial={{ pathLength: 0 }}
+          animate={isInView ? { pathLength: 1 } : {}}
+          transition={{ duration: 2, delay: 0.8 }}
         />
-      </Floating>
+      </svg>
 
       <div className="container relative z-10">
-        <div className="max-w-5xl mx-auto text-center">
-          {/* Title with reveal animation */}
-          <ScrollReveal>
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-4 text-[var(--soft-charcoal)]">
-              {content.title}
-            </h2>
-          </ScrollReveal>
+        {/* Header */}
+        <motion.div
+          className="text-center mb-8 md:mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+        >
+          <motion.span
+            className="font-serif text-xs tracking-[0.5em] text-[var(--stone-grey)] uppercase"
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Cuenta regresiva
+          </motion.span>
+        </motion.div>
 
-          <ScrollReveal delay={0.2}>
-            <p className="font-script text-4xl md:text-5xl lg:text-6xl text-[var(--sevilla-bronze)] mb-12">
-              el gran día
-            </p>
-          </ScrollReveal>
+        {/* Main orbital container */}
+        <div className="relative h-[500px] md:h-[600px] lg:h-[700px] max-w-5xl mx-auto">
+          {/* Orbital time units */}
+          <TimeUnit value={timeLeft.days} label="días" position={positions.days} delay={0.3} />
+          <TimeUnit value={timeLeft.hours} label="horas" position={positions.hours} delay={0.5} />
+          <TimeUnit value={timeLeft.minutes} label="minutos" position={positions.minutes} delay={0.7} />
+          <TimeUnit value={timeLeft.seconds} label="segundos" position={positions.seconds} delay={0.9} />
 
-          {/* Decorative divider */}
-          <ScrollReveal delay={0.3}>
-            <div className="flex items-center justify-center gap-6 mb-16">
+          {/* Central focal point */}
+          <motion.div
+            ref={centerRef}
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+            style={{ rotate, scale }}
+          >
+            {/* Outer decorative rings */}
+            <motion.div
+              className="absolute inset-0 border border-[var(--sevilla-bronze)]/10 rounded-full scale-[2]"
+              animate={{ rotate: -360 }}
+              transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+            />
+            <motion.div
+              className="absolute inset-0 border border-dashed border-[var(--sevilla-bronze)]/20 rounded-full scale-[1.5]"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+            />
+
+            {/* Main center piece */}
+            <motion.div
+              className="relative w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 bg-white border border-[var(--sevilla-bronze)]/30 rounded-full flex flex-col items-center justify-center shadow-2xl"
+              initial={{ scale: 0, rotate: -180 }}
+              animate={isInView ? { scale: 1, rotate: 0 } : {}}
+              transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {/* Inner decorative ring */}
+              <div className="absolute inset-4 border border-[var(--sevilla-bronze)]/20 rounded-full" />
+
+              {/* Date display */}
               <motion.div
-                className="h-px w-16 md:w-24 bg-[var(--sevilla-bronze)]/40"
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-                style={{ transformOrigin: "right" }}
-              />
-              <Floating duration={4} distance={5}>
+                className="text-center relative z-10"
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : {}}
+                transition={{ duration: 0.8, delay: 0.8 }}
+              >
+                <span className="font-script text-4xl md:text-5xl lg:text-6xl text-[var(--sevilla-bronze)] block">
+                  {format(parseISO(content.weddingDate), "d")}
+                </span>
+                <span className="font-serif text-sm md:text-base tracking-[0.3em] text-[var(--stone-grey)] uppercase block mt-1">
+                  {format(parseISO(content.weddingDate), "MMMM", { locale: es })}
+                </span>
+                <span className="font-serif text-lg md:text-xl text-[var(--soft-charcoal)] block mt-1">
+                  {format(parseISO(content.weddingDate), "yyyy")}
+                </span>
+              </motion.div>
+
+              {/* Decorative azulejo accent */}
+              <motion.div
+                className="absolute -bottom-6 left-1/2 -translate-x-1/2"
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 0.5, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 1.2 }}
+              >
                 <img
                   src={getAsset("azulejoTile")}
                   alt=""
-                  className="w-8 h-8 md:w-10 md:h-10 opacity-50"
+                  className="w-10 h-10 md:w-12 md:h-12"
                 />
-              </Floating>
-              <motion.div
-                className="h-px w-16 md:w-24 bg-[var(--sevilla-bronze)]/40"
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-                style={{ transformOrigin: "left" }}
-              />
-            </div>
-          </ScrollReveal>
+              </motion.div>
+            </motion.div>
+          </motion.div>
 
-          {/* Countdown Cards */}
-          <div className="flex flex-wrap justify-center gap-4 md:gap-6 lg:gap-8 mb-16">
-            {timeUnits.map((unit, index) => (
-              <FlipCard
-                key={unit.label}
-                value={unit.value}
-                label={unit.label}
-                index={index}
-              />
-            ))}
-          </div>
+          {/* Floating decorative elements */}
+          <motion.div
+            className="absolute top-[10%] left-[45%] opacity-20 hidden lg:block"
+            animate={{
+              y: [0, -20, 0],
+              rotate: [0, 10, 0]
+            }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <img src={getAsset("oliveBranch")} alt="" className="w-24 h-24 watercolor-asset" />
+          </motion.div>
 
-          {/* Bottom decorative element */}
-          <ScrollReveal delay={0.5} direction="up">
-            <div className="flex justify-center">
-              <Floating duration={6} distance={10}>
-                <img
-                  src={getAsset("oliveBranch")}
-                  alt=""
-                  className="h-16 md:h-20 lg:h-24 watercolor-asset opacity-40"
-                />
-              </Floating>
-            </div>
-          </ScrollReveal>
+          <motion.div
+            className="absolute bottom-[5%] right-[30%] opacity-25 hidden lg:block"
+            animate={{
+              y: [0, 15, 0],
+              rotate: [0, -8, 0]
+            }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          >
+            <img src={getAsset("orangeBranch")} alt="" className="w-28 h-28 watercolor-asset" />
+          </motion.div>
         </div>
+
+        {/* Bottom text */}
+        <motion.p
+          className="text-center font-script text-2xl md:text-3xl lg:text-4xl text-[var(--sevilla-bronze)] mt-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 1.4 }}
+        >
+          hasta el gran día
+        </motion.p>
       </div>
 
-      {/* Decorative top/bottom lines */}
+      {/* Decorative borders */}
       <motion.div
-        className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--sevilla-bronze)]/30 to-transparent"
+        className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--sevilla-bronze)]/20 to-transparent"
         initial={{ scaleX: 0 }}
         whileInView={{ scaleX: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 1.5 }}
       />
       <motion.div
-        className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--sevilla-bronze)]/30 to-transparent"
+        className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--sevilla-bronze)]/20 to-transparent"
         initial={{ scaleX: 0 }}
         whileInView={{ scaleX: 1 }}
         viewport={{ once: true }}
