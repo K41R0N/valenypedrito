@@ -85,6 +85,8 @@
       "backgroundColor": "warm",
       "venueName": "Hacienda la Soledad",
       "address": "Carretera Sevilla-Carmona, km 12, Sevilla",
+      "mapLatitude": "37.4712",
+      "mapLongitude": "-5.6405",
       "mapUrl": "https://maps.google.com/?q=37.4712,-5.6405",
       "infoCards": [
         {
