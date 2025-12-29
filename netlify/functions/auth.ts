@@ -51,7 +51,7 @@ const handler: Handler = async (event: HandlerEvent, _context: HandlerContext) =
           <title>Authorization Complete</title>
           <script>
             (function() {
-              const token = "${token}";
+              const token = ${JSON.stringify(token)};
               const provider = "github";
 
               // Send message to parent window (Sveltia CMS)

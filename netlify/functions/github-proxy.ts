@@ -9,9 +9,12 @@ const GITHUB_API_BASE = "https://api.github.com";
 const handler: Handler = async (event: HandlerEvent, _context: HandlerContext) => {
   const { httpMethod, body, queryStringParameters } = event;
 
-  // CORS headers
+  // Get allowed origin from environment (URL is auto-set by Netlify)
+  const allowedOrigin = process.env.URL || "https://valenypedrito.netlify.app";
+
+  // CORS headers - restricted to site origin
   const headers = {
-    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Origin": allowedOrigin,
     "Access-Control-Allow-Headers": "Content-Type, Authorization",
     "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
     "Content-Type": "application/json",
@@ -42,7 +45,7 @@ const handler: Handler = async (event: HandlerEvent, _context: HandlerContext) =
     let githubBody = body;
 
     switch (action) {
-      case "auth":
+      case "auth": {
         // Return a fake auth response - Clerk handles real auth
         return {
           statusCode: 200,
@@ -54,31 +57,36 @@ const handler: Handler = async (event: HandlerEvent, _context: HandlerContext) =
             name: "Admin"
           }),
         };
+      }
 
-      case "user":
+      case "user": {
         // Return user info for the token
         githubUrl = `${GITHUB_API_BASE}/user`;
         break;
+      }
 
-      case "repo":
+      case "repo": {
         // Get repo info
         githubUrl = `${GITHUB_API_BASE}/repos/${repo}`;
         break;
+      }
 
-      case "branch":
+      case "branch": {
         // Get branch info
         const branch = queryStringParameters?.branch || "main";
         githubUrl = `${GITHUB_API_BASE}/repos/${repo}/branches/${branch}`;
         break;
+      }
 
-      case "tree":
+      case "tree": {
         // Get tree
         const sha = queryStringParameters?.sha || "main";
         const recursive = queryStringParameters?.recursive === "true";
         githubUrl = `${GITHUB_API_BASE}/repos/${repo}/git/trees/${sha}${recursive ? "?recursive=1" : ""}`;
         break;
+      }
 
-      case "blob":
+      case "blob": {
         // Get or create blob
         const blobSha = queryStringParameters?.sha;
         if (httpMethod === "GET" && blobSha) {
@@ -89,20 +97,23 @@ const handler: Handler = async (event: HandlerEvent, _context: HandlerContext) =
           return { statusCode: 400, headers, body: JSON.stringify({ error: "Invalid blob request" }) };
         }
         break;
+      }
 
-      case "contents":
+      case "contents": {
         // Get or update file contents
         const path = queryStringParameters?.path || "";
         const ref = queryStringParameters?.ref || "main";
         githubUrl = `${GITHUB_API_BASE}/repos/${repo}/contents/${path}?ref=${ref}`;
         break;
+      }
 
-      case "commit":
+      case "commit": {
         // Create a commit
         githubUrl = `${GITHUB_API_BASE}/repos/${repo}/git/commits`;
         break;
+      }
 
-      case "ref":
+      case "ref": {
         // Update a ref (branch pointer)
         const refName = queryStringParameters?.ref || "heads/main";
         if (httpMethod === "GET") {
@@ -111,18 +122,21 @@ const handler: Handler = async (event: HandlerEvent, _context: HandlerContext) =
           githubUrl = `${GITHUB_API_BASE}/repos/${repo}/git/refs/${refName}`;
         }
         break;
+      }
 
-      case "createTree":
+      case "createTree": {
         // Create a new tree
         githubUrl = `${GITHUB_API_BASE}/repos/${repo}/git/trees`;
         break;
+      }
 
-      default:
+      default: {
         return {
           statusCode: 400,
           headers,
           body: JSON.stringify({ error: `Unknown action: ${action}` }),
         };
+      }
     }
 
     // Make request to GitHub API

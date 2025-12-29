@@ -5,10 +5,9 @@ import headerContent from "@/content/header.json";
 
 interface HeaderProps {
   onJoinClick: () => void;
-  onPartnershipClick: () => void;
 }
 
-export function Header({ onJoinClick, onPartnershipClick }: HeaderProps) {
+export function Header({ onJoinClick }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -21,10 +20,8 @@ export function Header({ onJoinClick, onPartnershipClick }: HeaderProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavClick = (item: (typeof headerContent.navItems)[0] & { isModal?: boolean }) => {
-    if (item.isModal) {
-      onPartnershipClick();
-    } else if (item.href) {
+  const handleNavClick = (item: (typeof headerContent.navItems)[0]) => {
+    if (item.href) {
       document.querySelector(item.href)?.scrollIntoView({ behavior: "smooth" });
     }
     setIsMobileMenuOpen(false);

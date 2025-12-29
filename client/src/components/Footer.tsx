@@ -7,10 +7,9 @@ import settingsContent from "@/content/settings.json";
 
 interface FooterProps {
   onNewsletterClick?: () => void;
-  onPartnershipClick?: () => void;
 }
 
-export function Footer({ onNewsletterClick, onPartnershipClick }: FooterProps) {
+export function Footer({ onNewsletterClick }: FooterProps) {
   const scrollToEmailForm = () => {
     if (onNewsletterClick) {
       onNewsletterClick();
@@ -49,21 +48,12 @@ export function Footer({ onNewsletterClick, onPartnershipClick }: FooterProps) {
             <ul className="space-y-2 font-body">
               {footerContent.quickLinks.map((link, index) => (
                 <li key={index}>
-                  {link.href === "#partnerships" && onPartnershipClick ? (
-                    <button
-                      onClick={onPartnershipClick}
-                      className="text-white/80 hover:text-[#D6966C] transition-colors"
-                    >
-                      {link.label}
-                    </button>
-                  ) : (
-                    <a
-                      href={link.href}
-                      className="text-white/80 hover:text-[#D6966C] transition-colors"
-                    >
-                      {link.label}
-                    </a>
-                  )}
+                  <a
+                    href={link.href}
+                    className="text-white/80 hover:text-[#D6966C] transition-colors"
+                  >
+                    {link.label}
+                  </a>
                 </li>
               ))}
             </ul>
