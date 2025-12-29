@@ -4,11 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Loader2, Check, Mail } from "lucide-react";
 import { WavyDivider } from "@/components/illustrations";
-import { trpc } from "@/lib/trpc";
 import type { HeroLeftContent } from "./types";
-
-// Import settings
-import settingsContent from "@/content/settings.json";
 
 interface HeroLeftProps {
   content: HeroLeftContent;
@@ -19,9 +15,8 @@ export function HeroLeft({ content, id }: HeroLeftProps) {
   const [formData, setFormData] = useState({ email: "" });
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const timeoutRef = useRef<number | null>(null);
-
-  const heroSubscribe = trpc.newsletter.subscribeHero.useMutation();
 
   // Cleanup timeout on unmount
   useEffect(() => {
@@ -42,8 +37,21 @@ export function HeroLeft({ content, id }: HeroLeftProps) {
       return;
     }
 
+    setIsSubmitting(true);
     try {
-      await heroSubscribe.mutateAsync({ email: formData.email });
+      // Submit to Netlify Forms
+      const netlifyFormData = new FormData();
+      netlifyFormData.append("form-name", "hero-signup");
+      netlifyFormData.append("email", formData.email);
+
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(netlifyFormData as unknown as Record<string, string>).toString(),
+      });
+
+      if (!response.ok) throw new Error("Form submission failed");
+
       setSuccess(true);
       setFormData({ email: "" });
       // Clear any existing timeout before setting a new one
@@ -58,6 +66,8 @@ export function HeroLeft({ content, id }: HeroLeftProps) {
       setError(
         err instanceof Error ? err.message : "Algo salió mal. Por favor intenta de nuevo."
       );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -164,10 +174,10 @@ export function HeroLeft({ content, id }: HeroLeftProps) {
 
                   <Button
                     type="submit"
-                    disabled={heroSubscribe.isPending}
+                    disabled={isSubmitting}
                     className="w-full bg-[#9C7C58] hover:bg-[#7A8B6E] text-white font-body py-4 md:py-5 text-base md:text-lg transition-all duration-300 hover:shadow-lg disabled:opacity-50"
                   >
-                    {heroSubscribe.isPending ? (
+                    {isSubmitting ? (
                       <>
                         <Loader2 className="mr-2 h-5 w-5 animate-spin" />
                         Enviando...

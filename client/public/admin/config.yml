@@ -2,6 +2,9 @@ backend:
   name: github
   repo: K41R0N/valenypedrito
   branch: main
+  # Custom auth - bypasses GitHub OAuth, uses our auth function with PAT
+  base_url: https://valenypedrito.netlify.app
+  auth_endpoint: /.netlify/functions/auth
 
 # Local development - uncomment to test locally without authentication
 # local_backend: true
