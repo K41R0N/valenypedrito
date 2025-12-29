@@ -16,8 +16,6 @@ interface VenueSectionContent {
   address?: string;
   mapUrl?: string;
   mapEmbedUrl?: string;
-  mapLatitude?: string;
-  mapLongitude?: string;
   infoCards?: VenueInfo[];
   backgroundColor?: "white" | "warm" | "subtle";
 }
@@ -42,8 +40,6 @@ export function VenueSection({ content, id }: VenueSectionProps) {
     address = "Carretera Sevilla-Carmona, km 12, Sevilla",
     mapUrl,
     mapEmbedUrl,
-    mapLatitude = "37.4219",
-    mapLongitude = "-5.9116",
     infoCards = [
       {
         icon: "location",
@@ -134,7 +130,7 @@ export function VenueSection({ content, id }: VenueSectionProps) {
             </>
           ) : (
             <iframe
-              src={mapEmbedUrl || `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3169!2d${mapLongitude}!3d${mapLatitude}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zSGFjaWVuZGEgbGEgU29sZWRhZA!5e0!3m2!1ses!2ses!4v1700000000000`}
+              src={mapEmbedUrl || `https://www.google.com/maps?q=${encodeURIComponent(venueName + ', ' + address)}&output=embed`}
               width="100%"
               height="100%"
               style={{ border: 0 }}
