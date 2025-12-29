@@ -167,10 +167,8 @@ collections:
               - { name: "venueImage", label: "Foto del Lugar (opcional)", widget: "image", required: false, hint: "Si no se proporciona, se mostrará un mapa de Google Maps" }
               - { name: "venueImageAlt", label: "Descripción de Imagen", widget: "string", default: "Hacienda la Soledad" }
               - { name: "address", label: "Dirección", widget: "string" }
-              - { name: "mapEmbedUrl", label: "URL de Embed de Google Maps", widget: "string", required: false, hint: "Obtén esto desde Google Maps > Compartir > Insertar un mapa" }
-              - { name: "mapLatitude", label: "Latitud", widget: "string", required: false, default: "37.4219", hint: "Coordenadas para el mapa" }
-              - { name: "mapLongitude", label: "Longitud", widget: "string", required: false, default: "-5.9116" }
-              - { name: "mapUrl", label: "URL de Google Maps (enlace)", widget: "string", required: false, hint: "Enlace para abrir en Google Maps" }
+              - { name: "mapEmbedUrl", label: "URL de Embed de Google Maps", widget: "string", required: false, hint: "Busca el lugar en Google Maps, haz clic en Compartir > Insertar mapa y copia la URL del src" }
+              - { name: "mapUrl", label: "Enlace de Google Maps", widget: "string", required: false, hint: "Enlace corto del lugar (ej: https://maps.app.goo.gl/...)" }
               - name: "infoCards"
                 label: "Tarjetas de Información"
                 widget: "list"
