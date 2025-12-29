@@ -144,7 +144,7 @@ export function RSVPForm({ content, id }: RSVPFormProps) {
           {/* Form */}
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="bg-white border border-[var(--sevilla-bronze)]/30 p-8 md:p-10 rounded-sm shadow-sm"
+            className="bg-white border border-[var(--sevilla-bronze)]/30 p-8 md:p-10 shadow-sm"
           >
             {/* Name */}
             <div className="mb-6">
@@ -184,7 +184,7 @@ export function RSVPForm({ content, id }: RSVPFormProps) {
                 <button
                   type="button"
                   onClick={() => setValue("attending", "yes")}
-                  className={`flex-1 py-3 px-4 rounded-sm border-2 transition-all font-body-regular ${
+                  className={`flex-1 py-3 px-4 border-2 transition-all font-body-regular ${
                     attending === "yes"
                       ? "border-[var(--watercolor-sage)] bg-[var(--watercolor-sage)]/10 text-[var(--soft-charcoal)]"
                       : "border-[var(--sevilla-bronze)]/30 hover:border-[var(--sevilla-bronze)]/50"
@@ -195,7 +195,7 @@ export function RSVPForm({ content, id }: RSVPFormProps) {
                 <button
                   type="button"
                   onClick={() => setValue("attending", "no")}
-                  className={`flex-1 py-3 px-4 rounded-sm border-2 transition-all font-body-regular ${
+                  className={`flex-1 py-3 px-4 border-2 transition-all font-body-regular ${
                     attending === "no"
                       ? "border-[var(--sevilla-bronze)] bg-[var(--sevilla-bronze)]/10 text-[var(--soft-charcoal)]"
                       : "border-[var(--sevilla-bronze)]/30 hover:border-[var(--sevilla-bronze)]/50"
@@ -219,7 +219,7 @@ export function RSVPForm({ content, id }: RSVPFormProps) {
                     <select
                       id="mealChoice"
                       {...register("mealChoice")}
-                      className="mt-2 w-full p-2 border border-[var(--sevilla-bronze)]/50 rounded-sm font-body bg-white"
+                      className="mt-2 w-full p-2 border border-[var(--sevilla-bronze)]/50 font-body bg-white"
                     >
                       <option value="">Selecciona una opción</option>
                       {content.mealOptions.map((option) => (

@@ -46,10 +46,10 @@ export function GuestResources({ content, id }: GuestResourcesProps) {
               const Icon = iconMap[section.icon];
 
               return (
-                <div key={index} className="bg-white border border-[var(--sevilla-bronze)]/30 p-8 md:p-10 rounded-sm">
+                <div key={index} className="bg-white border border-[var(--sevilla-bronze)]/30 p-8 md:p-10">
                   {/* Section Header */}
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="p-2 bg-[var(--watercolor-sage)]/10 rounded-full">
+                    <div className="p-2 bg-[var(--watercolor-sage)]/10">
                       <Icon className="w-6 h-6 text-[var(--watercolor-sage)]" />
                     </div>
                     <h3 className="font-serif text-2xl text-[var(--soft-charcoal)]">{section.sectionTitle}</h3>
@@ -66,7 +66,7 @@ export function GuestResources({ content, id }: GuestResourcesProps) {
                       {section.recommendations.map((rec, recIndex) => (
                         <div
                           key={recIndex}
-                          className="p-5 bg-[var(--warm-beige)]/50 border border-[var(--sevilla-bronze)]/20 rounded-sm"
+                          className="p-5 bg-[var(--warm-beige)]/50 border border-[var(--sevilla-bronze)]/20"
                         >
                           <h4 className="font-body-regular text-lg text-[var(--soft-charcoal)] mb-2">{rec.name}</h4>
                           <p className="font-body text-sm text-[var(--stone-grey)] mb-3">{rec.description}</p>

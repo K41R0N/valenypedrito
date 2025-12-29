@@ -70,7 +70,7 @@ export function Countdown({ content, id }: CountdownProps) {
               { value: timeLeft.seconds, label: "Segundos" },
             ].map((unit, index) => (
               <div key={index} className="flex flex-col items-center">
-                <div className="bg-white border border-[var(--sevilla-bronze)] p-6 md:p-8 rounded-sm shadow-sm w-full">
+                <div className="bg-white border border-[var(--sevilla-bronze)] p-6 md:p-8 shadow-sm w-full">
                   <div className="font-serif-semibold text-4xl md:text-5xl lg:text-6xl text-[var(--soft-charcoal)] mb-2">
                     {String(unit.value).padStart(2, "0")}
                   </div>

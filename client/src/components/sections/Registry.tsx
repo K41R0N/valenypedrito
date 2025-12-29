@@ -46,7 +46,7 @@ export function Registry({ content, id }: RegistryProps) {
                   href={registry.storeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group bg-white border-2 border-[var(--sevilla-bronze)]/30 hover:border-[var(--watercolor-sage)] p-8 rounded-sm transition-all duration-300 hover:shadow-md"
+                  className="group bg-white border-2 border-[var(--sevilla-bronze)]/30 hover:border-[var(--watercolor-sage)] p-8 transition-all duration-300 hover:shadow-md"
                 >
                   {registry.storeImage && (
                     <div className="mb-4">
@@ -64,7 +64,7 @@ export function Registry({ content, id }: RegistryProps) {
 
           {/* Cash Option */}
           {content.showCashOption && content.cashMessage && (
-            <div className="bg-[var(--warm-beige)] border border-[var(--sevilla-bronze)]/30 p-6 md:p-8 rounded-sm">
+            <div className="bg-[var(--warm-beige)] border border-[var(--sevilla-bronze)]/30 p-6 md:p-8">
               <p className="font-body text-base text-[var(--stone-grey)] leading-relaxed">{content.cashMessage}</p>
             </div>
           )}

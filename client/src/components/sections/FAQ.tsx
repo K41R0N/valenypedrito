@@ -40,7 +40,7 @@ export function FAQ({ content, id }: FAQProps) {
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="bg-white border border-[var(--sevilla-bronze)]/30 rounded-sm px-6"
+                className="bg-white border border-[var(--sevilla-bronze)]/30 px-6"
               >
                 <AccordionTrigger className="font-body-regular text-left text-[var(--soft-charcoal)] hover:text-[var(--rooftop-clay)] hover:no-underline py-5">
                   {item.question}
