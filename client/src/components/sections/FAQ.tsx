@@ -1,9 +1,10 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import { getAsset } from "@/lib/assets";
 import type { FAQContent } from "./types";
 import {
   motion,
-  useInView
+  useInView,
+  AnimatePresence
 } from "@/lib/animations";
 import { X, Shirt, Baby, Gift, Clock, MapPin, Utensils, Camera, HelpCircle } from "lucide-react";
 
@@ -122,17 +123,25 @@ function QuestionCard({
 function AnswerModal({
   question,
   answer,
-  isOpen,
   onClose
 }: {
   question: string;
   answer: string;
-  isOpen: boolean;
   onClose: () => void;
 }) {
   const Icon = getQuestionIcon(question);
+  const modalTitleId = `faq-modal-title-${question.slice(0, 20).replace(/\s/g, '-')}`;
 
-  if (!isOpen) return null;
+  // Escape key handler
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, [onClose]);
 
   return (
     <motion.div
@@ -140,12 +149,16 @@ function AnswerModal({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby={modalTitleId}
     >
       {/* Backdrop */}
       <motion.div
         className="absolute inset-0 bg-[var(--soft-charcoal)]/60 backdrop-blur-sm"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
         onClick={onClose}
       />
 
@@ -154,6 +167,7 @@ function AnswerModal({
         className="relative bg-white max-w-2xl w-full max-h-[80vh] overflow-y-auto"
         initial={{ opacity: 0, scale: 0.9, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.9, y: 20 }}
         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
       >
         {/* Close button */}
@@ -162,6 +176,7 @@ function AnswerModal({
           className="absolute top-4 right-4 w-10 h-10 bg-[var(--warm-beige)] flex items-center justify-center z-10"
           whileHover={{ scale: 1.1, rotate: 90 }}
           transition={{ type: "spring", stiffness: 300 }}
+          aria-label="Cerrar"
         >
           <X className="w-5 h-5 text-[var(--soft-charcoal)]" />
         </motion.button>
@@ -171,7 +186,7 @@ function AnswerModal({
           <div className="w-14 h-14 bg-[var(--watercolor-sage)]/10 flex items-center justify-center mb-6">
             <Icon className="w-7 h-7 text-[var(--watercolor-sage)]" />
           </div>
-          <h3 className="font-body-regular text-xl md:text-2xl text-[var(--soft-charcoal)] leading-relaxed">
+          <h3 id={modalTitleId} className="font-body-regular text-xl md:text-2xl text-[var(--soft-charcoal)] leading-relaxed">
             {question}
           </h3>
         </div>
@@ -218,15 +233,26 @@ export function FAQ({ content, id }: FAQProps) {
 
   const bgColor = bgColorMap[content.backgroundColor || "cream"];
 
-  const openQuestion = (index: number) => {
-    setActiveQuestion(index);
-    document.body.style.overflow = "hidden";
-  };
+  // Manage body overflow with proper cleanup
+  useEffect(() => {
+    if (activeQuestion !== null) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [activeQuestion]);
 
-  const closeQuestion = () => {
+  const openQuestion = useCallback((index: number) => {
+    setActiveQuestion(index);
+  }, []);
+
+  const closeQuestion = useCallback(() => {
     setActiveQuestion(null);
-    document.body.style.overflow = "";
-  };
+  }, []);
 
   return (
     <section ref={sectionRef} id={id} className={`relative py-24 md:py-32 ${bgColor} overflow-hidden`}>
@@ -332,14 +358,16 @@ export function FAQ({ content, id }: FAQProps) {
       </div>
 
       {/* Answer Modal */}
-      {activeQuestion !== null && (
-        <AnswerModal
-          question={content.questions[activeQuestion].question}
-          answer={content.questions[activeQuestion].answer}
-          isOpen={true}
-          onClose={closeQuestion}
-        />
-      )}
+      <AnimatePresence>
+        {activeQuestion !== null && (
+          <AnswerModal
+            key={activeQuestion}
+            question={content.questions[activeQuestion].question}
+            answer={content.questions[activeQuestion].answer}
+            onClose={closeQuestion}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 }

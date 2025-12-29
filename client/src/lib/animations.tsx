@@ -5,7 +5,7 @@
  * Designed for an award-worthy wedding experience
  */
 
-import { motion, useScroll, useTransform, useSpring, useInView, MotionValue } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring, useInView, MotionValue, AnimatePresence, useMotionTemplate } from "framer-motion";
 import { useRef, ReactNode, useMemo } from "react";
 
 // ============================================================================
@@ -616,4 +616,4 @@ export function HorizontalScroll({ children, className = "" }: HorizontalScrollP
 // Export motion for direct use
 // ============================================================================
 
-export { motion, useScroll, useTransform, useSpring, useInView };
+export { motion, useScroll, useTransform, useSpring, useInView, AnimatePresence, useMotionTemplate };

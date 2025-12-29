@@ -8,6 +8,7 @@ import {
   useScroll,
   useTransform,
   useSpring,
+  useMotionTemplate,
 } from "@/lib/animations";
 
 interface WeddingHeroProps {
@@ -34,6 +35,11 @@ export function WeddingHero({ content, id }: WeddingHeroProps) {
   const smoothContentY = useSpring(contentY, { stiffness: 50, damping: 20 });
   const smoothSkylineScale = useSpring(skylineScale, { stiffness: 50, damping: 20 });
 
+  // Reactive clip path using useMotionTemplate
+  const clipPathLeft = useTransform(smoothClipPath, (v) => 100 - v);
+  const clipPathBottomLeft = useTransform(smoothClipPath, (v) => 100 - v - 15);
+  const clipPath = useMotionTemplate`polygon(${clipPathLeft}% 0, 100% 0, 100% 100%, ${clipPathBottomLeft}% 100%)`;
+
   // Format the date in Spanish
   const formattedDate = content.date
     ? format(parseISO(content.date), "d 'de' MMMM, yyyy", { locale: es })
@@ -41,6 +47,17 @@ export function WeddingHero({ content, id }: WeddingHeroProps) {
 
   const dayOfWeek = content.date
     ? format(parseISO(content.date), "EEEE", { locale: es })
+    : "";
+
+  // Dynamic date parts for display
+  const dayOfMonth = content.date
+    ? format(parseISO(content.date), "d")
+    : "";
+  const monthName = content.date
+    ? format(parseISO(content.date), "MMMM", { locale: es })
+    : "";
+  const year = content.date
+    ? format(parseISO(content.date), "yyyy")
     : "";
 
   return (
@@ -143,16 +160,16 @@ export function WeddingHero({ content, id }: WeddingHeroProps) {
                         {dayOfWeek}
                       </p>
                       <p className="font-serif-semibold text-3xl md:text-5xl text-[var(--soft-charcoal)]">
-                        23
+                        {dayOfMonth}
                       </p>
                     </div>
                     <div className="w-px h-14 bg-[var(--sevilla-bronze)]/40" />
                     <div>
                       <p className="font-serif text-sm md:text-base tracking-[0.15em] text-[var(--stone-grey)] uppercase">
-                        Septiembre
+                        {monthName}
                       </p>
                       <p className="font-serif text-sm md:text-base tracking-[0.15em] text-[var(--sevilla-bronze)]">
-                        2026
+                        {year}
                       </p>
                     </div>
                   </div>
@@ -177,11 +194,7 @@ export function WeddingHero({ content, id }: WeddingHeroProps) {
           {/* RIGHT SIDE - Seville Skyline with Clip Mask */}
           <motion.div
             className="absolute inset-0 z-10"
-            style={{
-              clipPath: smoothClipPath.get()
-                ? `polygon(${100 - smoothClipPath.get()}% 0, 100% 0, 100% 100%, ${100 - smoothClipPath.get() - 15}% 100%)`
-                : "polygon(50% 0, 100% 0, 100% 100%, 35% 100%)"
-            }}
+            style={{ clipPath }}
           >
             {/* Gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-r from-[var(--antique-cream)] via-transparent to-transparent z-10 opacity-60" />

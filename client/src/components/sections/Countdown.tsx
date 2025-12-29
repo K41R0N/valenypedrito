@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { getAsset } from "@/lib/assets";
 import type { CountdownContent } from "./types";
-import { parseISO, differenceInDays, differenceInHours, differenceInMinutes, differenceInSeconds } from "date-fns";
+import { parseISO, differenceInDays, differenceInHours, differenceInMinutes, differenceInSeconds, format } from "date-fns";
+import { es } from "date-fns/locale";
 import {
   motion,
   useScroll,
@@ -234,13 +235,13 @@ export function Countdown({ content, id }: CountdownProps) {
                 transition={{ duration: 0.8, delay: 0.8 }}
               >
                 <span className="font-script text-4xl md:text-5xl lg:text-6xl text-[var(--sevilla-bronze)] block">
-                  23
+                  {format(parseISO(content.weddingDate), "d")}
                 </span>
                 <span className="font-serif text-sm md:text-base tracking-[0.3em] text-[var(--stone-grey)] uppercase block mt-1">
-                  Septiembre
+                  {format(parseISO(content.weddingDate), "MMMM", { locale: es })}
                 </span>
                 <span className="font-serif text-lg md:text-xl text-[var(--soft-charcoal)] block mt-1">
-                  2026
+                  {format(parseISO(content.weddingDate), "yyyy")}
                 </span>
               </motion.div>
 

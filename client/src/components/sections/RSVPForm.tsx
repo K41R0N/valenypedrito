@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -92,6 +92,13 @@ export function RSVPForm({ content, id }: RSVPFormProps) {
 
   const steps = getSteps();
   const totalSteps = steps.length;
+
+  // Clamp currentStep when steps array shrinks (e.g., switching from "yes" to "no")
+  useEffect(() => {
+    if (currentStep >= totalSteps) {
+      setCurrentStep(Math.max(0, totalSteps - 1));
+    }
+  }, [totalSteps, currentStep]);
 
   const nextStep = async () => {
     // Validate current step before proceeding
