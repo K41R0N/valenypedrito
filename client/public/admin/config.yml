@@ -53,7 +53,7 @@ collections:
         hint: "Añade y organiza secciones. Arrastra para reordenar."
         types:
           # ==================================================================
-          # LUXURY SECTIONS (V2 - Recommended)
+          # LUXURY WEDDING SECTIONS (V2 Design System)
           # ==================================================================
 
           # ------------------------------------------------------------------
@@ -76,6 +76,20 @@ collections:
               - { name: "showScrollIndicator", label: "Mostrar Indicador de Scroll", widget: "boolean", default: true }
 
           # ------------------------------------------------------------------
+          # Luxury Page Header - For Interior Pages
+          # ------------------------------------------------------------------
+          - name: "luxury-page-header"
+            label: "Encabezado de Página"
+            widget: "object"
+            summary: "Header: {{fields.title}}"
+            fields:
+              - { name: "sectionId", label: "ID de Sección", widget: "string", required: false }
+              - { name: "title", label: "Título", widget: "string" }
+              - { name: "subtitle", label: "Subtítulo", widget: "text", required: false }
+              - { name: "icon", label: "Ícono", widget: "select", options: [{label: "Corazón", value: "heart"}, {label: "Estrella", value: "star"}, {label: "Ubicación", value: "location"}], default: "heart" }
+              - { name: "backgroundColor", label: "Color de Fondo", widget: "select", options: [{label: "Blanco", value: "white"}, {label: "Cálido", value: "warm"}, {label: "Sutil", value: "subtle"}, {label: "Acento", value: "accent"}], default: "warm" }
+
+          # ------------------------------------------------------------------
           # Our Story - Couple Introduction
           # ------------------------------------------------------------------
           - name: "our-story"
@@ -90,6 +104,31 @@ collections:
               - { name: "image", label: "Foto de Pareja", widget: "image", required: false }
               - { name: "imageAlt", label: "Descripción de Imagen", widget: "string", default: "Foto de pareja" }
               - { name: "imagePosition", label: "Posición de Imagen", widget: "select", options: [{label: "Izquierda", value: "left"}, {label: "Derecha", value: "right"}], default: "left" }
+              - { name: "backgroundColor", label: "Color de Fondo", widget: "select", options: [{label: "Blanco", value: "white"}, {label: "Cálido", value: "warm"}, {label: "Sutil", value: "subtle"}], default: "warm" }
+
+          # ------------------------------------------------------------------
+          # Destination Guide - City/Location Info
+          # ------------------------------------------------------------------
+          - name: "destination-guide"
+            label: "Guía del Destino"
+            widget: "object"
+            summary: "Destino: {{fields.title}}"
+            fields:
+              - { name: "sectionId", label: "ID de Sección", widget: "string", required: false }
+              - { name: "title", label: "Título", widget: "string", default: "Qué Ver en Sevilla" }
+              - { name: "subtitle", label: "Subtítulo", widget: "string", required: false }
+              - { name: "content", label: "Contenido", widget: "markdown", hint: "Usa **negrita** para destacar lugares" }
+              - { name: "image", label: "Imagen del Destino", widget: "image", required: false }
+              - { name: "imageAlt", label: "Descripción de Imagen", widget: "string", default: "Destino" }
+              - { name: "imagePosition", label: "Posición de Imagen", widget: "select", options: [{label: "Izquierda", value: "left"}, {label: "Derecha", value: "right"}], default: "right" }
+              - name: "highlights"
+                label: "Puntos Destacados"
+                widget: "list"
+                required: false
+                fields:
+                  - { name: "icon", label: "Ícono", widget: "select", options: [{label: "Lugar", value: "landmark"}, {label: "Foto", value: "photo"}, {label: "Comida", value: "food"}, {label: "Entretenimiento", value: "entertainment"}], default: "landmark" }
+                  - { name: "title", label: "Título", widget: "string" }
+                  - { name: "description", label: "Descripción", widget: "string" }
               - { name: "backgroundColor", label: "Color de Fondo", widget: "select", options: [{label: "Blanco", value: "white"}, {label: "Cálido", value: "warm"}, {label: "Sutil", value: "subtle"}], default: "warm" }
 
           # ------------------------------------------------------------------
@@ -140,6 +179,50 @@ collections:
                   - { name: "title", label: "Título", widget: "string" }
                   - { name: "content", label: "Contenido", widget: "text" }
                   - { name: "link", label: "Enlace", widget: "string", required: false }
+              - { name: "backgroundColor", label: "Color de Fondo", widget: "select", options: [{label: "Blanco", value: "white"}, {label: "Cálido", value: "warm"}, {label: "Sutil", value: "subtle"}], default: "warm" }
+
+          # ------------------------------------------------------------------
+          # Travel Guide - Guest Resources
+          # ------------------------------------------------------------------
+          - name: "travel-guide"
+            label: "Guía de Viaje"
+            widget: "object"
+            summary: "Viaje: {{fields.title}}"
+            fields:
+              - { name: "sectionId", label: "ID de Sección", widget: "string", required: false }
+              - { name: "title", label: "Título", widget: "string", default: "Guía para Invitados" }
+              - { name: "subtitle", label: "Subtítulo", widget: "string", required: false }
+              - name: "sections"
+                label: "Secciones"
+                widget: "list"
+                fields:
+                  - { name: "sectionTitle", label: "Título de Sección", widget: "string" }
+                  - { name: "icon", label: "Ícono", widget: "select", options: [{label: "Avión", value: "airplane"}, {label: "Hotel", value: "hotel"}, {label: "Auto", value: "car"}, {label: "Belleza", value: "beauty"}, {label: "Ubicación", value: "location"}], default: "airplane" }
+                  - { name: "content", label: "Contenido", widget: "markdown" }
+                  - name: "recommendations"
+                    label: "Recomendaciones"
+                    widget: "list"
+                    required: false
+                    fields:
+                      - { name: "name", label: "Nombre", widget: "string" }
+                      - { name: "description", label: "Descripción", widget: "text" }
+                      - { name: "link", label: "Enlace", widget: "string", required: false }
+                      - { name: "phone", label: "Teléfono", widget: "string", required: false }
+              - { name: "backgroundColor", label: "Color de Fondo", widget: "select", options: [{label: "Blanco", value: "white"}, {label: "Cálido", value: "warm"}, {label: "Sutil", value: "subtle"}], default: "white" }
+
+          # ------------------------------------------------------------------
+          # Luxury Info Card - Information Highlight
+          # ------------------------------------------------------------------
+          - name: "luxury-info-card"
+            label: "Tarjeta de Información"
+            widget: "object"
+            summary: "Info: {{fields.title}}"
+            fields:
+              - { name: "sectionId", label: "ID de Sección", widget: "string", required: false }
+              - { name: "title", label: "Título", widget: "string" }
+              - { name: "content", label: "Contenido", widget: "markdown" }
+              - { name: "icon", label: "Ícono", widget: "select", options: [{label: "Información", value: "info"}, {label: "Corazón", value: "heart"}, {label: "Estrella", value: "star"}, {label: "Sol", value: "sun"}, {label: "Contacto", value: "contact"}], default: "info" }
+              - { name: "style", label: "Estilo", widget: "select", options: [{label: "Normal", value: "normal"}, {label: "Destacado", value: "highlight"}, {label: "Acento", value: "accent"}], default: "normal" }
               - { name: "backgroundColor", label: "Color de Fondo", widget: "select", options: [{label: "Blanco", value: "white"}, {label: "Cálido", value: "warm"}, {label: "Sutil", value: "subtle"}], default: "warm" }
 
           # ------------------------------------------------------------------
@@ -276,38 +359,6 @@ collections:
                   - { name: "href", label: "Enlace", widget: "string" }
               - { name: "copyright", label: "Copyright", widget: "string", default: "© 2026 Valentina & Pedro Juan" }
               - { name: "showSocialMedia", label: "Mostrar Redes Sociales", widget: "boolean", default: true }
-
-          # ==================================================================
-          # LEGACY SECTIONS (For backwards compatibility)
-          # ==================================================================
-
-          # ------------------------------------------------------------------
-          # Rich Text (Markdown)
-          # ------------------------------------------------------------------
-          - name: "rich-text"
-            label: "Texto Enriquecido"
-            widget: "object"
-            summary: "Texto: {{fields.title}}"
-            fields:
-              - { name: "title", label: "Título", widget: "string", required: false }
-              - { name: "content", label: "Contenido", widget: "markdown" }
-              - { name: "textAlign", label: "Alineación", widget: "select", options: ["left", "center", "right"], default: "left" }
-              - { name: "backgroundColor", label: "Color de Fondo", widget: "select", options: ["cream", "beige", "white"], default: "white" }
-
-          # ------------------------------------------------------------------
-          # Info Box (Generic)
-          # ------------------------------------------------------------------
-          - name: "info-box"
-            label: "Caja de Información"
-            widget: "object"
-            summary: "Info: {{fields.title}}"
-            fields:
-              - { name: "sectionId", label: "ID de Sección", widget: "string", required: false }
-              - { name: "title", label: "Título", widget: "string" }
-              - { name: "content", label: "Contenido", widget: "markdown" }
-              - { name: "icon", label: "Ícono", widget: "select", options: ["info", "heart", "star", "custom"], default: "info" }
-              - { name: "style", label: "Estilo", widget: "select", options: [{label: "Destacado", value: "highlight"}, {label: "Normal", value: "normal"}], default: "normal" }
-              - { name: "backgroundColor", label: "Color de Fondo", widget: "select", options: ["cream", "beige", "white"], default: "cream" }
 
   # ==========================================================================
   # SITE SETTINGS (Global)
