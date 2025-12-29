@@ -102,7 +102,7 @@ export function WeddingHero({ content, id }: WeddingHeroProps) {
                   transition={{ duration: 0.8, delay: 0.7 }}
                 >
                   <motion.h1
-                    className="font-script text-[2.8rem] md:text-[4.9rem] lg:text-[6.3rem] xl:text-[7.7rem] leading-[0.85] text-[var(--soft-charcoal)]"
+                    className="font-script text-[2.24rem] md:text-[3.92rem] lg:text-[5.04rem] xl:text-[6.16rem] leading-[0.85] text-[var(--soft-charcoal)]"
                     initial={{ y: "100%" }}
                     animate={{ y: 0 }}
                     transition={{ duration: 1.2, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
@@ -134,7 +134,7 @@ export function WeddingHero({ content, id }: WeddingHeroProps) {
                   transition={{ duration: 0.8, delay: 1 }}
                 >
                   <motion.h1
-                    className="font-script text-[2.8rem] md:text-[4.9rem] lg:text-[6.3rem] xl:text-[7.7rem] leading-[0.85] text-[var(--soft-charcoal)] ml-[5%] md:ml-[10%]"
+                    className="font-script text-[2.24rem] md:text-[3.92rem] lg:text-[5.04rem] xl:text-[6.16rem] leading-[0.85] text-[var(--soft-charcoal)] ml-[5%] md:ml-[10%]"
                     initial={{ y: "100%" }}
                     animate={{ y: 0 }}
                     transition={{ duration: 1.2, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
