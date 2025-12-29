@@ -40,36 +40,42 @@
       "subtitle": "Miércoles, 23 de Septiembre de 2026",
       "timeline": [
         {
+          "time": "17:30",
+          "event": "Llegada de Invitados",
+          "description": "Recepción con cóctel de bienvenida en los jardines",
+          "icon": "arrival"
+        },
+        {
           "time": "18:00",
           "event": "Ceremonia",
-          "description": "Los jardines de la Hacienda la Soledad nos verán dar el sí",
+          "description": "Ceremonia civil en el patio principal de la hacienda",
           "icon": "church"
         },
         {
-          "time": "19:30",
-          "event": "Cóctel de Bienvenida",
-          "description": "Brindemos juntos en la terraza con vistas al atardecer sevillano",
+          "time": "19:00",
+          "event": "Cóctel",
+          "description": "Tapas andaluzas y vinos de la región en la terraza con vistas al atardecer sevillano",
           "icon": "champagne"
         },
         {
           "time": "21:00",
           "event": "Cena",
-          "description": "Una velada gastronómica en el salón principal",
+          "description": "Cena de gala en el salón principal de la hacienda",
           "icon": "dinner"
         },
         {
-          "time": "23:00",
+          "time": "23:30",
           "event": "¡Fiesta!",
-          "description": "Bailemos hasta el amanecer",
+          "description": "Música, baile y celebración hasta el amanecer",
           "icon": "music"
         }
       ],
-      "venueAddress": "Hacienda la Soledad\nSevilla, España",
+      "venueAddress": "Hacienda la Soledad\nCarretera Sevilla-Carmona, km 12\n41410 Carmona, Sevilla\nEspaña",
       "showMap": true,
-      "mapLatitude": "37.3886",
-      "mapLongitude": "-5.9823",
-      "parkingInfo": "Hay estacionamiento gratuito disponible en la hacienda. Sigue las señales al llegar.",
-      "transportInfo": "Organizaremos transporte compartido desde el centro de Sevilla. Detalles próximamente.",
+      "mapLatitude": "37.4712",
+      "mapLongitude": "-5.6405",
+      "parkingInfo": "La hacienda cuenta con amplio estacionamiento gratuito para todos los invitados.\n\nSigue las señales \"Boda Valentina & Pedro Juan\" al llegar.",
+      "transportInfo": "Organizaremos autobuses desde el centro de Sevilla (Plaza Nueva) a las 17:00.\n\nRegreso disponible a las 02:00 y 05:00.\n\nSi prefieres ir por tu cuenta, el trayecto desde Sevilla centro es de aproximadamente 25 minutos.",
       "backgroundColor": "white"
     },
     {
@@ -120,27 +126,35 @@
       "questions": [
         {
           "question": "¿Dónde puedo alojarme?",
-          "answer": "Visita nuestra página de Información para Invitados donde encontrarás recomendaciones de hoteles con tarifas especiales para la boda."
+          "answer": "Recomendamos hoteles en el centro de Sevilla para disfrutar de la ciudad. Hemos negociado tarifas especiales en Hotel Alfonso XIII y Hotel Colón Gran Meliá. Menciona \"Boda Valentina y Pedro Juan\" al reservar. También hay opciones más económicas como Hotel Amadeus o Hotel Casa 1800."
         },
         {
           "question": "¿Cómo llego desde el aeropuerto?",
-          "answer": "El Aeropuerto de Sevilla está a 20 minutos del centro. Recomendamos taxi o servicio de transporte privado. Tenemos información detallada en la sección para invitados."
+          "answer": "El Aeropuerto de Sevilla (SVQ) está a 25 minutos del centro. Puedes tomar un taxi (tarifa fija de ~25€ al centro) o el autobús EA que sale cada 30 minutos. Si vienes desde Colombia, los vuelos suelen conectar en Madrid o Barcelona."
         },
         {
           "question": "¿Habrá transporte a la hacienda?",
-          "answer": "Sí, organizaremos transporte compartido desde puntos céntricos de Sevilla. Te enviaremos los detalles más cerca de la fecha."
+          "answer": "¡Sí! Organizaremos autobuses desde Plaza Nueva (centro de Sevilla) a las 17:00. El regreso estará disponible a las 02:00 y 05:00. Si prefieres ir en coche, hay amplio estacionamiento gratuito en la hacienda."
         },
         {
           "question": "¿Puedo tomar fotos durante la ceremonia?",
-          "answer": "Preferimos una ceremonia unplugged. Nuestro fotógrafo capturará cada momento. Después de la ceremonia, ¡comparte todas las fotos que quieras usando nuestro hashtag!"
+          "answer": "Pedimos una ceremonia \"unplugged\" - sin teléfonos ni cámaras durante este momento íntimo. Nuestro fotógrafo profesional capturará cada detalle. Después de la ceremonia, ¡comparte todas las fotos que quieras usando nuestro hashtag!"
         },
         {
           "question": "¿Cuál es el hashtag de la boda?",
-          "answer": "#ValenYPedrito2026 - ¡Úsalo para compartir tus fotos y momentos especiales!"
+          "answer": "#ValenYPedrito2026 - ¡Úsalo para compartir tus fotos y momentos especiales en Instagram, Facebook y otras redes!"
         },
         {
           "question": "¿Hasta qué hora es la celebración?",
-          "answer": "La fiesta continuará hasta las primeras horas de la mañana. ¡Prepárate para bailar toda la noche!"
+          "answer": "La fiesta continuará hasta el amanecer (~06:00). Los autobuses de regreso salen a las 02:00 y 05:00. ¡Prepárate para bailar toda la noche!"
+        },
+        {
+          "question": "¿Qué tiempo hace en Sevilla en septiembre?",
+          "answer": "Septiembre es uno de los mejores meses en Sevilla. Espera temperaturas agradables de 22-30°C, perfectas para una celebración al aire libre. Las noches son frescas pero cómodas."
+        },
+        {
+          "question": "¿Hay opciones de alojamiento cerca de la hacienda?",
+          "answer": "La hacienda no ofrece alojamiento, pero Carmona (a 10 min) tiene encantadores hoteles boutique como el Parador de Carmona y Casa de Carmona. Ideal si prefieres quedarte cerca del evento."
         }
       ],
       "backgroundColor": "white"
