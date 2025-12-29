@@ -32,7 +32,7 @@ export function InfoBox({ content, id }: InfoBoxProps) {
       <div className="container">
         <div className="max-w-3xl mx-auto">
           <div
-            className={`p-8 md:p-10 rounded-sm border-2 ${
+            className={`p-8 md:p-10 border-2 ${
               isHighlight
                 ? "bg-[var(--rooftop-clay)]/10 border-[var(--rooftop-clay)]"
                 : "bg-white border-[var(--sevilla-bronze)]/30"
@@ -41,7 +41,7 @@ export function InfoBox({ content, id }: InfoBoxProps) {
             <div className="flex items-start gap-4">
               {/* Icon */}
               <div
-                className={`flex-shrink-0 p-3 rounded-full ${
+                className={`flex-shrink-0 p-3 ${
                   isHighlight ? "bg-[var(--rooftop-clay)]" : "bg-[var(--watercolor-sage)]"
                 }`}
               >

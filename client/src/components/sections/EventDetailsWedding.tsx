@@ -31,7 +31,7 @@ export function EventDetailsWedding({ content, id }: EventDetailsWeddingProps) {
 
           {/* Timeline */}
           {content.timeline && content.timeline.length > 0 && (
-            <div className="bg-white border border-[var(--sevilla-bronze)]/30 p-8 md:p-10 rounded-sm mb-10">
+            <div className="bg-white border border-[var(--sevilla-bronze)]/30 p-8 md:p-10 mb-10">
               <h3 className="font-serif text-2xl mb-8 text-[var(--soft-charcoal)] text-center">Cronograma</h3>
               <div className="space-y-6">
                 {content.timeline.map((item, index) => (
@@ -44,7 +44,7 @@ export function EventDetailsWedding({ content, id }: EventDetailsWeddingProps) {
 
                     {/* Divider Line */}
                     <div className="flex-shrink-0 flex flex-col items-center">
-                      <div className="w-3 h-3 rounded-full bg-[var(--watercolor-sage)] border-2 border-white shadow-sm" />
+                      <div className="w-3 h-3 bg-[var(--watercolor-sage)] border-2 border-white shadow-sm" />
                       {index < content.timeline.length - 1 && (
                         <div className="w-px h-full bg-[var(--sevilla-bronze)]/30 mt-2" />
                       )}
@@ -64,7 +64,7 @@ export function EventDetailsWedding({ content, id }: EventDetailsWeddingProps) {
           )}
 
           {/* Venue Information */}
-          <div className="bg-white border border-[var(--sevilla-bronze)]/30 p-8 md:p-10 rounded-sm mb-10">
+          <div className="bg-white border border-[var(--sevilla-bronze)]/30 p-8 md:p-10 mb-10">
             <div className="flex items-start gap-3 mb-4">
               <MapPin className="w-6 h-6 text-[var(--watercolor-sage)] flex-shrink-0 mt-1" />
               <div>
@@ -77,7 +77,7 @@ export function EventDetailsWedding({ content, id }: EventDetailsWeddingProps) {
 
             {/* Google Maps Embed */}
             {hasMap && (
-              <div className="mt-6 rounded-sm overflow-hidden border border-[var(--sevilla-bronze)]/20">
+              <div className="mt-6 overflow-hidden border border-[var(--sevilla-bronze)]/20">
                 <iframe
                   title="Venue Location"
                   width="100%"
@@ -95,7 +95,7 @@ export function EventDetailsWedding({ content, id }: EventDetailsWeddingProps) {
           {(content.parkingInfo || content.transportInfo) && (
             <div className="grid md:grid-cols-2 gap-6">
               {content.parkingInfo && (
-                <div className="bg-[var(--warm-beige)] border border-[var(--sevilla-bronze)]/20 p-6 rounded-sm">
+                <div className="bg-[var(--warm-beige)] border border-[var(--sevilla-bronze)]/20 p-6">
                   <div className="flex items-start gap-2 mb-3">
                     <Info className="w-5 h-5 text-[var(--sevilla-bronze)] flex-shrink-0 mt-0.5" />
                     <h4 className="font-body-regular text-base text-[var(--soft-charcoal)]">Estacionamiento</h4>
@@ -105,7 +105,7 @@ export function EventDetailsWedding({ content, id }: EventDetailsWeddingProps) {
               )}
 
               {content.transportInfo && (
-                <div className="bg-[var(--warm-beige)] border border-[var(--sevilla-bronze)]/20 p-6 rounded-sm">
+                <div className="bg-[var(--warm-beige)] border border-[var(--sevilla-bronze)]/20 p-6">
                   <div className="flex items-start gap-2 mb-3">
                     <Info className="w-5 h-5 text-[var(--sevilla-bronze)] flex-shrink-0 mt-0.5" />
                     <h4 className="font-body-regular text-base text-[var(--soft-charcoal)]">Transporte</h4>

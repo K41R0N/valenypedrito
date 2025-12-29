@@ -14,10 +14,10 @@ export const WATERCOLOR_ASSETS = {
   oliveBranch: '/images/watercolor/olive-branch.png',
   azulejoTile: '/images/watercolor/azulejo-tile.png',
 
-  // Functional Icons
-  iconAirplane: '/images/watercolor/icon-airplane.png',
+  // Functional Icons (watercolor style)
+  iconAirplane: '/images/watercolor/olive-branch.png', // Using olive branch as travel/flight indicator
   iconHotelKey: '/images/watercolor/icon-hotel-key.png',
-  iconChampagne: '/images/watercolor/icon-champagne.svg',
+  iconChampagne: '/images/watercolor/icon-champagne.png',
 
   // Background Texture
   paperTexture: '/images/watercolor/paper-texture.png',

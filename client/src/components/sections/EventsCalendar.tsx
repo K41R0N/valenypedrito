@@ -60,12 +60,12 @@ export function EventsCalendar({ content, id }: EventsCalendarProps) {
               return (
                 <div
                   key={index}
-                  className="bg-white border border-[var(--sevilla-bronze)]/30 p-6 md:p-8 rounded-sm hover:shadow-md transition-shadow"
+                  className="bg-white border border-[var(--sevilla-bronze)]/30 p-6 md:p-8 hover:shadow-md transition-shadow"
                 >
                   <div className="flex flex-col md:flex-row md:items-start gap-6">
                     {/* Date Badge */}
                     <div className="flex-shrink-0">
-                      <div className="bg-[var(--watercolor-sage)]/10 border border-[var(--watercolor-sage)] p-4 rounded-sm text-center min-w-[120px]">
+                      <div className="bg-[var(--watercolor-sage)]/10 border border-[var(--watercolor-sage)] p-4 text-center min-w-[120px]">
                         <div className="font-serif text-sm text-[var(--watercolor-sage)] uppercase tracking-wide mb-1">
                           {format(eventDate, "MMM", { locale: es })}
                         </div>
@@ -93,7 +93,7 @@ export function EventsCalendar({ content, id }: EventsCalendarProps) {
                           <a
                             href={generateICS(event)}
                             download={`${event.eventName.replace(/\s+/g, "-")}.ics`}
-                            className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--watercolor-sage)] hover:bg-[var(--watercolor-sage)]/90 text-white rounded-sm font-body text-sm transition-colors"
+                            className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--watercolor-sage)] hover:bg-[var(--watercolor-sage)]/90 text-white font-body text-sm transition-colors"
                           >
                             <Calendar className="w-4 h-4" />
                             Agregar a Calendario
