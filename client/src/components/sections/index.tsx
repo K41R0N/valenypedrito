@@ -161,13 +161,14 @@ export function renderSection({
     return null;
   }
 
-  // Extract content from flat section structure (all fields except 'type')
-  const { type, ...content } = section;
+  // Extract content from flat section structure (all fields except 'type' and 'sectionId')
+  const { type, sectionId, ...content } = section;
 
   // Build props based on section type (key handled separately for React)
+  // Use custom sectionId if provided, otherwise fall back to index-based ID
   const baseProps = {
     content,
-    id: `section-${index}`,
+    id: sectionId || `section-${index}`,
   };
 
   // Add callback props for interactive sections

@@ -29,28 +29,6 @@ export function WeddingHero({ content, id }: WeddingHeroProps) {
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20" />
       )}
 
-      {/* Decorative Azulejo Tiles - Top Left Corner */}
-      <div
-        className="absolute top-0 left-0 w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 pointer-events-none opacity-20"
-        style={{
-          backgroundImage: `url(${getAsset("azulejoTile")})`,
-          backgroundSize: "contain",
-          backgroundRepeat: "no-repeat",
-          transform: "translate(-20%, -20%)"
-        }}
-      />
-
-      {/* Decorative Azulejo Tiles - Top Right Corner */}
-      <div
-        className="absolute top-0 right-0 w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 pointer-events-none opacity-20"
-        style={{
-          backgroundImage: `url(${getAsset("azulejoTile")})`,
-          backgroundSize: "contain",
-          backgroundRepeat: "no-repeat",
-          transform: "translate(20%, -20%) rotate(90deg)"
-        }}
-      />
-
       {/* Orange Branch - Decorative Left Side */}
       <div
         className="absolute left-0 top-1/4 w-40 h-40 md:w-56 md:h-56 pointer-events-none opacity-30 hidden lg:block"
