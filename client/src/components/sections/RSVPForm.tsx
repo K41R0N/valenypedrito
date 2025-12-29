@@ -26,7 +26,7 @@ const createRSVPSchema = () =>
   z.object({
     name: z.string().min(2, "Por favor ingresa tu nombre completo"),
     email: z.string().email("Por favor ingresa un email válido"),
-    attending: z.enum(["yes", "no"], { required_error: "Por favor selecciona una opción" }),
+    attending: z.enum(["yes", "no"], { message: "Por favor selecciona una opción" }),
     mealChoice: z.string().optional(),
     dietaryRestrictions: z.string().optional(),
     plusOne: z.string().optional(),

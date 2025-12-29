@@ -21,7 +21,7 @@ export function Header({ onJoinClick, onPartnershipClick }: HeaderProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavClick = (item: (typeof headerContent.navItems)[0]) => {
+  const handleNavClick = (item: (typeof headerContent.navItems)[0] & { isModal?: boolean }) => {
     if (item.isModal) {
       onPartnershipClick();
     } else if (item.href) {
