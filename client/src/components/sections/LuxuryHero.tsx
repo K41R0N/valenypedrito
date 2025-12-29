@@ -148,7 +148,7 @@ export function LuxuryHero({ content, id }: LuxuryHeroProps) {
           aria-label="Scroll to next section"
         >
           <span className="text-xs font-sans-semibold uppercase tracking-widest">
-            Scroll
+            Continuar
           </span>
           <ChevronDown className="w-6 h-6 animate-bounce" />
         </button>

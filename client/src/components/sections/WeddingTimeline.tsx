@@ -64,8 +64,8 @@ export function WeddingTimeline({ content, id }: WeddingTimelineProps) {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const index = itemRefs.current.findIndex((ref) => ref === entry.target);
-            if (index !== -1 && !visibleItems.includes(index)) {
-              setVisibleItems((prev) => [...prev, index]);
+            if (index !== -1) {
+              setVisibleItems((prev) => prev.includes(index) ? prev : [...prev, index]);
             }
           }
         });
@@ -78,7 +78,7 @@ export function WeddingTimeline({ content, id }: WeddingTimelineProps) {
     });
 
     return () => observer.disconnect();
-  }, [visibleItems]);
+  }, []);
 
   const bgClass = {
     white: "bg-section-white",
@@ -143,7 +143,7 @@ export function WeddingTimeline({ content, id }: WeddingTimelineProps) {
                       </div>
                     </div>
                     {event.description && (
-                      <p className="text-[var(--text-secondary)] text-sm leading-relaxed md:pl-14 pl-14 md:pl-0">
+                      <p className="text-[var(--text-secondary)] text-sm leading-relaxed pl-14 md:pl-0">
                         {event.description}
                       </p>
                     )}
