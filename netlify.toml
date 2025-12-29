@@ -3,10 +3,20 @@
 [build]
   publish = "dist/public"
   command = "pnpm run build"
+  functions = "netlify/functions"
 
-# Redirect /admin to the CMS
+# Functions settings
+[functions]
+  node_bundler = "esbuild"
+
+# Redirect /admin to admin app
 [[redirects]]
   from = "/admin"
+  to = "/admin/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/admin/*"
   to = "/admin/index.html"
   status = 200
 
