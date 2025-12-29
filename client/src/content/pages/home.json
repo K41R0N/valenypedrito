@@ -10,6 +10,7 @@
   "sections": [
     {
       "type": "wedding-hero",
+      "sectionId": "home",
       "brideName": "Valentina Osorio",
       "groomName": "Pedro Juan Zuleta",
       "announcement": "¡NOS CASAMOS!",
@@ -36,6 +37,7 @@
     },
     {
       "type": "event-details",
+      "sectionId": "detalles",
       "title": "El Gran Día",
       "subtitle": "Miércoles, 23 de Septiembre de 2026",
       "timeline": [
@@ -80,6 +82,7 @@
     },
     {
       "type": "rsvp-form",
+      "sectionId": "rsvp",
       "title": "Confirma tu Asistencia",
       "subtitle": "Por favor ayúdanos a planear este día especial confirmando tu asistencia",
       "formIntro": "Agradecemos tu confirmación antes del",
@@ -121,6 +124,7 @@
     },
     {
       "type": "faq",
+      "sectionId": "faq",
       "title": "Preguntas Frecuentes",
       "subtitle": "Todo lo que necesitas saber",
       "questions": [
@@ -161,6 +165,7 @@
     },
     {
       "type": "registry",
+      "sectionId": "regalos",
       "title": "Lista de Regalos",
       "message": "Vuestra presencia es el mejor regalo que podríamos recibir. Si deseáis hacernos un obsequio, hemos preparado algunas sugerencias:",
       "registryLinks": [],

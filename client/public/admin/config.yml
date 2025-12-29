@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: K41R0N/greenland-village-landing  # TODO: Update with your wedding repo
+  repo: K41R0N/valenypedrito
   branch: main
 
 # Local development - uncomment to test locally without authentication
@@ -57,6 +57,7 @@ collections:
             widget: "object"
             summary: "Hero: {{fields.brideName}} & {{fields.groomName}}"
             fields:
+              - { name: "sectionId", label: "ID de Sección (para navegación)", widget: "string", required: false, hint: "ej: home, hero. Se usará para enlaces ancla (#home)" }
               - { name: "brideName", label: "Nombre de la Novia", widget: "string", default: "Valentina" }
               - { name: "groomName", label: "Nombre del Novio", widget: "string", default: "Pedro Juan" }
               - { name: "announcement", label: "Anuncio", widget: "string", default: "¡NOS VAMOS A CASAR!", hint: "Texto en serif uppercase" }
@@ -88,6 +89,7 @@ collections:
             widget: "object"
             summary: "Evento: {{fields.title}}"
             fields:
+              - { name: "sectionId", label: "ID de Sección", widget: "string", required: false, hint: "ej: detalles, eventos" }
               - { name: "title", label: "Título", widget: "string", default: "Detalles del Día" }
               - { name: "subtitle", label: "Subtítulo", widget: "text", required: false }
               - name: "timeline"
@@ -114,6 +116,7 @@ collections:
             widget: "object"
             summary: "RSVP: {{fields.title}}"
             fields:
+              - { name: "sectionId", label: "ID de Sección", widget: "string", required: false, hint: "ej: rsvp, confirmacion" }
               - { name: "title", label: "Título", widget: "string", default: "Confirma Tu Asistencia" }
               - { name: "subtitle", label: "Subtítulo", widget: "text", required: false }
               - { name: "formIntro", label: "Introducción del Formulario", widget: "text", default: "Por favor confirma tu asistencia antes del..." }
@@ -138,6 +141,7 @@ collections:
             widget: "object"
             summary: "Recursos: {{fields.title}}"
             fields:
+              - { name: "sectionId", label: "ID de Sección", widget: "string", required: false, hint: "ej: invitados, recursos" }
               - { name: "title", label: "Título", widget: "string", default: "Información para Invitados" }
               - { name: "subtitle", label: "Subtítulo", widget: "text", required: false }
               - name: "sections"
@@ -166,6 +170,7 @@ collections:
             widget: "object"
             summary: "FAQ: {{fields.title}}"
             fields:
+              - { name: "sectionId", label: "ID de Sección", widget: "string", required: false, hint: "ej: faq, preguntas" }
               - { name: "title", label: "Título", widget: "string", default: "Preguntas Frecuentes" }
               - { name: "subtitle", label: "Subtítulo", widget: "text", required: false }
               - name: "questions"
@@ -206,6 +211,7 @@ collections:
             widget: "object"
             summary: "Info: {{fields.title}}"
             fields:
+              - { name: "sectionId", label: "ID de Sección", widget: "string", required: false, hint: "ej: info, codigo-vestimenta" }
               - { name: "title", label: "Título", widget: "string" }
               - { name: "content", label: "Contenido", widget: "markdown" }
               - { name: "icon", label: "Ícono", widget: "select", options: ["info", "heart", "star", "custom"], default: "info" }
@@ -220,6 +226,7 @@ collections:
             widget: "object"
             summary: "Regalos: {{fields.title}}"
             fields:
+              - { name: "sectionId", label: "ID de Sección", widget: "string", required: false, hint: "ej: regalos, registry" }
               - { name: "title", label: "Título", widget: "string", default: "Lista de Regalos" }
               - { name: "message", label: "Mensaje Personal", widget: "text", hint: "Mensaje opcional sobre regalos" }
               - name: "registryLinks"

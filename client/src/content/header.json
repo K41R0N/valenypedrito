@@ -1,10 +1,11 @@
 {
   "navItems": [
-    { "label": "Inicio", "href": "#home" },
-    { "label": "Detalles", "href": "#detalles" },
-    { "label": "Eventos", "href": "#eventos" },
-    { "label": "Invitados", "href": "#invitados" },
-    { "label": "RSVP", "href": "#rsvp" }
+    { "label": "Inicio", "href": "/" },
+    { "label": "El Día", "href": "/#detalles" },
+    { "label": "FAQ", "href": "/#faq" },
+    { "label": "Invitados", "href": "/invitados" },
+    { "label": "Regalos", "href": "/#regalos" }
   ],
-  "ctaButtonText": "RSVP"
+  "ctaButtonText": "RSVP",
+  "ctaButtonHref": "/#rsvp"
 }
