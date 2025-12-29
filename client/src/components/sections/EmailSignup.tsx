@@ -11,11 +11,9 @@ import {
 } from "@/components/ui/select";
 import { Loader2, Check, Mail } from "lucide-react";
 import { OliveBranchDecoration } from "@/components/illustrations";
-import { trpc } from "@/lib/trpc";
 import type { EmailSignupContent } from "./types";
 
 // Import content
-import settingsContent from "@/content/settings.json";
 import audienceSegments from "@/content/audience-segments.json";
 
 interface EmailSignupProps {
@@ -38,9 +36,8 @@ export function EmailSignup({ content, id }: EmailSignupProps) {
   });
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const timeoutRef = useRef<number | null>(null);
-
-  const fullSubscribe = trpc.newsletter.subscribeFull.useMutation();
 
   // Cleanup timeout on unmount
   useEffect(() => {
@@ -68,12 +65,25 @@ export function EmailSignup({ content, id }: EmailSignupProps) {
       return;
     }
 
+    setIsSubmitting(true);
     try {
-      await fullSubscribe.mutateAsync({
-        email: formData.email,
-        firstName: formData.firstName,
-        category: (formData.category as "parent" | "school" | "business" | "other") || null,
+      // Submit to Netlify Forms
+      const netlifyFormData = new FormData();
+      netlifyFormData.append("form-name", "newsletter");
+      netlifyFormData.append("firstName", formData.firstName);
+      netlifyFormData.append("email", formData.email);
+      if (formData.category) {
+        netlifyFormData.append("category", formData.category);
+      }
+
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(netlifyFormData as unknown as Record<string, string>).toString(),
       });
+
+      if (!response.ok) throw new Error("Form submission failed");
+
       setSuccess(true);
       setFormData({ firstName: "", email: "", category: "" });
       // Clear any existing timeout before setting a new one
@@ -88,6 +98,8 @@ export function EmailSignup({ content, id }: EmailSignupProps) {
       setError(
         err instanceof Error ? err.message : "Something went wrong. Please try again."
       );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -202,10 +214,10 @@ export function EmailSignup({ content, id }: EmailSignupProps) {
             <Button
               type="submit"
               size="lg"
-              disabled={fullSubscribe.isPending}
+              disabled={isSubmitting}
               className="w-full bg-[#9C7C58] hover:bg-[#7A8B6E] text-white font-medium py-6 text-lg transition-all duration-300 hover:shadow-lg disabled:opacity-50 font-body"
             >
-              {fullSubscribe.isPending ? (
+              {isSubmitting ? (
                 <>
                   <Loader2 className="mr-2 h-6 w-6 animate-spin" />
                   Enviando...

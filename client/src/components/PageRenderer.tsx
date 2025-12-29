@@ -7,12 +7,10 @@
  * 3. Wrapping with global components (Header, Footer, SEO)
  */
 
-import { useState } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { StructuredData } from "@/components/StructuredData";
-import { PartnershipModal } from "@/components/PartnershipModal";
 import { renderSections } from "@/components/sections";
 import type { PageData } from "@/components/sections/types";
 
@@ -24,27 +22,16 @@ interface PageRendererProps {
 }
 
 export function PageRenderer({ pageData }: PageRendererProps) {
-  const [partnershipModalOpen, setPartnershipModalOpen] = useState(false);
-
-  const scrollToEmailForm = () => {
-    // Find the first email-signup section
-    const emailSection = document.querySelector('[id^="section-"]');
-    const sections = pageData.sections;
-    const emailIndex = sections.findIndex(s => s.type === "email-signup");
-    if (emailIndex >= 0) {
-      document.getElementById(`section-${emailIndex}`)?.scrollIntoView({ behavior: "smooth" });
-    } else {
-      // Fallback to any email-form id
-      document.getElementById("email-form")?.scrollIntoView({ behavior: "smooth" });
+  const scrollToRSVP = () => {
+    // Scroll to RSVP section
+    const rsvpSection = document.getElementById("rsvp");
+    if (rsvpSection) {
+      rsvpSection.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   const handleCtaClick = () => {
-    scrollToEmailForm();
-  };
-
-  const handlePartnershipClick = () => {
-    setPartnershipModalOpen(true);
+    scrollToRSVP();
   };
 
   return (
@@ -74,26 +61,14 @@ export function PageRenderer({ pageData }: PageRendererProps) {
         keywords={pageData.seo.keywords}
       />
 
-      <Header
-        onJoinClick={scrollToEmailForm}
-        onPartnershipClick={handlePartnershipClick}
-      />
-
-      <PartnershipModal
-        open={partnershipModalOpen}
-        onOpenChange={setPartnershipModalOpen}
-      />
+      <Header onJoinClick={scrollToRSVP} />
 
       <div id="main-content" className="min-h-screen overflow-x-hidden">
         {renderSections(pageData.sections, {
           onCtaClick: handleCtaClick,
-          onPartnershipClick: handlePartnershipClick,
         })}
 
-        <Footer
-          onNewsletterClick={scrollToEmailForm}
-          onPartnershipClick={handlePartnershipClick}
-        />
+        <Footer onNewsletterClick={scrollToRSVP} />
       </div>
     </>
   );

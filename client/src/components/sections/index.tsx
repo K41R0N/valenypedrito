@@ -141,7 +141,6 @@ interface RenderSectionOptions {
   section: SectionType;
   index: number;
   onCtaClick?: () => void;
-  onPartnershipClick?: () => void;
 }
 
 /**
@@ -152,7 +151,6 @@ export function renderSection({
   section,
   index,
   onCtaClick,
-  onPartnershipClick,
 }: RenderSectionOptions): React.ReactNode {
   const Component = sectionComponents[section.type];
 
@@ -174,11 +172,7 @@ export function renderSection({
   // Add callback props for interactive sections
   const callbackProps: Record<string, unknown> = {};
 
-  if (type === "cta-section" && onPartnershipClick) {
-    callbackProps.onCtaClick = onPartnershipClick;
-  }
-
-  if (type === "hero-centered" && onCtaClick) {
+  if ((type === "cta-section" || type === "hero-centered") && onCtaClick) {
     callbackProps.onCtaClick = onCtaClick;
   }
 
@@ -192,7 +186,6 @@ export function renderSections(
   sections: SectionType[],
   options?: {
     onCtaClick?: () => void;
-    onPartnershipClick?: () => void;
   }
 ): React.ReactNode[] {
   return sections.map((section, index) =>
@@ -200,7 +193,6 @@ export function renderSections(
       section,
       index,
       onCtaClick: options?.onCtaClick,
-      onPartnershipClick: options?.onPartnershipClick,
     })
   );
 }
