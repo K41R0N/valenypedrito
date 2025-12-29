@@ -1,0 +1,14 @@
+{
+  "message": "Nos vemos en Sevilla 🌿",
+  "showSocialMedia": true,
+  "instagramUrl": "https://instagram.com/valenypedrito2026",
+  "facebookUrl": "",
+  "showHashtag": true,
+  "copyright": "© 2026 Valentina & Pedro Juan",
+  "quickLinks": [
+    { "label": "Detalles del Evento", "href": "#detalles" },
+    { "label": "RSVP", "href": "#rsvp" },
+    { "label": "Preguntas Frecuentes", "href": "#faq" },
+    { "label": "Contacto", "href": "#contacto" }
+  ]
+}

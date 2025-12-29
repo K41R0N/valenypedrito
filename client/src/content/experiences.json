@@ -1,0 +1,31 @@
+{
+  "title": "Planned Experiences",
+  "titleEmoji": "🎪",
+  "subtitle": "Exciting experiences will be introduced in phases, creating new reasons to visit throughout the year!",
+  "cards": [
+    {
+      "title": "Play & Adventure",
+      "description": "Outdoor play structures, climbing walls, and adventure courses designed for active exploration",
+      "emoji": "🎢",
+      "badgeText": "Coming Soon"
+    },
+    {
+      "title": "Creative Studios",
+      "description": "Art workshops, craft stations, and hands-on creative activities for young artists",
+      "emoji": "🎨",
+      "badgeText": "Coming Soon"
+    },
+    {
+      "title": "Animal Encounters",
+      "description": "Safe, educational interactions with friendly animals in a natural setting",
+      "emoji": "🐐",
+      "badgeText": "Coming Soon"
+    },
+    {
+      "title": "Family Fun",
+      "description": "Group activities, seasonal events, and celebrations that bring families together",
+      "emoji": "🎉",
+      "badgeText": "Coming Soon"
+    }
+  ]
+}

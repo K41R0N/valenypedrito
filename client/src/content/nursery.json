@@ -1,0 +1,25 @@
+{
+  "title": "Greenland Nursery",
+  "titleEmoji": "🌱",
+  "description": "Take a piece of GreenLand Village home with you! Our on-site nursery offers a curated selection of plants, nature-inspired souvenirs, and seasonal items that extend your park experience beyond your visit.",
+  "image": "/nursery-image.png",
+  "imageAlt": "Plant nursery with families",
+  "features": [
+    {
+      "emoji": "🌿",
+      "text": "Plants for all ages and skill levels"
+    },
+    {
+      "emoji": "🌻",
+      "text": "Kid-friendly plants perfect for young gardeners"
+    },
+    {
+      "emoji": "🎁",
+      "text": "Nature-inspired souvenirs and gifts"
+    },
+    {
+      "emoji": "🍂",
+      "text": "Seasonal selections and special collections"
+    }
+  ]
+}

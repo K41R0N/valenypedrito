@@ -1,0 +1,26 @@
+{
+  "title": "Why GreenLand Village?",
+  "titleEmoji": "💚",
+  "cards": [
+    {
+      "title": "More Than Entertainment",
+      "description": "Every experience is designed to inspire learning, creativity, and meaningful family connections",
+      "emoji": "🌟"
+    },
+    {
+      "title": "Designed for Families",
+      "description": "Safe, welcoming spaces where parents and children can explore and play together",
+      "emoji": "👨‍👩‍👧"
+    },
+    {
+      "title": "Community Focused",
+      "description": "A gathering place that brings neighbors together and strengthens community bonds",
+      "emoji": "🤝"
+    },
+    {
+      "title": "A Unique Destination",
+      "description": "Parkland's first interactive family park offering experiences you won't find anywhere else",
+      "emoji": "🏆"
+    }
+  ]
+}

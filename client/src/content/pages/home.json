@@ -1,0 +1,168 @@
+{
+  "title": "Boda Valentina y Pedro Juan",
+  "slug": "home",
+  "seo": {
+    "metaTitle": "Boda Valentina Osorio & Pedro Juan Zuleta | 23 de Septiembre 2026 | Sevilla, España",
+    "metaDescription": "Celebra con nosotros nuestra boda en la hermosa Hacienda la Soledad en Sevilla. Confirma tu asistencia y comparte este día especial.",
+    "keywords": "boda valentina osorio pedro juan zuleta, boda sevilla 2026, hacienda la soledad, wedding seville spain",
+    "shareImage": "/uploads/wedding-share-image.jpg"
+  },
+  "sections": [
+    {
+      "type": "wedding-hero",
+      "brideName": "Valentina Osorio",
+      "groomName": "Pedro Juan Zuleta",
+      "announcement": "¡NOS CASAMOS!",
+      "date": "2026-09-23",
+      "venue": "Hacienda la Soledad",
+      "location": "Sevilla, España",
+      "skylinePosition": "bottom",
+      "showCountdown": true
+    },
+    {
+      "type": "countdown",
+      "title": "Faltan",
+      "weddingDate": "2026-09-23T18:00:00",
+      "backgroundColor": "cream",
+      "decorativeElement": "orange-branch"
+    },
+    {
+      "type": "info-box",
+      "title": "Información sobre Niños",
+      "content": "Entendemos que organizar el cuidado de los pequeños puede ser un desafío. Por favor, háznoslo saber si planeas traer a tus hijos para que podamos hacer los arreglos necesarios.\n\nSi necesitas recomendaciones de niñeras o servicios de cuidado infantil en Sevilla, estaremos encantados de ayudarte.",
+      "icon": "heart",
+      "style": "normal",
+      "backgroundColor": "beige"
+    },
+    {
+      "type": "event-details",
+      "title": "El Gran Día",
+      "subtitle": "Miércoles, 23 de Septiembre de 2026",
+      "timeline": [
+        {
+          "time": "18:00",
+          "event": "Ceremonia",
+          "description": "Los jardines de la Hacienda la Soledad nos verán dar el sí",
+          "icon": "church"
+        },
+        {
+          "time": "19:30",
+          "event": "Cóctel de Bienvenida",
+          "description": "Brindemos juntos en la terraza con vistas al atardecer sevillano",
+          "icon": "champagne"
+        },
+        {
+          "time": "21:00",
+          "event": "Cena",
+          "description": "Una velada gastronómica en el salón principal",
+          "icon": "dinner"
+        },
+        {
+          "time": "23:00",
+          "event": "¡Fiesta!",
+          "description": "Bailemos hasta el amanecer",
+          "icon": "music"
+        }
+      ],
+      "venueAddress": "Hacienda la Soledad\nSevilla, España",
+      "showMap": true,
+      "mapLatitude": "37.3886",
+      "mapLongitude": "-5.9823",
+      "parkingInfo": "Hay estacionamiento gratuito disponible en la hacienda. Sigue las señales al llegar.",
+      "transportInfo": "Organizaremos transporte compartido desde el centro de Sevilla. Detalles próximamente.",
+      "backgroundColor": "white"
+    },
+    {
+      "type": "rsvp-form",
+      "title": "Confirma tu Asistencia",
+      "subtitle": "Por favor ayúdanos a planear este día especial confirmando tu asistencia",
+      "formIntro": "Agradecemos tu confirmación antes del",
+      "rsvpDeadline": "2026-08-01",
+      "mealOptions": [
+        {
+          "value": "carne",
+          "label": "Opción de Carne",
+          "description": "Solomillo de ternera con reducción de vino tinto"
+        },
+        {
+          "value": "pescado",
+          "label": "Opción de Pescado",
+          "description": "Lubina a la sal con verduras de temporada"
+        },
+        {
+          "value": "vegetariano",
+          "label": "Opción Vegetariana",
+          "description": "Risotto de hongos con trufa"
+        },
+        {
+          "value": "vegano",
+          "label": "Opción Vegana",
+          "description": "Verduras asadas con quinoa y tahini"
+        }
+      ],
+      "askDietaryRestrictions": true,
+      "askPlusOne": true,
+      "decorativeIcon": "champagne",
+      "backgroundColor": "beige"
+    },
+    {
+      "type": "info-box",
+      "title": "Código de Vestimenta",
+      "content": "**Formal / Cocktail**\n\nLa celebración será en los jardines de la hacienda. Recomendamos ropa formal cómoda para disfrutar de la velada.\n\n*Por favor evita usar blanco, marfil o beige claro.*",
+      "icon": "info",
+      "style": "highlight",
+      "backgroundColor": "cream"
+    },
+    {
+      "type": "faq",
+      "title": "Preguntas Frecuentes",
+      "subtitle": "Todo lo que necesitas saber",
+      "questions": [
+        {
+          "question": "¿Dónde puedo alojarme?",
+          "answer": "Visita nuestra página de Información para Invitados donde encontrarás recomendaciones de hoteles con tarifas especiales para la boda."
+        },
+        {
+          "question": "¿Cómo llego desde el aeropuerto?",
+          "answer": "El Aeropuerto de Sevilla está a 20 minutos del centro. Recomendamos taxi o servicio de transporte privado. Tenemos información detallada en la sección para invitados."
+        },
+        {
+          "question": "¿Habrá transporte a la hacienda?",
+          "answer": "Sí, organizaremos transporte compartido desde puntos céntricos de Sevilla. Te enviaremos los detalles más cerca de la fecha."
+        },
+        {
+          "question": "¿Puedo tomar fotos durante la ceremonia?",
+          "answer": "Preferimos una ceremonia unplugged. Nuestro fotógrafo capturará cada momento. Después de la ceremonia, ¡comparte todas las fotos que quieras usando nuestro hashtag!"
+        },
+        {
+          "question": "¿Cuál es el hashtag de la boda?",
+          "answer": "#ValenYPedrito2026 - ¡Úsalo para compartir tus fotos y momentos especiales!"
+        },
+        {
+          "question": "¿Hasta qué hora es la celebración?",
+          "answer": "La fiesta continuará hasta las primeras horas de la mañana. ¡Prepárate para bailar toda la noche!"
+        }
+      ],
+      "backgroundColor": "white"
+    },
+    {
+      "type": "registry",
+      "title": "Lista de Regalos",
+      "message": "Vuestra presencia es el mejor regalo que podríamos recibir. Si deseáis hacernos un obsequio, hemos preparado algunas sugerencias:",
+      "registryLinks": [],
+      "showCashOption": true,
+      "cashMessage": "También aceptamos contribuciones para nuestra luna de miel. Si prefieres esta opción, por favor contáctanos directamente.",
+      "backgroundColor": "beige"
+    },
+    {
+      "type": "content-image",
+      "title": "Comparte tus Fotos",
+      "content": "Queremos ver la boda a través de tus ojos. Comparte tus fotos y videos usando nuestro hashtag **#ValenYPedrito2026**\n\nTus fotos aparecerán en nuestra galería digital y podremos revivir juntos todos los momentos especiales de este día.",
+      "image": "/images/watercolor/azulejo-tile.png",
+      "imageAlt": "Comparte tus fotos",
+      "imagePosition": "right",
+      "decorativeElement": "orange-branch",
+      "backgroundColor": "cream"
+    }
+  ]
+}

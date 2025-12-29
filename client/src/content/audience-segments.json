@@ -1,0 +1,8 @@
+{
+  "segments": [
+    { "value": "parent", "emoji": "👨‍👩‍👧", "label": "Parent" },
+    { "value": "school", "emoji": "🏫", "label": "School / Educator" },
+    { "value": "business", "emoji": "🏢", "label": "Business / Organization" },
+    { "value": "other", "emoji": "✨", "label": "Other" }
+  ]
+}

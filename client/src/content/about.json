@@ -1,0 +1,24 @@
+{
+  "title": "What is GreenLand Village?",
+  "description": "GreenLand Village is more than just a park—it's a destination where families come together to explore, learn, and create lasting memories. Our interactive experiences are designed to spark curiosity, encourage creativity, and foster meaningful connections between children, parents, and nature.",
+  "image": "/about-image.png",
+  "imageAlt": "Families enjoying outdoor activities",
+  "features": [
+    {
+      "emoji": "✨",
+      "text": "Interactive play experiences for all ages"
+    },
+    {
+      "emoji": "🌳",
+      "text": "Nature-inspired learning opportunities"
+    },
+    {
+      "emoji": "👨‍👩‍👧‍👦",
+      "text": "Community-focused family activities"
+    },
+    {
+      "emoji": "💚",
+      "text": "Meaningful connections and memories"
+    }
+  ]
+}

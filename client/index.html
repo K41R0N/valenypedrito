@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
+  <title>Boda Valentina & Pedro Juan | 23 de Septiembre 2026 | Sevilla, España</title>
+  <meta name="description"
+    content="Celebra con nosotros nuestra boda en la hermosa Hacienda la Soledad en Sevilla. Confirma tu asistencia y comparte este día especial." />
+  <meta name="keywords"
+    content="boda valentina osorio pedro juan zuleta, boda sevilla 2026, hacienda la soledad, wedding seville spain" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="alternate icon" type="image/png" href="/favicon.png" />
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://valenypedrito.netlify.app/" />
+
+  <!-- Mobile App Meta Tags -->
+  <meta name="theme-color" content="#9C7C58" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Boda Valen y Pedrito" />
+  <meta name="application-name" content="Boda Valen y Pedrito" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://valenypedrito.netlify.app/" />
+  <meta property="og:title" content="Boda Valentina & Pedro Juan | 23 de Septiembre 2026 | Sevilla, España" />
+  <meta property="og:description"
+    content="Celebra con nosotros nuestra boda en la hermosa Hacienda la Soledad en Sevilla. Confirma tu asistencia y comparte este día especial." />
+  <meta property="og:image" content="/uploads/wedding-share-image.jpg" />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:site_name" content="Boda Valentina y Pedro Juan" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Boda Valentina & Pedro Juan | 23 de Septiembre 2026 | Sevilla, España" />
+  <meta name="twitter:description"
+    content="Celebra con nosotros nuestra boda en la hermosa Hacienda la Soledad en Sevilla. Confirma tu asistencia y comparte este día especial." />
+  <meta name="twitter:image" content="/uploads/wedding-share-image.jpg" />
+
+  <!-- Geo Tags -->
+  <meta name="geo.region" content="ES-AN" />
+  <meta name="geo.placename" content="Sevilla" />
+  <meta name="geo.position" content="37.3886;-5.9823" />
+  <meta name="ICBM" content="37.3886, -5.9823" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Playfair+Display:wght@400;600&family=Lato:wght@300;400&display=swap"
+    rel="stylesheet" />
+
+  <!-- Netlify Identity Widget for CMS authentication -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+  <!-- Analytics can be added later if needed -->
+  <!-- Netlify Identity Widget for CMS authentication redirect -->
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>

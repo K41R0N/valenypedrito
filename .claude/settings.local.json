@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm run check:*)",
+      "Bash(npm --version:*)",
+      "Bash(npm run dev:*)",
+      "Bash(npm install)",
+      "Bash(npx pnpm install react-markdown)",
+      "Bash(git init:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}

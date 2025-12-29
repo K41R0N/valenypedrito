@@ -1,0 +1,9 @@
+{
+  "navItems": [
+    { "label": "Inicio", "href": "#home" },
+    { "label": "Detalles", "href": "#detalles" },
+    { "label": "Eventos", "href": "#eventos" },
+    { "label": "Invitados", "href": "#invitados" },
+    { "label": "RSVP", "href": "#rsvp" }
+  ]
+}
