@@ -1,10 +1,6 @@
 backend:
-  name: github
-  repo: K41R0N/valenypedrito
+  name: git-gateway
   branch: main
-  # Auth endpoint works on any deploy (production or preview)
-  # base_url is omitted so CMS uses current origin automatically
-  auth_endpoint: /.netlify/functions/auth
 
 # Local development - uncomment to test locally without authentication
 # local_backend: true

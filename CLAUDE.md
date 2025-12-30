@@ -6,25 +6,36 @@ This is a wedding website for Valentina Osorio and Pedro Juan Zuleta's wedding o
 
 **CRITICAL:** This project was converted from a Greenland Village family park website. Many Greenland design elements, styles, and components still remain and MUST be removed/redesigned according to the wedding design guidelines below.
 
-## Environment Variables (Netlify Dashboard)
+## CMS Setup (Netlify Identity + Git Gateway)
 
-The following environment variables MUST be set in the Netlify Dashboard for the CMS to work:
+The CMS uses **Netlify Identity** for user-friendly email/password login. No GitHub account required for editors.
 
-### Required for CMS Content Management
+### Setup Steps (One-time)
 
-| Variable | Description |
-|----------|-------------|
-| `GITHUB_TOKEN` | GitHub Personal Access Token with `repo` scope. Create at [GitHub Settings > Developer Settings > Personal Access Tokens](https://github.com/settings/tokens). This allows the CMS to read/write content to the repository. |
-| `GITHUB_REPO` | Repository in `owner/repo` format (e.g., `K41R0N/valenypedrito`) |
+1. **Enable Netlify Identity**
+   - Go to Netlify Dashboard → Site Settings → Identity
+   - Click "Enable Identity"
 
-### GitHub Token Setup Steps
+2. **Configure Registration**
+   - Under "Registration preferences", choose "Invite only" (recommended)
+   - This lets you control who can access the CMS
 
-1. Go to [GitHub Settings > Developer Settings > Personal Access Tokens > Tokens (classic)](https://github.com/settings/tokens)
-2. Generate new token with `repo` scope
-3. Add it to Netlify as `GITHUB_TOKEN`
-4. Add the repo name as `GITHUB_REPO` (e.g., `K41R0N/valenypedrito`)
+3. **Enable Git Gateway**
+   - Go to Identity → Services → Git Gateway
+   - Click "Enable Git Gateway"
+   - This allows Netlify to commit changes on behalf of users
 
-The CMS at `/admin` uses Sveltia CMS which authenticates via the GitHub PAT to perform content operations.
+4. **Invite Your Client**
+   - Go to Identity → Invite users
+   - Enter your client's email address
+   - They'll receive an email to set up their password
+
+### How It Works
+
+- Client goes to `yoursite.netlify.app/admin`
+- Logs in with email/password (no GitHub needed!)
+- Edits content through Sveltia CMS
+- Changes are automatically committed to GitHub via Git Gateway
 
 ## Essential Context Files
 
