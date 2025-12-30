@@ -1,6 +1,11 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: K41R0N/valenypedrito
   branch: main
+  # Custom auth endpoint returns GitHub PAT from env vars
+  # User authenticates via Netlify Identity (email/password)
+  # Then Sveltia uses the PAT for GitHub operations
+  auth_endpoint: /.netlify/functions/auth
 
 # Local development - uncomment to test locally without authentication
 # local_backend: true

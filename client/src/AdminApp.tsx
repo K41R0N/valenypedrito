@@ -1,30 +1,24 @@
 import { useEffect } from "react";
 
 /**
- * AdminApp - Loads Sveltia CMS for content management
+ * AdminApp - Loads Sveltia CMS with GitHub PAT authentication
  *
- * Authentication is handled via Netlify Identity + Git Gateway:
- * - Users log in with email/password through Netlify Identity
- * - Git Gateway handles GitHub operations behind the scenes
- * - No GitHub account required for editors
+ * Authentication flow:
+ * 1. Sveltia CMS loads and shows "Login with GitHub" button
+ * 2. User clicks login → redirected to auth.ts
+ * 3. auth.ts returns the GITHUB_TOKEN from env vars
+ * 4. Sveltia uses that token for all GitHub operations
  *
  * Setup in Netlify Dashboard:
- * 1. Enable Identity (Site Settings → Identity)
- * 2. Enable Git Gateway (Identity → Services → Git Gateway)
- * 3. Invite users via Identity → Invite users
+ * - Set GITHUB_TOKEN env var (PAT with repo scope)
+ *
+ * The client clicks "Login with GitHub" but behind the scenes
+ * they're just getting the PAT - no actual GitHub account needed.
  */
 export default function AdminApp() {
   useEffect(() => {
-    const identitySrc = "https://identity.netlify.com/v1/netlify-identity-widget.js";
     const cmsSrc = "https://unpkg.com/@sveltia/cms@0.125.0/dist/sveltia-cms.js";
     const configHref = "/admin/config.yml";
-
-    // Load Netlify Identity Widget (required for Git Gateway auth)
-    if (!document.querySelector(`script[src="${identitySrc}"]`)) {
-      const identityScript = document.createElement("script");
-      identityScript.src = identitySrc;
-      document.head.appendChild(identityScript);
-    }
 
     // Load Sveltia CMS
     if (!document.querySelector(`script[src="${cmsSrc}"]`)) {
@@ -35,7 +29,7 @@ export default function AdminApp() {
       document.body.appendChild(cmsScript);
     }
 
-    // Add config link if not present
+    // Add config link
     if (!document.querySelector(`link[href="${configHref}"]`)) {
       const configLink = document.createElement("link");
       configLink.href = configHref;

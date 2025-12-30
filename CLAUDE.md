@@ -6,38 +6,38 @@ This is a wedding website for Valentina Osorio and Pedro Juan Zuleta's wedding o
 
 **CRITICAL:** This project was converted from a Greenland Village family park website. Many Greenland design elements, styles, and components still remain and MUST be removed/redesigned according to the wedding design guidelines below.
 
-## CMS Setup (Netlify Identity + Git Gateway)
+## CMS Setup (Netlify Identity + Sveltia CMS)
 
 The CMS uses **Netlify Identity** for user-friendly email/password login. No GitHub account required for editors.
 
 ### What Changed (December 2025)
 
-**Before:** GitHub PAT-based authentication
-- Required `GITHUB_TOKEN` and `GITHUB_REPO` env vars
-- Used custom `auth.ts` and `github-proxy.ts` Netlify functions
-- Users needed to understand GitHub PATs
-- Clerk was used as a redundant Google sign-in gate
+**Before:** Clerk + GitHub PAT
+- Clerk required Google sign-in (redundant extra step)
+- GitHub PAT in env vars for content operations
 
-**After:** Netlify Identity + Git Gateway
-- Users log in with email/password
-- No environment variables needed for auth
+**After:** Netlify Identity + Sveltia CMS + GitHub PAT
+- Users log in with email/password via Netlify Identity
+- Sveltia CMS provides modern editing UI
+- GitHub PAT (in env vars) handles all repo operations
 - No GitHub account needed for content editors
-- Netlify handles all Git operations behind the scenes
 
 ### Architecture
 
 ```
-User → Netlify Identity (email/password) → Git Gateway → GitHub API → Repository
+User → Netlify Identity (email/password) → AdminApp gate → Sveltia CMS → auth.ts (returns PAT) → GitHub API
 ```
 
 **Key files:**
-- `client/public/admin/config.yml` - CMS configuration with `backend: git-gateway`
-- `client/src/AdminApp.tsx` - Loads Netlify Identity widget + Sveltia CMS
+- `client/public/admin/config.yml` - CMS configuration with GitHub backend + custom auth_endpoint
+- `client/src/AdminApp.tsx` - Netlify Identity login gate + loads Sveltia CMS
+- `netlify/functions/auth.ts` - Returns GitHub PAT for Sveltia's GitHub operations
 
-**Removed files:**
-- `netlify/functions/auth.ts` - No longer needed
-- `netlify/functions/github-proxy.ts` - No longer needed
-- `@clerk/clerk-react` dependency - No longer needed
+**Why this approach?**
+- Sveltia CMS does NOT support `git-gateway` backend
+- But we want email/password login (not GitHub OAuth)
+- Solution: Netlify Identity gates access, then Sveltia uses PAT from auth.ts
+- Best of both worlds: simple login + modern CMS UI
 
 ### Setup Steps (One-time in Netlify Dashboard)
 
@@ -49,10 +49,10 @@ User → Netlify Identity (email/password) → Git Gateway → GitHub API → Re
    - Under "Registration preferences", choose "Invite only" (recommended)
    - This lets you control who can access the CMS
 
-3. **Enable Git Gateway**
-   - Go to Identity → Services → Git Gateway
-   - Click "Enable Git Gateway"
-   - This allows Netlify to commit changes on behalf of users
+3. **Set GitHub Token Environment Variable**
+   - Go to Site Settings → Environment Variables
+   - Add `GITHUB_TOKEN` with a GitHub PAT that has `repo` scope
+   - This is used by auth.ts to give Sveltia access to the repo
 
 4. **Invite Your Client**
    - Go to Identity → Invite users
@@ -62,12 +62,12 @@ User → Netlify Identity (email/password) → Git Gateway → GitHub API → Re
 ### Expected User Flow
 
 1. User navigates to `https://yoursite.netlify.app/admin`
-2. Sveltia CMS loads and shows "Login with Netlify Identity" button
+2. Custom login page shows "Iniciar Sesión" button
 3. User clicks login → Netlify Identity popup appears
 4. User enters email/password (or clicks link in invite email first time)
-5. After login, CMS loads with full editing capabilities
+5. After login, Sveltia CMS loads with full editing capabilities
 6. User makes changes and clicks "Publish"
-7. Git Gateway commits changes to GitHub on user's behalf
+7. Sveltia commits changes to GitHub via the PAT
 8. Netlify auto-deploys the updated site
 
 ### Troubleshooting
