@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { ChevronDown } from "lucide-react";
+import { useRSVP } from "@/components/RSVPContext";
 
 interface LuxuryHeroContent {
   announcement?: string;
@@ -25,7 +26,6 @@ export function LuxuryHero({ content, id }: LuxuryHeroProps) {
     groomName = "Pedro Juan",
     subtitle,
     weddingDate,
-    venue = "Hacienda la Soledad",
     location = "Sevilla, España",
     backgroundImage,
     showScrollIndicator = true,
@@ -34,6 +34,7 @@ export function LuxuryHero({ content, id }: LuxuryHeroProps) {
   const [scrollY, setScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
+  const { openModal } = useRSVP();
 
   // Parallax effect
   useEffect(() => {
@@ -130,14 +131,15 @@ export function LuxuryHero({ content, id }: LuxuryHeroProps) {
         <div className="decorative-line mt-8 mb-8" />
 
         {/* Subtitle */}
-        <p className="section-subtitle mb-4">{subtitleText}</p>
+        <p className="section-subtitle mb-8">{subtitleText}</p>
 
-        {/* Venue */}
-        {venue && (
-          <p className="font-serif text-lg text-[var(--text-secondary)] mt-6">
-            {venue}
-          </p>
-        )}
+        {/* RSVP Button - Prominent CTA */}
+        <button
+          onClick={openModal}
+          className="btn-primary text-lg px-10 py-4 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300"
+        >
+          Confirmar Asistencia
+        </button>
       </div>
 
       {/* Scroll Indicator */}

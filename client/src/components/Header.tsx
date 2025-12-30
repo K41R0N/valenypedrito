@@ -2,16 +2,14 @@ import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { useRSVP } from "@/components/RSVPContext";
 import headerContent from "@/content/header.json";
 
-interface HeaderProps {
-  onJoinClick: () => void;
-}
-
-export function Header({ onJoinClick }: HeaderProps) {
+export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [location, setLocation] = useLocation();
+  const { openModal } = useRSVP();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,6 +74,11 @@ export function Header({ onJoinClick }: HeaderProps) {
     }
   };
 
+  const handleRSVPClick = () => {
+    setIsMobileMenuOpen(false);
+    openModal();
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -109,7 +112,7 @@ export function Header({ onJoinClick }: HeaderProps) {
               </button>
             ))}
             <Button
-              onClick={onJoinClick}
+              onClick={handleRSVPClick}
               className="ml-2 btn-primary"
             >
               {headerContent.ctaButtonText}
@@ -143,10 +146,7 @@ export function Header({ onJoinClick }: HeaderProps) {
               </button>
             ))}
             <Button
-              onClick={() => {
-                onJoinClick();
-                setIsMobileMenuOpen(false);
-              }}
+              onClick={handleRSVPClick}
               className="w-full mt-3 btn-primary"
             >
               {headerContent.ctaButtonText}
