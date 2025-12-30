@@ -32,7 +32,12 @@ User → Netlify Identity (email/password) → Git Gateway → GitHub API → Re
 
 **Key files:**
 - `client/public/admin/config.yml` - CMS configuration with `backend: git-gateway`
-- `client/src/AdminApp.tsx` - Loads Netlify Identity widget + Sveltia CMS
+- `client/src/AdminApp.tsx` - Loads Netlify Identity widget + Decap CMS
+
+**Why Decap CMS (not Sveltia)?**
+- Sveltia CMS does NOT support `git-gateway` backend
+- Decap CMS is the official successor to Netlify CMS with full git-gateway support
+- Same config format, just different CMS script
 
 **Removed files:**
 - `netlify/functions/auth.ts` - No longer needed

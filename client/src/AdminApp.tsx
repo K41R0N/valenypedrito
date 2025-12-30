@@ -1,12 +1,15 @@
 import { useEffect } from "react";
 
 /**
- * AdminApp - Loads Sveltia CMS for content management
+ * AdminApp - Loads Decap CMS for content management
  *
  * Authentication is handled via Netlify Identity + Git Gateway:
  * - Users log in with email/password through Netlify Identity
  * - Git Gateway handles GitHub operations behind the scenes
  * - No GitHub account required for editors
+ *
+ * Note: We use Decap CMS (not Sveltia) because Sveltia doesn't support git-gateway.
+ * Decap CMS is the official successor to Netlify CMS with full git-gateway support.
  *
  * Setup in Netlify Dashboard:
  * 1. Enable Identity (Site Settings → Identity)
@@ -16,7 +19,7 @@ import { useEffect } from "react";
 export default function AdminApp() {
   useEffect(() => {
     const identitySrc = "https://identity.netlify.com/v1/netlify-identity-widget.js";
-    const cmsSrc = "https://unpkg.com/@sveltia/cms@0.125.0/dist/sveltia-cms.js";
+    const cmsSrc = "https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js";
     const configHref = "/admin/config.yml";
 
     // Load Netlify Identity Widget (required for Git Gateway auth)
@@ -26,12 +29,10 @@ export default function AdminApp() {
       document.head.appendChild(identityScript);
     }
 
-    // Load Sveltia CMS
+    // Load Decap CMS (supports git-gateway, unlike Sveltia)
     if (!document.querySelector(`script[src="${cmsSrc}"]`)) {
       const cmsScript = document.createElement("script");
       cmsScript.src = cmsSrc;
-      cmsScript.integrity = "sha384-hTeYkuMKP/HzXIz1LTS3uJxWMS5VVKqLmDqFQzY4i4ac5vcAFbJlCEppkDCpwrD9";
-      cmsScript.crossOrigin = "anonymous";
       document.body.appendChild(cmsScript);
     }
 
