@@ -6,32 +6,138 @@ This is a wedding website for Valentina Osorio and Pedro Juan Zuleta's wedding o
 
 **CRITICAL:** This project was converted from a Greenland Village family park website. Many Greenland design elements, styles, and components still remain and MUST be removed/redesigned according to the wedding design guidelines below.
 
-## Environment Variables (Netlify Dashboard)
+## CMS Setup (Netlify Identity + Git Gateway)
 
-The following environment variables MUST be set in the Netlify Dashboard for the CMS to work:
+The CMS uses **Netlify Identity** for user-friendly email/password login. No GitHub account required for editors.
 
-### Required for Admin Panel Authentication
+### What Changed (December 2025)
 
-| Variable | Description |
-|----------|-------------|
-| `VITE_CLERK_PUBLISHABLE_KEY` | Clerk publishable key from [Clerk Dashboard](https://dashboard.clerk.com). Create a new application, enable Google OAuth, and copy the publishable key. |
-| `GITHUB_TOKEN` | GitHub Personal Access Token with `repo` scope. Create at [GitHub Settings > Developer Settings > Personal Access Tokens](https://github.com/settings/tokens). This allows the CMS to push changes to the repository. |
-| `GITHUB_REPO` | Repository in `owner/repo` format (e.g., `K41R0N/valenypedrito`) |
+**Before:** GitHub PAT-based authentication
+- Required `GITHUB_TOKEN` and `GITHUB_REPO` env vars
+- Used custom `auth.ts` and `github-proxy.ts` Netlify functions
+- Users needed to understand GitHub PATs
+- Clerk was used as a redundant Google sign-in gate
 
-### Clerk Setup Steps
+**After:** Netlify Identity + Git Gateway
+- Users log in with email/password
+- No environment variables needed for auth
+- No GitHub account needed for content editors
+- Netlify handles all Git operations behind the scenes
 
-1. Go to [dashboard.clerk.com](https://dashboard.clerk.com)
-2. Create a new application
-3. In "Social Connections", enable **Google**
-4. Copy the **Publishable Key** from API Keys
-5. Add it to Netlify as `VITE_CLERK_PUBLISHABLE_KEY`
+### Architecture
 
-### GitHub Token Setup Steps
+```
+User → Netlify Identity (email/password) → Git Gateway → GitHub API → Repository
+```
 
-1. Go to [GitHub Settings > Developer Settings > Personal Access Tokens > Tokens (classic)](https://github.com/settings/tokens)
-2. Generate new token with `repo` scope
-3. Add it to Netlify as `GITHUB_TOKEN`
-4. Add the repo name as `GITHUB_REPO` (e.g., `K41R0N/valenypedrito`)
+**Key files:**
+- `client/public/admin/config.yml` - CMS configuration with `backend: git-gateway`
+- `client/src/AdminApp.tsx` - Loads Netlify Identity widget + Sveltia CMS
+
+**Removed files:**
+- `netlify/functions/auth.ts` - No longer needed
+- `netlify/functions/github-proxy.ts` - No longer needed
+- `@clerk/clerk-react` dependency - No longer needed
+
+### Setup Steps (One-time in Netlify Dashboard)
+
+1. **Enable Netlify Identity**
+   - Go to Netlify Dashboard → Site Settings → Identity
+   - Click "Enable Identity"
+
+2. **Configure Registration**
+   - Under "Registration preferences", choose "Invite only" (recommended)
+   - This lets you control who can access the CMS
+
+3. **Enable Git Gateway**
+   - Go to Identity → Services → Git Gateway
+   - Click "Enable Git Gateway"
+   - This allows Netlify to commit changes on behalf of users
+
+4. **Invite Your Client**
+   - Go to Identity → Invite users
+   - Enter your client's email address
+   - They'll receive an email to set up their password
+
+### Expected User Flow
+
+1. User navigates to `https://yoursite.netlify.app/admin`
+2. Sveltia CMS loads and shows "Login with Netlify Identity" button
+3. User clicks login → Netlify Identity popup appears
+4. User enters email/password (or clicks link in invite email first time)
+5. After login, CMS loads with full editing capabilities
+6. User makes changes and clicks "Publish"
+7. Git Gateway commits changes to GitHub on user's behalf
+8. Netlify auto-deploys the updated site
+
+### Troubleshooting
+
+#### "Unable to access identity settings"
+- **Cause:** Netlify Identity not enabled
+- **Fix:** Site Settings → Identity → Enable Identity
+
+#### "Git Gateway Error" or "API Error"
+- **Cause:** Git Gateway not enabled or not connected to repo
+- **Fix:** Identity → Services → Git Gateway → Enable
+- **Also check:** The repository is connected in Site Settings → Build & Deploy
+
+#### Login popup doesn't appear
+- **Cause:** Netlify Identity widget not loading
+- **Check:** Browser console for script loading errors
+- **Fix:** Ensure `AdminApp.tsx` loads the identity widget:
+  ```javascript
+  const identitySrc = "https://identity.netlify.com/v1/netlify-identity-widget.js";
+  ```
+
+#### User can't log in (invite not received)
+- **Cause:** Email in spam, or invite expired
+- **Fix:** Resend invite from Identity → Users → click user → Resend invite
+
+#### User logged in but can't save/publish
+- **Cause:** Git Gateway permissions issue
+- **Fix:**
+  1. Check Git Gateway is enabled (Identity → Services)
+  2. Check repo is connected (Site Settings → Build & Deploy → Link repository)
+  3. Try re-enabling Git Gateway
+
+#### CMS shows but no collections/content
+- **Cause:** `config.yml` not loading or has errors
+- **Check:** Browser console for YAML parsing errors
+- **Fix:** Validate `client/public/admin/config.yml` syntax
+
+#### Changes not deploying after publish
+- **Cause:** Build not triggering
+- **Check:** Deploys tab in Netlify Dashboard
+- **Fix:** Ensure branch in `config.yml` matches deploy branch (should be `main`)
+
+### Rollback to GitHub PAT Auth (if needed)
+
+If Git Gateway doesn't work for your use case, you can revert to GitHub PAT auth:
+
+1. Restore `netlify/functions/auth.ts` (returns GITHUB_TOKEN from env)
+2. Restore `netlify/functions/github-proxy.ts` (proxies GitHub API calls)
+3. Update `client/public/admin/config.yml`:
+   ```yaml
+   backend:
+     name: github
+     repo: K41R0N/valenypedrito
+     branch: main
+     auth_endpoint: /.netlify/functions/auth
+   ```
+4. Set environment variables in Netlify:
+   - `GITHUB_TOKEN`: GitHub PAT with `repo` scope
+   - `GITHUB_REPO`: `K41R0N/valenypedrito`
+
+### Local Development
+
+For local CMS testing without authentication:
+
+1. Uncomment in `config.yml`:
+   ```yaml
+   local_backend: true
+   ```
+2. Run `npx decap-server` in a separate terminal
+3. Access CMS at `http://localhost:5174/admin`
 
 ## Essential Context Files
 

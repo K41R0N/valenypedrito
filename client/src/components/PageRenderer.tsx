@@ -12,6 +12,8 @@
 import { Header } from "@/components/Header";
 import { SEO } from "@/components/SEO";
 import { StructuredData } from "@/components/StructuredData";
+import { RSVPProvider } from "@/components/RSVPContext";
+import { RSVPModal } from "@/components/RSVPModal";
 import { renderSections } from "@/components/sections";
 import type { PageData } from "@/components/sections/types";
 
@@ -23,16 +25,13 @@ interface PageRendererProps {
 }
 
 export function PageRenderer({ pageData }: PageRendererProps) {
-  const scrollToRSVP = () => {
-    // Scroll to RSVP section
-    const rsvpSection = document.getElementById("rsvp");
-    if (rsvpSection) {
-      rsvpSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  // Find RSVP section to get deadline for modal (using any to avoid strict type check)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const rsvpSection = pageData.sections.find((s: any) => s.type === "luxury-rsvp") as any;
+  const rsvpDeadline = rsvpSection?.deadline as string | undefined;
 
   return (
-    <>
+    <RSVPProvider>
       {/* Skip to main content link for accessibility */}
       <a
         href="#main-content"
@@ -50,19 +49,23 @@ export function PageRenderer({ pageData }: PageRendererProps) {
       />
 
       <StructuredData
-        siteName={settingsContent.siteName}
+        brideName={settingsContent.brideName}
+        groomName={settingsContent.groomName}
         description={pageData.seo.metaDescription}
         email={settingsContent.contactEmail}
         location={settingsContent.location}
+        weddingDate={settingsContent.weddingDate}
         image={pageData.seo.shareImage}
-        keywords={pageData.seo.keywords}
       />
 
-      <Header onJoinClick={scrollToRSVP} />
+      <Header />
 
       <main id="main-content" className="min-h-screen overflow-x-hidden">
         {renderSections(pageData.sections)}
       </main>
-    </>
+
+      {/* RSVP Modal - accessible from anywhere via context */}
+      <RSVPModal deadline={rsvpDeadline} />
+    </RSVPProvider>
   );
 }
