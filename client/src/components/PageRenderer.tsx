@@ -25,8 +25,9 @@ interface PageRendererProps {
 }
 
 export function PageRenderer({ pageData }: PageRendererProps) {
-  // Find RSVP section to get deadline for modal
-  const rsvpSection = pageData.sections.find(s => s.type === "luxury-rsvp");
+  // Find RSVP section to get deadline for modal (using any to avoid strict type check)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const rsvpSection = pageData.sections.find((s: any) => s.type === "luxury-rsvp") as any;
   const rsvpDeadline = rsvpSection?.deadline as string | undefined;
 
   return (
@@ -48,12 +49,13 @@ export function PageRenderer({ pageData }: PageRendererProps) {
       />
 
       <StructuredData
-        siteName={settingsContent.siteName}
+        brideName={settingsContent.brideName}
+        groomName={settingsContent.groomName}
         description={pageData.seo.metaDescription}
         email={settingsContent.contactEmail}
         location={settingsContent.location}
+        weddingDate={settingsContent.weddingDate}
         image={pageData.seo.shareImage}
-        keywords={pageData.seo.keywords}
       />
 
       <Header />

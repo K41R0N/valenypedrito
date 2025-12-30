@@ -13,9 +13,6 @@ backend:
 media_folder: "client/public/uploads"
 public_folder: "/uploads"
 
-# Logo for the CMS admin interface
-logo_url: "/logo.svg"
-
 collections:
   # ==========================================================================
   # PAGES - Wedding Website Page Builder

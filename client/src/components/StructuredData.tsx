@@ -1,60 +1,50 @@
 import { useEffect } from "react";
 
 interface StructuredDataProps {
-  siteName?: string;
+  brideName?: string;
+  groomName?: string;
   description?: string;
   email?: string;
   location?: string;
+  weddingDate?: string;
   image?: string;
-  keywords?: string;
 }
 
 export function StructuredData({
-  siteName = "GreenLand Village",
-  description = "An interactive park where children and families will play, create, learn, and connect through meaningful experiences. Opening 2025 in Parkland, Florida.",
-  email = "greenlandvillagefl@gmail.com",
-  location = "Parkland, FL",
-  image = "https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=1200",
-  keywords = "family park, interactive park, children activities, family entertainment center, nature park, kids activities, family destination, Parkland Florida",
+  brideName = "Valentina",
+  groomName = "Pedro Juan",
+  description = "Boda de Valentina Osorio y Pedro Juan Zuleta. Celebra con nosotros el 23 de septiembre de 2026 en Hacienda la Soledad, Sevilla, España.",
+  email,
+  location = "Sevilla, España",
+  weddingDate = "2026-09-23",
+  image = "/images/watercolor/seville-skyline.png",
 }: StructuredDataProps) {
   useEffect(() => {
-    // Parse location for address
-    const [city, state] = location.split(",").map((s) => s.trim());
-
     const script = document.createElement("script");
     script.type = "application/ld+json";
     script.text = JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "@id": "https://greenlandvillage.netlify.app",
-      name: siteName,
+      "@type": "Event",
+      name: `Boda ${brideName} & ${groomName}`,
       description,
-      url: "https://greenlandvillage.netlify.app",
-      email,
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: city || "Parkland",
-        addressRegion: state || "FL",
-        addressCountry: "US",
-      },
-      geo: {
-        "@type": "GeoCoordinates",
-        latitude: "26.3101",
-        longitude: "-80.2373",
-      },
-      // Note: Opening hours omitted - business not yet open (Coming 2025)
-      priceRange: "$$",
-      image,
-      areaServed: {
-        "@type": "GeoCircle",
-        geoMidpoint: {
-          "@type": "GeoCoordinates",
-          latitude: "26.3101",
-          longitude: "-80.2373",
+      startDate: weddingDate,
+      eventStatus: "https://schema.org/EventScheduled",
+      eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+      location: {
+        "@type": "Place",
+        name: "Hacienda la Soledad",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Sevilla",
+          addressCountry: "ES",
         },
-        geoRadius: "50000",
       },
-      keywords,
+      image,
+      organizer: {
+        "@type": "Person",
+        name: `${brideName} & ${groomName}`,
+        ...(email && { email }),
+      },
     });
     document.head.appendChild(script);
 
@@ -63,7 +53,7 @@ export function StructuredData({
         script.parentNode.removeChild(script);
       }
     };
-  }, [siteName, description, email, location, image, keywords]);
+  }, [brideName, groomName, description, email, location, weddingDate, image]);
 
   return null;
 }

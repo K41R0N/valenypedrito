@@ -10,21 +10,12 @@ This is a wedding website for Valentina Osorio and Pedro Juan Zuleta's wedding o
 
 The following environment variables MUST be set in the Netlify Dashboard for the CMS to work:
 
-### Required for Admin Panel Authentication
+### Required for CMS Content Management
 
 | Variable | Description |
 |----------|-------------|
-| `VITE_CLERK_PUBLISHABLE_KEY` | Clerk publishable key from [Clerk Dashboard](https://dashboard.clerk.com). Create a new application, enable Google OAuth, and copy the publishable key. |
-| `GITHUB_TOKEN` | GitHub Personal Access Token with `repo` scope. Create at [GitHub Settings > Developer Settings > Personal Access Tokens](https://github.com/settings/tokens). This allows the CMS to push changes to the repository. |
+| `GITHUB_TOKEN` | GitHub Personal Access Token with `repo` scope. Create at [GitHub Settings > Developer Settings > Personal Access Tokens](https://github.com/settings/tokens). This allows the CMS to read/write content to the repository. |
 | `GITHUB_REPO` | Repository in `owner/repo` format (e.g., `K41R0N/valenypedrito`) |
-
-### Clerk Setup Steps
-
-1. Go to [dashboard.clerk.com](https://dashboard.clerk.com)
-2. Create a new application
-3. In "Social Connections", enable **Google**
-4. Copy the **Publishable Key** from API Keys
-5. Add it to Netlify as `VITE_CLERK_PUBLISHABLE_KEY`
 
 ### GitHub Token Setup Steps
 
@@ -32,6 +23,8 @@ The following environment variables MUST be set in the Netlify Dashboard for the
 2. Generate new token with `repo` scope
 3. Add it to Netlify as `GITHUB_TOKEN`
 4. Add the repo name as `GITHUB_REPO` (e.g., `K41R0N/valenypedrito`)
+
+The CMS at `/admin` uses Sveltia CMS which authenticates via the GitHub PAT to perform content operations.
 
 ## Essential Context Files
 
