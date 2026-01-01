@@ -64,7 +64,8 @@
         {
           "icon": "location",
           "title": "Dirección",
-          "content": "Hacienda la Soledad\nCarretera Sevilla-Carmona, km 12"
+          "content": "Hacienda la Soledad\nCarretera Sevilla-Carmona, km 12",
+          "link": ""
         },
         {
           "icon": "transport",
@@ -147,7 +148,7 @@
       "deadline": "2026-08-01",
       "formIntro": ".",
       "askDietaryRestrictions": true,
-      "askPlusOne": true
+      "askPlusOne": false
     },
     {
       "type": "luxury-footer",
@@ -155,7 +156,10 @@
       "groomName": "Pedro Juan",
       "location": "Sevilla, España",
       "hashtag": "#ValenYPedrito2026",
+      "instagramUrl": "",
       "email": "",
+      "phone": "",
+      "facebookUrl": "",
       "quickLinks": [
         {
           "label": "Inicio",
