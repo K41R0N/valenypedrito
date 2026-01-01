@@ -102,12 +102,12 @@
       "backgroundColor": "white",
       "questions": [
         {
-          "question": "¿Dónde puedo alojarme?",
-          "answer": "Recomendamos hoteles en el centro de Sevilla para disfrutar de la ciudad. Hemos negociado tarifas especiales en Hotel Alfonso XIII y Hotel Colón Gran Meliá. Menciona \"Boda Valentina y Pedro Juan\" al reservar."
-        },
-        {
           "question": "¿Cómo llego desde el aeropuerto?",
           "answer": "El Aeropuerto de Sevilla (SVQ) está a 25 minutos del centro. Puedes tomar un taxi (tarifa fija de ~25€ al centro) o el autobús EA que sale cada 30 minutos."
+        },
+        {
+          "question": "¿Dónde puedo alojarme?",
+          "answer": "Recomendamos hoteles en el centro de Sevilla para disfrutar de la ciudad. Hemos negociado tarifas especiales en Hotel Alfonso XIII y Hotel Colón Gran Meliá. Menciona \"Boda Valentina y Pedro Juan\" al reservar."
         },
         {
           "question": "¿Hasta qué hora es la celebración?",
@@ -116,6 +116,10 @@
         {
           "question": "¿Qué tiempo hace en Sevilla en septiembre?",
           "answer": "Septiembre es uno de los mejores meses en Sevilla. Espera temperaturas agradables de 22-30°C, perfectas para una celebración al aire libre."
+        },
+        {
+          "question": "Maquillaje y Peluquería",
+          "answer": "Para las invitadas que deseen servicios de peluquería y maquillaje en Sevilla, aquí hay algunas recomendaciones. Reserva con anticipación, especialmente si deseas servicio a domicilio (hotel). Puedes leer más en nuestra página de ayuda a viajeros."
         }
       ]
     },
