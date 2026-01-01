@@ -37,34 +37,16 @@
       "date": "2026-09-23",
       "events": [
         {
-          "time": "17:30",
-          "title": "Llegada de Invitados",
-          "description": "Recepción con cóctel de bienvenida en los jardines",
-          "icon": "arrival"
-        },
-        {
-          "time": "18:00",
-          "title": "Ceremonia",
-          "description": "Ceremonia civil en el patio principal de la hacienda",
+          "time": "13:00",
+          "title": "Ceremonia Religiosa",
+          "description": "Catedral de Sevilla, Capilla del Sagrario",
           "icon": "ceremony"
         },
         {
-          "time": "19:00",
-          "title": "Cóctel",
-          "description": "Tapas andaluzas y vinos de la región en la terraza",
+          "time": "15:00",
+          "title": "Recepción",
+          "description": "Hacienda la Soledad",
           "icon": "cocktail"
-        },
-        {
-          "time": "21:00",
-          "title": "Cena",
-          "description": "Cena de gala en el salón principal",
-          "icon": "dinner"
-        },
-        {
-          "time": "23:30",
-          "title": "¡Fiesta!",
-          "description": "Música, baile y celebración hasta el amanecer",
-          "icon": "party"
         }
       ]
     },
@@ -74,6 +56,7 @@
       "title": "El Lugar",
       "backgroundColor": "warm",
       "venueName": "Hacienda la Soledad",
+      "venueImageAlt": ".",
       "address": "Carretera Sevilla-Carmona, km 12, Sevilla",
       "mapEmbedUrl": "https://www.google.com/maps?q=Hacienda+la+Soledad,+Carmona,+Sevilla&output=embed",
       "mapUrl": "https://maps.app.goo.gl/Kf734w6Rs44E19ha8",
@@ -86,41 +69,34 @@
         {
           "icon": "transport",
           "title": "Transporte",
-          "content": "Autobuses desde Plaza Nueva a las 17:00\nRegreso: 02:00 y 05:00"
-        },
-        {
-          "icon": "parking",
-          "title": "Estacionamiento",
-          "content": "Amplio estacionamiento gratuito disponible"
+          "content": "Puedes llegar fácilmente por medio de Taxi, Uber o Cabify. \nPrecio Estimado: €35 \nTiempo Estimado: 25 minutos.",
+          "link": ""
         }
       ]
     },
     {
       "type": "details-cards",
       "sectionId": "detalles",
+      "subtitle": "",
       "title": "Detalles Importantes",
       "backgroundColor": "warm",
       "cards": [
         {
-          "icon": "dresscode",
-          "title": "Código de Vestimenta",
-          "content": "Formal / Cocktail\n\nRopa formal pero cómoda para disfrutar de toda la celebración.",
+          "icon": "custom",
+          "title": "Dress Code",
+          "content": "Formal\n\nHombres smoking, Mujeres vestido largo.",
           "restrictions": [
             "Blanco",
             "Marfil",
             "Beige claro"
           ]
-        },
-        {
-          "icon": "children",
-          "title": "Información Sobre Niños",
-          "content": "Queremos que todos disfruten de la celebración.\n\nSi necesitas ayuda organizando el cuidado de los pequeños, contáctanos y te daremos opciones de niñeras de confianza."
         }
       ]
     },
     {
       "type": "luxury-faq",
       "sectionId": "faq",
+      "subtitle": "",
       "title": "Todo Lo Que Necesitas Saber",
       "backgroundColor": "white",
       "questions": [
@@ -131,18 +107,6 @@
         {
           "question": "¿Cómo llego desde el aeropuerto?",
           "answer": "El Aeropuerto de Sevilla (SVQ) está a 25 minutos del centro. Puedes tomar un taxi (tarifa fija de ~25€ al centro) o el autobús EA que sale cada 30 minutos."
-        },
-        {
-          "question": "¿Habrá transporte a la hacienda?",
-          "answer": "¡Sí! Organizaremos autobuses desde Plaza Nueva (centro de Sevilla) a las 17:00. El regreso estará disponible a las 02:00 y 05:00."
-        },
-        {
-          "question": "¿Puedo tomar fotos durante la ceremonia?",
-          "answer": "Pedimos una ceremonia \"unplugged\" - sin teléfonos ni cámaras durante este momento íntimo. Nuestro fotógrafo profesional capturará cada detalle."
-        },
-        {
-          "question": "¿Cuál es el hashtag de la boda?",
-          "answer": "#ValenYPedrito2026 - ¡Úsalo para compartir tus fotos y momentos especiales en redes sociales!"
         },
         {
           "question": "¿Hasta qué hora es la celebración?",
@@ -159,28 +123,29 @@
       "sectionId": "regalos",
       "title": "Regalo Especial",
       "backgroundColor": "white",
-      "message": "Vuestra presencia es el mejor regalo que podríamos recibir.\n\nSi deseáis hacernos un obsequio, hemos preparado algunas sugerencias:",
+      "message": "Tu compañía es el mejor regalo que podríamos recibir.\n\nSi quieres hacernos el regalo de algo más que las memorias bonitas, apreciaríamos una lluvia de sobres.",
       "registryLinks": [],
-      "showHoneymoonFund": true,
+      "showHoneymoonFund": false,
       "honeymoonMessage": "O contribuir a nuestra luna de miel. Contáctanos directamente para esta opción."
     },
     {
       "type": "photo-sharing",
       "sectionId": "fotos",
-      "subtitle": "Queremos ver la boda a través de tus ojos",
-      "title": "Comparte Tus Momentos",
+      "subtitle": ".",
+      "title": "Compartamos las Mejores Fotos de Esta Noche",
       "backgroundColor": "subtle",
-      "hashtag": "#ValenYPedrito2026",
-      "description": "Tus fotos aparecerán en nuestra galería digital y podremos revivir juntos todos los momentos especiales de este día."
+      "hashtag": "Valen & Pedro",
+      "description": "Tus fotos aparecerán en nuestra galería digital y podremos revivir juntos todos los momentos especiales de este día.",
+      "instagramUrl": ""
     },
     {
       "type": "luxury-rsvp",
       "sectionId": "rsvp",
       "subtitle": "Por favor ayúdanos a planear este día especial confirmando tu asistencia",
-      "title": "Confirma Tu Asistencia",
+      "title": "Confirma tu Asistencia",
       "backgroundColor": "gradient",
       "deadline": "2026-08-01",
-      "formIntro": "¡Hola! Cuéntanos si podrás acompañarnos en nuestra boda.",
+      "formIntro": ".",
       "askDietaryRestrictions": true,
       "askPlusOne": true
     },
@@ -190,6 +155,7 @@
       "groomName": "Pedro Juan",
       "location": "Sevilla, España",
       "hashtag": "#ValenYPedrito2026",
+      "email": "",
       "quickLinks": [
         {
           "label": "Inicio",
