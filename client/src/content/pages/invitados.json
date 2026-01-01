@@ -10,43 +10,47 @@
     {
       "type": "luxury-page-header",
       "sectionId": "bienvenida",
-      "title": "¡Bienvenidos a Sevilla!",
       "subtitle": "Estamos muy emocionados de que nos acompañen en este día tan especial. Hemos preparado esta guía con toda la información que necesitas para planear tu viaje a la hermosa ciudad de Sevilla.",
+      "title": "¡Bienvenidos a Sevilla!",
       "icon": "heart",
       "backgroundColor": "warm"
     },
     {
       "type": "travel-guide",
       "sectionId": "recursos",
-      "title": "Guía para Invitados",
       "subtitle": "Todo lo que necesitas para tu viaje a Sevilla",
+      "title": "Guía para Invitados",
+      "backgroundColor": "white",
       "sections": [
         {
           "sectionTitle": "Vuelos desde Colombia",
           "icon": "airplane",
-          "content": "El Aeropuerto de Sevilla (SVQ) tiene conexiones directas limitadas desde Latinoamérica. La mayoría de vuelos hacen escala en **Madrid (MAD)** o **Barcelona (BCN)**.\n\n**Recomendaciones:**\n- Reserva con anticipación (mínimo 3-4 meses antes)\n- Considera llegar 2-3 días antes para descansar del viaje y explorar Sevilla\n- Aerolíneas sugeridas: Iberia, Air Europa, Avianca (con conexión)",
+          "content": "El Aeropuerto de Sevilla (SVQ) tiene conexiones directas limitadas desde Latinoamérica. La mayoría de vuelos hacen escala en **Madrid (MAD)** o **Barcelona (BCN)**.\n\n**Recomendaciones:**\n\n- Reserva con anticipación (mínimo 3-4 meses antes)\n- Considera llegar 2-3 días antes para descansar del viaje y explorar Sevilla\n- Aerolíneas sugeridas: Iberia, Air Europa, Avianca (con conexión)",
           "recommendations": [
             {
               "name": "Iberia",
               "description": "Vuelos directos Bogotá-Madrid, conexión a Sevilla. Programa de fidelidad Avios.",
-              "link": "https://www.iberia.com"
+              "link": "https://www.iberia.com",
+              "phone": ""
             },
             {
               "name": "Air Europa",
               "description": "Opciones económicas con conexión en Madrid.",
-              "link": "https://www.aireuropa.com"
+              "link": "https://www.aireuropa.com",
+              "phone": ""
             },
             {
               "name": "Avianca",
               "description": "Desde Colombia con conexión en Madrid o Barcelona.",
-              "link": "https://www.avianca.com"
+              "link": "https://www.avianca.com",
+              "phone": ""
             }
           ]
         },
         {
           "sectionTitle": "Alojamiento en Sevilla",
           "icon": "hotel",
-          "content": "Sevilla tiene opciones para todos los presupuestos. Recomendamos hospedarse en el **centro histórico** para caminar por la ciudad y disfrutar de la gastronomía local.\n\n**Zonas recomendadas:**\n- **Santa Cruz**: El barrio más pintoresco, cerca de la Catedral\n- **Centro**: Conveniente y con buena conexión de transporte\n- **Triana**: Auténtico barrio sevillano al otro lado del río\n\n*Hemos negociado tarifas especiales en algunos hoteles. Menciona \"Boda Valentina y Pedro Juan\" al reservar.*",
+          "content": "Sevilla tiene opciones para todos los presupuestos. Recomendamos hospedarse en el **centro histórico** para caminar por la ciudad y disfrutar de la gastronomía local.\n\n**Zonas recomendadas:**\n\n- **Santa Cruz**: El barrio más pintoresco, cerca de la Catedral\n- **Centro**: Conveniente y con buena conexión de transporte\n- **Triana**: Auténtico barrio sevillano al otro lado del río\n\n_Hemos negociado tarifas especiales en algunos hoteles. Menciona \"Boda Valentina y Pedro Juan\" al reservar._",
           "recommendations": [
             {
               "name": "Hotel Alfonso XIII",
@@ -83,7 +87,7 @@
         {
           "sectionTitle": "Transporte Local",
           "icon": "car",
-          "content": "**Desde el aeropuerto al centro:**\n- Taxi: ~25€ (tarifa fija), 25 minutos\n- Autobús EA: 4€, cada 30 minutos\n\n**Para el día de la boda:**\nOrganizaremos autobuses desde **Plaza Nueva** (centro de Sevilla) a las 17:00.\n- Regreso disponible a las 02:00 y 05:00\n- Si prefieres ir por tu cuenta, el trayecto a la hacienda es de ~25 minutos\n\n**Para explorar Sevilla:**\n- El centro es muy caminable\n- Los taxis son asequibles (usa apps como FreeNow o Cabify)\n- El alquiler de coche NO es necesario para el centro",
+          "content": "**Desde el aeropuerto al centro:**\n\n- Taxi: \\~25€ (tarifa fija), 25 minutos\n- Autobús EA: 4€, cada 30 minutos\n\n**Para el día de la boda:**\nOrganizaremos autobuses desde **Plaza Nueva** (centro de Sevilla) a las 17:00.\n\n- Regreso disponible a las 02:00 y 05:00\n- Si prefieres ir por tu cuenta, el trayecto a la hacienda es de \\~25 minutos\n\n**Para explorar Sevilla:**\n\n- El centro es muy caminable\n- Los taxis son asequibles (usa apps como FreeNow o Cabify)\n- El alquiler de coche NO es necesario para el centro",
           "recommendations": [
             {
               "name": "FreeNow (antes MyTaxi)",
@@ -93,19 +97,21 @@
             {
               "name": "Cabify",
               "description": "Alternativa a Uber, muy popular en España.",
-              "link": "https://www.cabify.com"
+              "link": "https://www.cabify.com",
+              "phone": ""
             },
             {
               "name": "Renfe (trenes)",
               "description": "Si llegas a Madrid o Barcelona, el AVE (tren de alta velocidad) a Sevilla es excelente. ~2.5 horas desde Madrid.",
-              "link": "https://www.renfe.com"
+              "link": "https://www.renfe.com",
+              "phone": ""
             }
           ]
         },
         {
           "sectionTitle": "Estilistas y Belleza",
           "icon": "beauty",
-          "content": "Para las invitadas que deseen servicios de peluquería y maquillaje en Sevilla, aquí hay algunas recomendaciones. **Reserva con anticipación**, especialmente si deseas servicio a domicilio (hotel).\n\n*Tip: Muchos salones ofrecen servicios en el hotel. Pregunta al reservar.*",
+          "content": "Para las invitadas que deseen servicios de peluquería y maquillaje en Sevilla, aquí hay algunas recomendaciones. **Reserva con anticipación**, especialmente si deseas servicio a domicilio (hotel).\n\n_Tip: Muchos salones ofrecen servicios en el hotel. Pregunta al reservar._",
           "recommendations": [
             {
               "name": "Rafael Bueno Peluqueros",
@@ -122,31 +128,32 @@
             {
               "name": "Maquillaje Profesional - Ana Belén",
               "description": "Maquilladora profesional con servicio a domicilio. Especialista en eventos.",
+              "link": "",
               "phone": "+34 654 321 098"
             }
           ]
         }
-      ],
-      "backgroundColor": "white"
+      ]
     },
     {
       "type": "luxury-info-card",
       "sectionId": "tips",
       "title": "Tips para tu Viaje",
-      "content": "**Clima en septiembre:**\nSeptiembre es uno de los mejores meses para visitar Sevilla. Temperaturas de 22-30°C, perfectas para pasear. Las noches son agradables.\n\n**Qué llevar:**\n- Ropa cómoda para caminar (el centro es empedrado)\n- Protector solar y gafas de sol\n- Tu outfit elegante para la boda\n- Zapatos cómodos para bailar toda la noche\n\n**Moneda:**\nEuro (€). Las tarjetas de crédito son aceptadas en casi todos los lugares.\n\n**Idioma:**\nEspañol (¡no tendrás problema!). En zonas turísticas hablan inglés también.\n\n**Enchufe:**\nEspaña usa enchufe tipo C/F (europeo). Voltaje: 230V. Trae adaptador si es necesario.",
       "icon": "sun",
-      "style": "normal",
-      "backgroundColor": "subtle"
+      "backgroundColor": "subtle",
+      "content": "**Clima en septiembre:**\nSeptiembre es uno de los mejores meses para visitar Sevilla. Temperaturas de 22-30°C, perfectas para pasear. Las noches son agradables.\n\n**Qué llevar:**\n\n- Ropa cómoda para caminar (el centro es empedrado)\n- Protector solar y gafas de sol\n- Tu outfit elegante para la boda\n- Zapatos cómodos para bailar toda la noche\n\n**Moneda:**\nEuro (€). Las tarjetas de crédito son aceptadas en casi todos los lugares.\n\n**Idioma:**\nEspañol (¡no tendrás problema!). En zonas turísticas hablan inglés también.\n\n**Enchufe:**\nEspaña usa enchufe tipo C/F (europeo). Voltaje: 230V. Trae adaptador si es necesario.",
+      "style": "normal"
     },
     {
       "type": "destination-guide",
       "sectionId": "explorar",
-      "title": "Qué Ver en Sevilla",
       "subtitle": "Ya que vienes desde tan lejos, aprovecha para conocer esta maravillosa ciudad",
-      "content": "**Imperdibles:**\n\n- **La Catedral y la Giralda** - La catedral gótica más grande del mundo\n- **Real Alcázar** - Palacio mudéjar espectacular (¡Game of Thrones se filmó aquí!)\n- **Plaza de España** - Icónica plaza con azulejos representando cada provincia\n- **Barrio de Santa Cruz** - El antiguo barrio judío, lleno de encanto\n- **Triana** - Cruza el puente para tapas auténticas y flamenco",
+      "title": "Qué Ver en Sevilla",
+      "backgroundColor": "warm",
       "image": "/images/watercolor/seville-skyline.png",
       "imageAlt": "Sevilla skyline",
       "imagePosition": "right",
+      "content": "**Imperdibles:**\n\n- **La Catedral y la Giralda** - La catedral gótica más grande del mundo\n- **Real Alcázar** - Palacio mudéjar espectacular (¡Game of Thrones se filmó aquí!)\n- **Plaza de España** - Icónica plaza con azulejos representando cada provincia\n- **Barrio de Santa Cruz** - El antiguo barrio judío, lleno de encanto\n- **Triana** - Cruza el puente para tapas auténticas y flamenco",
       "highlights": [
         {
           "icon": "entertainment",
@@ -168,29 +175,44 @@
           "title": "Historia",
           "description": "Archivo de Indias y Torre del Oro"
         }
-      ],
-      "backgroundColor": "warm"
+      ]
     },
     {
       "type": "luxury-info-card",
       "sectionId": "contacto",
       "title": "¿Preguntas?",
-      "content": "Si tienes alguna pregunta sobre el viaje o necesitas ayuda con reservaciones, no dudes en contactarnos:\n\n**Valentina:** valentina@email.com\n**Pedro Juan:** pedrojuan@email.com\n\n¡Estamos aquí para ayudarte a planear tu viaje!",
       "icon": "contact",
-      "style": "highlight",
-      "backgroundColor": "white"
+      "backgroundColor": "white",
+      "content": "Si tienes alguna pregunta sobre el viaje o necesitas ayuda con reservaciones, no dudes en contactarnos:\n\n**Valentina:** valentina@email.com\n**Pedro Juan:** pedrojuan@email.com\n\n¡Estamos aquí para ayudarte a planear tu viaje!",
+      "style": "highlight"
     },
     {
       "type": "luxury-footer",
       "brideName": "Valentina",
       "groomName": "Pedro Juan",
       "location": "Sevilla, España",
-      "hashtag": "#ValenYPedrito2026",
+      "hashtag": ".",
+      "instagramUrl": "",
+      "email": "",
+      "phone": "",
+      "facebookUrl": "",
       "quickLinks": [
-        { "label": "Inicio", "href": "/" },
-        { "label": "Cronograma", "href": "/#cronograma" },
-        { "label": "El Lugar", "href": "/#lugar" },
-        { "label": "RSVP", "href": "/#rsvp" }
+        {
+          "label": "Inicio",
+          "href": "/"
+        },
+        {
+          "label": "Cronograma",
+          "href": "/#cronograma"
+        },
+        {
+          "label": "El Lugar",
+          "href": "/#lugar"
+        },
+        {
+          "label": "RSVP",
+          "href": "/#rsvp"
+        }
       ],
       "copyright": "© 2026 Valentina & Pedro Juan",
       "showSocialMedia": true
