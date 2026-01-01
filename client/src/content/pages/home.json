@@ -30,6 +30,22 @@
     },
     {
       "type": "wedding-timeline",
+      "sectionId": "semana",
+      "subtitle": "",
+      "title": "Itinerario Viaje",
+      "backgroundColor": "white",
+      "date": "2026-09-23",
+      "events": [
+        {
+          "time": ". Lunes 21 de septiembre, hora",
+          "title": "Restaurante Cinco Jotas",
+          "description": "Nos reuniremos para compartir una experiencia gastronómica muy especial,  empezar a celebrar esta semana tan esperada y disfrutar juntos de la mejor tradición ibérica en Sevilla.",
+          "icon": "ceremony"
+        }
+      ]
+    },
+    {
+      "type": "wedding-timeline",
       "sectionId": "cronograma",
       "subtitle": "",
       "title": "Itinerario",
